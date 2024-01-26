@@ -1,0 +1,90 @@
+@import "./assets/scss/variables";
+@import "./assets/scss/mixins";
+
+.custom_container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.main-content {
+  height: 400px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  box-sizing: border-box;
+}
+
+.uk-navbar-nav {
+  gap: 0 !important;
+}
+
+body {
+  background: $white;
+  position: relative;
+  min-height: 100vh;
+  color: $black;
+  font-family: $regular;
+  min-height: 100vh;
+  touch-action: manipulation;
+  &.menu-opened {
+    overflow: hidden;
+  }
+}
+
+a {
+  color: $siteColor;
+  transition: 0.3s;
+  outline: none !important;
+  text-decoration: none;
+  text-transform: none !important;
+  &:hover {
+    text-decoration: none !important;
+    opacity: 0.7;
+    outline: none !important;
+  }
+}
+
+.error-info {
+  opacity: 0;
+  transition: 0.3s;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  right: 0px;
+  font-size: 14px;
+  color: $error;
+  bottom: -22px;
+}
+
+.has-error input,
+.has-error .textarea_input,
+.has-error .css-13cymwt-control,
+.has-error .css-t3ipsp-control {
+  border: 2px solid $error !important;
+}
+
+.has-error .input-group-text {
+  border: 2px solid $error !important;
+  border-right: none !important;
+}
+
+.has-error .error-info {
+  opacity: 1;
+}
+
+@media (max-width: 1440px) {
+
+}
