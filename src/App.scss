@@ -33,12 +33,12 @@ ul {
 }
 
 body {
+  padding-top: 235px;
   background: $white;
   position: relative;
-  min-height: 100vh;
+  min-height: 300vh;
   color: $black;
   font-family: $regular;
-  min-height: 100vh;
   touch-action: manipulation;
   &.menu-opened {
     overflow: hidden;

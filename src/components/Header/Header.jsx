@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef, memo} from "react";
 import { Link } from "react-router-dom";
 import imglogo from '../../assets/img/main_logo.png';
 import "uikit/dist/css/uikit.min.css";
@@ -6,10 +6,46 @@ import { Twirl as Hamburger } from 'hamburger-react'
 import { BiPlus } from 'react-icons/bi';
 
 const Header = () => {
-
-    const [isOpen, setOpen] = useState(false)
     const body = document.body;
 
+    const [isOpen, setOpen] = useState(false)
+    const [scrollY, setScrollY] = useState(0);
+    const [scrollDirectionUp, setScrollDirectionUp] = useState(false);
+    const headerRef = useRef(null);
+    const pageheaderRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > scrollY) {
+                setScrollDirectionUp(false);
+            } else {
+                setScrollDirectionUp(true);
+            }
+            setScrollY(currentScrollY);
+        };
+
+        if (scrollY < 150 ) {
+            headerRef.current.classList.remove('header_fix')
+        } 
+        
+        else if (scrollY > 150 && !scrollDirectionUp) {
+            headerRef.current.classList.add('header_fix')
+
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [scrollY, scrollDirectionUp]);
+
+
+
+
+    console.log(pageheaderRef.current);
+
+    
     let menuOpen = () => {
         if (!body.classList.contains('menu-opened')) {
             setOpen(true);
@@ -75,7 +111,7 @@ const Header = () => {
     ShowWindowDimensions();
 
     return (
-        <header className="header_wrapper">
+        <header   ref={headerRef} className="header_wrapper">
             <div className="header_top">
                 <div className="custom_container">
                     <div className="top_inline">
@@ -87,11 +123,12 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <div className="page_header">
+            <div className="page_header" ref={pageheaderRef}>
                 <div className="custom_container">
                     <div className="header_inner">
                         <div className={!isOpen ? "navbar_container" : "navbar_container menu-open"}>
                             <div className="navbar_inner" id="navbar_inner">
+                                <a href="tel:+1 888-965-9595" className="site_btn call_btn">+1 888-965-9595</a>
                                 <div className="menu_container">
                                     <div className="main_menu">
                                         <nav className="page-nav" data-uk-navbar>
@@ -118,6 +155,7 @@ const Header = () => {
                                         </nav>
                                     </div>
                                 </div>
+                                <a href="/#" className="site_btn book_btn">Physicians Referral</a>
                             </div>
                         </div>
                         <Hamburger toggled={isOpen} toggle={menuOpen} />
@@ -128,4 +166,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default memo(Header);
