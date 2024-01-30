@@ -79,7 +79,7 @@ const Header = () => {
             <div className="header_top">
                 <div className="custom_container">
                     <div className="top_inline">
-                        <button className="site_btn call_btn">+1 888-965-9595</button>
+                        <a href="tel:+1 888-965-9595" className="site_btn call_btn">+1 888-965-9595</a>
                         <a className="main_logo" href="/#">
                             <img src={imglogo} alt="imgLogo" />
                         </a>
