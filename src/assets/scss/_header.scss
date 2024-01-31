@@ -14,7 +14,7 @@
             top: 0;
             left: 0;
             width: 100%; 
-            height: 75px;
+            // height: 75px;
         }
         .header_top {
             .site_btn{
@@ -33,6 +33,7 @@
             } 
         }
         .custom_container{
+            width: auto;
             position: relative;
         }
     }
@@ -82,11 +83,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: fit-content;
+    margin: 0 auto;
     .main_menu {
         margin: 0 auto;
     }
 }
-
 .navbar_inner {
     flex: 1;
     display: flex;
@@ -167,7 +169,6 @@
         display: flex;
         align-items: center;
         flex-direction: row-reverse;
-
         a {
             font-size: 16px;
         }
@@ -239,6 +240,8 @@
         .site_btn {
             right: -210px;
             left: auto;
+            height: 0;
+            overflow: hidden;
             &.call_btn {
                 left: -200px;
                 right: auto;
@@ -251,7 +254,32 @@
     }
 }
 
+@media (max-width: 1199px) {
+    .page_header {
+        height: 65px;
+        .page-nav .uk-navbar-nav > li a {
+            font-size: 16px;
+            line-height: 19px;
+            padding: 0 12px;
+        }
+    } 
+    .header_wrapper.header_fix .navbar_inner .site_btn {
+        right: -175px;
+        left: auto;
+        top: 17px;
+        font-size: 14px;
+        height: 45px;
+        &.call_btn {
+            left: -175px;
+            right: auto;
+        }           
+    }
+}
+
 @media (max-width: 991px) {
+    .header_wrapper .navbar_inner .site_btn {
+        display: none;
+    }
     .page_header .page-nav .uk-navbar-nav>li a {
         font-size: 16px;
         line-height: 20px;
@@ -260,8 +288,14 @@
 }
 
 @media (max-width: 767px) {
+    .header_wrapper {
+        position: static;
+    }    
     .page_header {
         height: 70px;
+    }
+    .navbar_inner {
+        align-items: flex-start;
     }
 
     .header_inner .main_menu {
@@ -297,6 +331,7 @@
         background: rgba($siteColor , 0.6);
         bottom: 0;
         right: 0;
+        overflow: hidden;
         z-index: 6;
         width: 0;
     }
@@ -305,10 +340,11 @@
         position: absolute;
         right: 0;
         background: $white;
-        @include animStyle(width 0.5s);
-        @include animDelay(0.3s);
+        @include animStyle(right 0.5s);
+        @include animDelay(0.2s);
         top: 0;
-        width: 0;
+        width: 320px;
+        right: -320px;
         overflow: hidden;
         z-index: 99;
         bottom: 0;
@@ -344,7 +380,7 @@
     }
 
     .menu-open .navbar_inner {
-        width: 320px;
+        right: 0px;
         @include animDelay(0s);
     }
 
@@ -429,7 +465,7 @@
     }
 
     .uk-navbar-dropdown {
-        border-top: 5px solid #00457c;
+        border-top: 5px solid #00525d;
         display: block !important;
         top: 0 !important;
         bottom: 40px;
@@ -507,7 +543,7 @@
 
 @media (max-width: 575px) {
     .navbar_inner {
-        @include animDelay(0.2s);
+        @include animDelay(0.15s);
     }
 
     .menu-open.navbar_container {
