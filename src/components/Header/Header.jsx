@@ -24,14 +24,13 @@ const Header = () => {
             }
             setScrollY(currentScrollY);
         };
-
-        if (scrollY < 150 ) {
+        
+        if (window.scrollY < pageheaderRef.current.clientHeight ) {
             headerRef.current.classList.remove('header_fix')
         } 
         
-        else if (scrollY > 150 && !scrollDirectionUp) {
+        else if (window.scrollY > pageheaderRef.current.clientHeight && !scrollDirectionUp) {
             headerRef.current.classList.add('header_fix')
-
         }
 
         window.addEventListener('scroll', handleScroll);
@@ -39,11 +38,6 @@ const Header = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [scrollY, scrollDirectionUp]);
-
-
-
-
-    console.log(pageheaderRef.current);
 
     
     let menuOpen = () => {
@@ -112,7 +106,7 @@ const Header = () => {
 
     return (
         <header   ref={headerRef} className="header_wrapper">
-            <div className="header_top">
+            <div className="header_top" ref={pageheaderRef}>
                 <div className="custom_container">
                     <div className="top_inline">
                         <a href="tel:+1 888-965-9595" className="site_btn call_btn">+1 888-965-9595</a>
@@ -123,7 +117,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <div className="page_header" ref={pageheaderRef}>
+            <div className="page_header" >
                 <div className="custom_container">
                     <div className="header_inner">
                         <div className={!isOpen ? "navbar_container" : "navbar_container menu-open"}>

@@ -4,7 +4,6 @@
 .header_wrapper{
     position: absolute;
     top: 0;
-    overflow: hidden;
     margin: 0 auto;
     z-index: 10;
     width: 100%;
@@ -37,9 +36,7 @@
             position: relative;
         }
     }
-
 }
-
 
 .header_top {
     padding: 24px 0;
