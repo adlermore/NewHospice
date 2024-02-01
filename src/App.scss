@@ -41,6 +41,7 @@ body {
   color: $black;
   font-family: $regular;
   touch-action: manipulation;
+
   &.menu-opened {
     overflow: hidden;
   }
@@ -52,6 +53,7 @@ a {
   outline: none !important;
   text-decoration: none;
   text-transform: none !important;
+
   &:hover {
     text-decoration: none !important;
     opacity: 0.7;
@@ -87,7 +89,7 @@ a {
   opacity: 1;
 }
 
-.site_btn{
+.site_btn {
   display: flex;
   align-items: center;
   height: 60px;
@@ -103,67 +105,102 @@ a {
   justify-content: center;
   box-shadow: none;
   border: none;
-  &:hover{
+
+  &:hover {
     opacity: 1;
     background: $secondColor;
     color: $white;
   }
 }
 
-.section_title{
+.section_title {
   font-size: 36px;
   line-height: 45px;
   color: $black;
   font-family: $medium;
   margin-bottom: 20px;
-  &.center_mode{
+
+  &.center_mode {
     text-align: center;
   }
-  &.margin_none{
+
+  &.margin_none {
     margin: 0;
   }
 }
 
-.section_description{
+.section_description {
   margin-bottom: 20px;
   font-size: 20px;
   line-height: 40px;
   color: $black;
-  &.center_mode{
+
+  &.center_mode {
     text-align: center;
   }
-  &.margin_none{
+
+  &.margin_none {
     margin: 0;
   }
 }
-.second_bg{
+
+.second_bg {
   background: rgba($secondColor , 0.10);
 }
-.page_section{
+
+.page_section {
   padding: 50px 0;
 }
 
 
 @media (max-width: 1440px) {
-  body{
+  body {
     padding-top: 197px;
   }
+
   .site_btn {
     height: 50px;
     font-size: 16px;
     line-height: 24px;
     padding: 0 15px;
-  }  
+  }
+
+  .section_title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  .section_description {
+    font-size: 18px;
+    line-height: 35px;
+  }
 }
 
 @media (max-width: 1199px) {
-  body{
+  body {
     padding-top: 187px;
+  }
+
+  .page_section {
+    padding: 35px 0;
+  }
+}
+
+@media (max-width: 991) {
+  .section_title {
+    font-size: 28px;
+    line-height: 35px;
+  }
+
+  .section_description {
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 10px;
   }
 }
 
 @media (max-width: 767px) {
-  body{
+  body {
     padding-top: 0;
   }
 }

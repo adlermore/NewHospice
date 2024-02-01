@@ -27,10 +27,10 @@ const Header = () => {
             }
         };
         
-        if (window.scrollY < pageheaderRef.current.clientHeight ) {
+        if (window.scrollY <= pageheaderRef.current.clientHeight ) {
             headerRef.current.classList.remove('header_fix')
         } 
-        else if (window.scrollY > pageheaderRef.current.clientHeight && !scrollDirectionUp) {
+        else if (window.scrollY >= pageheaderRef.current.clientHeight && !scrollDirectionUp) {
             headerRef.current.classList.add('header_fix')
         }
 

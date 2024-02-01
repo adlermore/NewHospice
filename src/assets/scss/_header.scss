@@ -8,13 +8,14 @@
     z-index: 10;
     width: 100%;
     transition: 0.3s transform;
+    z-index: 99;
     &.header_fix{
         .page_header{
             position: fixed;
             top: 0;
             left: 0;
             width: 100%; 
-            // height: 75px;
+            z-index: 99;
         }
         .header_top {
             .site_btn{
@@ -68,6 +69,7 @@
     display: flex;
     align-items: center;
     @include animStyle(0.3s);
+    transition: 0.3s;
 }
 
 .hamburger-react {
@@ -332,7 +334,7 @@
         bottom: 0;
         right: 0;
         overflow: hidden;
-        z-index: 6;
+        z-index: 99;
         width: 0;
     }
 

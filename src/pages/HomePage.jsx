@@ -12,11 +12,60 @@ import service9 from '../assets/img/service9.png';
 import service10 from '../assets/img/service10.png';
 import service11 from '../assets/img/service11.png';
 import service12 from '../assets/img/service12.png';
+import teamImg1 from '../assets/img/teamImg1.png';
+import teamImg2 from '../assets/img/teamImg2.png';
+import teamImg3 from '../assets/img/teamImg3.png';
+import teamImg4 from '../assets/img/teamImg4.png';
+import teamImg5 from '../assets/img/teamImg5.png';
+import teamImg6 from '../assets/img/teamImg6.png';
+import teamImg7 from '../assets/img/teamImg7.png';
+import teamImg8 from '../assets/img/teamImg8.png';
+import person1 from '../assets/img/person1.png';
+import person2 from '../assets/img/person2.png';
+import person3 from '../assets/img/person3.png';
+import person4 from '../assets/img/person4.png';
 import '../assets/scss/HomePage/_homePage.scss';
 import SupportChat from '../components/SupportChat/SupportChat';
 import { Link } from 'react-router-dom';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HomePage = () => {
+
+    const settingsSlider = {
+        dots: false,
+        infinite: true,
+        centerPadding: "35px",
+        speed: 500,
+        autoplay: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows: false,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    infinite: false,
+                    slidesToShow: 1,
+                    initialSlide: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
+    };
 
     return (
         <div className="homepage_wrapper">
@@ -77,7 +126,7 @@ const HomePage = () => {
                         <Link to="/#" >
                             <img src={service4} alt='serviceImg' />
                             <span className="service_title">
-                             Medical supplies  & equipment
+                                Medical supplies  & equipment
                             </span>
                         </Link>
                     </div>
@@ -85,7 +134,7 @@ const HomePage = () => {
                         <Link to="/#" >
                             <img src={service5} alt='serviceImg' />
                             <span className="service_title">
-                             Pain & symptom  management 
+                                Pain & symptom  management
                             </span>
                         </Link>
                     </div>
@@ -151,14 +200,145 @@ const HomePage = () => {
                 <div className="custom_container">
                     <div className="section_title center_mode">Our Team</div>
                     <div className="section_description center_mode">
-                        "Explore the skilled professionals at New Hope Hospice Care. Discover the expertise 
-                        of our team, including experienced nurses, compassionate social workers, and 
-                        dedicated spiritual counselors. Learn more about the professions that form the 
-                        heart of our hospice and ensure personalized, compassionate care for you and 
+                        "Explore the skilled professionals at New Hope Hospice Care. Discover the expertise
+                        of our team, including experienced nurses, compassionate social workers, and
+                        dedicated spiritual counselors. Learn more about the professions that form the
+                        heart of our hospice and ensure personalized, compassionate care for you and
                         your loved ones."
                     </div>
                 </div>
+                <div className="team_container second_bg page_section">
+                    <div className="custom_container">
+                        <div className="team_list">
+                            <div className="team_block">
+                                <Link to="/#">
+                                    <span className='team_img'>
+                                        <img src={teamImg1} alt='teamImg' />
+                                    </span>
+                                    <span className="team_title">
+                                        Hospice Medical Director
+                                    </span>
+                                </Link>
+                            </div>
+                            <div className="team_block">
+                                <Link to="/#">
+                                    <span className='team_img'>
+                                        <img src={teamImg2} alt='teamImg' />
+                                    </span>
+                                    <span className="team_title">
+                                        Attending Physiciant
+                                    </span>
+                                </Link>
+                            </div>
+                            <div className="team_block">
+                                <Link to="/#">
+                                    <span className='team_img'>
+                                        <img src={teamImg3} alt='teamImg' />
+                                    </span>
+                                    <span className="team_title">
+                                        Registered Nurse
+                                    </span>
+                                </Link>
+                            </div>
+                            <div className="team_block">
+                                <Link to="/#">
+                                    <span className='team_img'>
+                                        <img src={teamImg4} alt='teamImg' />
+                                    </span>
+                                    <span className="team_title">
+                                        Certified Nursing Assistant
+                                    </span>
+                                </Link>
+                            </div>
+                            <div className="team_block">
+                                <Link to="/#">
+                                    <span className='team_img'>
+                                        <img src={teamImg5} alt='teamImg' />
+                                    </span>
+                                    <span className="team_title">
+                                        Medical Social Worker
+                                    </span>
+                                </Link>
+                            </div>
+                            <div className="team_block">
+                                <Link to="/#">
+                                    <span className='team_img'>
+                                        <img src={teamImg6} alt='teamImg' />
+                                    </span>
+                                    <span className="team_title">
+                                        Hospice Chaplains
+                                    </span>
+                                </Link>
+                            </div>
+                            <div className="team_block">
+                                <Link to="/#">
+                                    <span className='team_img'>
+                                        <img src={teamImg7} alt='teamImg' />
+                                    </span>
+                                    <span className="team_title">
+                                        Bereavement Counselors
+                                    </span>
+                                </Link>
+                            </div>
+                            <div className="team_block">
+                                <Link to="/#">
+                                    <span className='team_img'>
+                                        <img src={teamImg8} alt='teamImg' />
+                                    </span>
+                                    <span className="team_title">
+                                        Hospice Volunteers
+                                    </span>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="team_slider">
+                    <div className="custom_container">
+                        <div className="slider_inner">
+                        <Slider {...settingsSlider}>
+                            <div className='team_slide'>
+                                <div className="slide_content">
+                                    <div className="slider_image">
+                                        <img src={person1} alt="teamImg" />
+                                    </div>
+                                    <div className="person_name">Olivia  Johnson</div>
+                                    <div className="person_possiton">Registered nurse</div>
+                                </div>
+                            </div>
+                            <div className='team_slide'>
+                                <div className="slide_content">
+                                    <div className="slider_image">
+                                        <img src={person2} alt="teamImg" />
+                                    </div>
+                                    <div className="person_name">Olivia  Johnson</div>
+                                    <div className="person_possiton">Medical director</div>
+                                </div>
+                            </div>
+                            <div className='team_slide'>
+                                <div className="slide_content">
+                                    <div className="slider_image">
+                                        <img src={person3} alt="teamImg" />
+                                    </div>
+                                    <div className="person_name">Olivia  Johnson</div>
+                                    <div className="person_possiton">Attending  Physiciant</div>
+                                </div>
+                            </div>
+                            <div className='team_slide'>
+                                <div className="slide_content">
+                                    <div className="slider_image">
+                                        <img src={person4} alt="teamImg" />
+                                    </div>
+                                    <div className="person_name">Olivia  Johnson</div>
+                                    <div className="person_possiton">Nursing Assistant</div>
+                                </div>
+                            </div>
+                        </Slider>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <SupportChat />
         </div>
     )
