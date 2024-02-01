@@ -80,3 +80,17 @@
         box-shadow: 0 8px 10px rgba(56, 163, 253, 0.3), 0 0 0 30px rgba(56, 163, 253, 0), 0 0 0 40px rgba(56, 163, 253, 0.0)
     }
 }
+
+@media (max-width: 1199px) {
+    .btn-call {
+        cursor: pointer;
+        height: 80px;
+        width: 80px;
+        right: 40px;
+        bottom: 40px;
+    }
+    .btn-call__ico {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}

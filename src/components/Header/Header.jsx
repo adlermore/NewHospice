@@ -24,6 +24,8 @@ const Header = () => {
             }
             if( window.innerWidth > 767){
                 setScrollY(currentScrollY);
+            }else{
+                headerRef.current.classList.remove('header_fix')
             }
         };
         

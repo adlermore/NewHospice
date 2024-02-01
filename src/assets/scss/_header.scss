@@ -291,8 +291,12 @@
 
 @media (max-width: 767px) {
     .header_wrapper {
-        position: static;
+        position: static !important;
     }    
+    .header_wrapper.header_fix .page_header {
+        position: static !important;
+
+    }
     .page_header {
         height: 70px;
     }

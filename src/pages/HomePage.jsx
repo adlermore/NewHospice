@@ -24,6 +24,14 @@ import person1 from '../assets/img/person1.png';
 import person2 from '../assets/img/person2.png';
 import person3 from '../assets/img/person3.png';
 import person4 from '../assets/img/person4.png';
+import goalImg from '../assets/img/goalImg.png';
+import goal1 from '../assets/img/goal1.png';
+import goal2 from '../assets/img/goal2.png';
+import goal3 from '../assets/img/goal3.png';
+import goal4 from '../assets/img/goal4.png';
+import goal5 from '../assets/img/goal5.png';
+import goal6 from '../assets/img/goal6.png';
+
 import '../assets/scss/HomePage/_homePage.scss';
 import SupportChat from '../components/SupportChat/SupportChat';
 import { Link } from 'react-router-dom';
@@ -296,49 +304,117 @@ const HomePage = () => {
                 <div className="team_slider">
                     <div className="custom_container">
                         <div className="slider_inner">
-                        <Slider {...settingsSlider}>
-                            <div className='team_slide'>
-                                <div className="slide_content">
-                                    <div className="slider_image">
-                                        <img src={person1} alt="teamImg" />
+                            <Slider {...settingsSlider}>
+                                <div className='team_slide'>
+                                    <div className="slide_content">
+                                        <div className="slider_image">
+                                            <img src={person1} alt="teamImg" />
+                                        </div>
+                                        <div className="person_name">Olivia  Johnson</div>
+                                        <div className="person_possiton">Registered nurse</div>
                                     </div>
-                                    <div className="person_name">Olivia  Johnson</div>
-                                    <div className="person_possiton">Registered nurse</div>
                                 </div>
-                            </div>
-                            <div className='team_slide'>
-                                <div className="slide_content">
-                                    <div className="slider_image">
-                                        <img src={person2} alt="teamImg" />
+                                <div className='team_slide'>
+                                    <div className="slide_content">
+                                        <div className="slider_image">
+                                            <img src={person2} alt="teamImg" />
+                                        </div>
+                                        <div className="person_name">Olivia  Johnson</div>
+                                        <div className="person_possiton">Medical director</div>
                                     </div>
-                                    <div className="person_name">Olivia  Johnson</div>
-                                    <div className="person_possiton">Medical director</div>
                                 </div>
-                            </div>
-                            <div className='team_slide'>
-                                <div className="slide_content">
-                                    <div className="slider_image">
-                                        <img src={person3} alt="teamImg" />
+                                <div className='team_slide'>
+                                    <div className="slide_content">
+                                        <div className="slider_image">
+                                            <img src={person3} alt="teamImg" />
+                                        </div>
+                                        <div className="person_name">Olivia  Johnson</div>
+                                        <div className="person_possiton">Attending  Physiciant</div>
                                     </div>
-                                    <div className="person_name">Olivia  Johnson</div>
-                                    <div className="person_possiton">Attending  Physiciant</div>
                                 </div>
-                            </div>
-                            <div className='team_slide'>
-                                <div className="slide_content">
-                                    <div className="slider_image">
-                                        <img src={person4} alt="teamImg" />
+                                <div className='team_slide'>
+                                    <div className="slide_content">
+                                        <div className="slider_image">
+                                            <img src={person4} alt="teamImg" />
+                                        </div>
+                                        <div className="person_name">Olivia  Johnson</div>
+                                        <div className="person_possiton">Nursing Assistant</div>
                                     </div>
-                                    <div className="person_name">Olivia  Johnson</div>
-                                    <div className="person_possiton">Nursing Assistant</div>
                                 </div>
-                            </div>
-                        </Slider>
+                            </Slider>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div className="goals_section  inlineImg_section second_bg">
+                <div className="inlineImg_container">
+                    <div className="image_block absoluite_image">
+                        <img src={goalImg} alt='goalImg' />
+                    </div>
+                    <div className="goal_info page_section">
+                        <div className="info_inner">
+                            <div className="section_title ">
+                                What make us different
+                            </div>
+                            <div className="section_description">
+                                Our goal is to build a peaceful supportive atmosphere that respects each person's
+                                uniqueness and dignity. Making every moment matter, we work to provide those we
+                                serve with consolation, love, and empathy.
+                            </div>
+                            <div className="goals_list">
+                                <div className="goal_block">
+                                    <div className="goal_img">
+                                        <img src={goal1} alt="goalImg" />
+                                    </div>
+                                    <div className="goal_title">
+                                        Free Consultation
+                                    </div>
+                                </div>
+                                <div className="goal_block">
+                                    <div className="goal_img">
+                                        <img src={goal2} alt="goalImg" />
+                                    </div>
+                                    <div className="goal_title">
+                                        Insurance Covered
+                                    </div>
+                                </div>
+                                <div className="goal_block">
+                                    <div className="goal_img">
+                                        <img src={goal3} alt="goalImg" />
+                                    </div>
+                                    <div className="goal_title">
+                                        Qualified Doctors
+                                    </div>
+                                </div>
+                                <div className="goal_block">
+                                    <div className="goal_img">
+                                        <img src={goal4} alt="goalImg" />
+                                    </div>
+                                    <div className="goal_title">
+                                        Professional Staff
+                                    </div>
+                                </div>
+                                <div className="goal_block">
+                                    <div className="goal_img">
+                                        <img src={goal5} alt="goalImg" />
+                                    </div>
+                                    <div className="goal_title">
+                                        Available 24/7
+                                    </div>
+                                </div>
+                                <div className="goal_block">
+                                    <div className="goal_img">
+                                        <img src={goal6} alt="goalImg" />
+                                    </div>
+                                    <div className="goal_title">
+                                        100 + Patients Served
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <SupportChat />
         </div>
     )

@@ -152,6 +152,39 @@ a {
   padding: 50px 0;
 }
 
+.inlineImg_section{
+  position: relative;
+  padding: 0;
+  .inlineImg_container {
+      display: flex;
+      min-height: 400px;
+      .image_block{
+        position: relative;
+        // width: 420px;
+        flex: 0 0 45%;
+        max-width: 45%;
+          img{
+            width: 100%;
+            position: absolute;
+            left: 0;
+            object-fit: cover;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+          }
+      }
+  }
+  .goal_info{
+    flex: 0 0 55%;
+    max-width: 55%;
+    display: flex;
+    justify-content: flex-start;
+    .info_inner{
+      padding-left: 60px;
+      max-width: 800px;
+    }
+  }
+}
 
 @media (max-width: 1440px) {
   body {
@@ -203,4 +236,23 @@ a {
   body {
     padding-top: 0;
   }
+}
+
+@media (max-width: 575px) {
+  .section_title {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 15px;
+  }
+
+  .section_description {
+    font-size: 14px;
+    line-height: 26px;
+  }
+
+  .page_section {
+    padding: 25px 0;
+  }
+
+
 }
