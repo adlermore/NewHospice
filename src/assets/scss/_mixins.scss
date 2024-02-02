@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src: url('../fonts/icomoon.eot?mwce64');
-    src: url('../fonts/icomoon.eot?mwce64#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?mwce64') format('truetype'),
-    url('../fonts/icomoon.woff?mwce64') format('woff'),
-    url('../fonts/icomoon.svg?mwce64#icomoon') format('svg');
+    src: url('../fonts/icomoon.eot?rjkqsj');
+    src: url('../fonts/icomoon.eot?rjkqsj#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?rjkqsj') format('truetype'),
+        url('../fonts/icomoon.woff?rjkqsj') format('woff'),
+        url('../fonts/icomoon.svg?rjkqsj#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -55,6 +55,35 @@
     src: local("PoppinsLight"),
         url("../fonts/Poppins/Poppins-Light.ttf") format("truetype");
     font-weight: 500;
+}
+
+
+.icon-insta:before {
+    content: "\e906";
+}
+
+.icon-fb:before {
+    content: "\e907";
+}
+
+.icon-linkedin:before {
+    content: "\e909";
+}
+
+.icon-phone:before {
+    content: "\e90a";
+}
+
+.icon-earth:before {
+    content: "\e90b";
+}
+
+.icon-location:before {
+    content: "\e90c";
+}
+
+.icon-attach:before {
+    content: "\e90d";
 }
 
 .icon-map:before {
@@ -194,6 +223,7 @@
     ::-webkit-input-placeholder {
         @content
     }
+
     :-moz-placeholder {
         @content
     }
@@ -217,6 +247,7 @@
     transition: 0.3s;
     opacity: 1;
     color: $red !important;
+
     &:hover {
         opacity: 0.5;
     }

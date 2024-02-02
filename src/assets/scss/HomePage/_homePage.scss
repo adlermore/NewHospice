@@ -1,16 +1,18 @@
 @import "../variables";
 @import "../mixins";
 
-.homepage_wrapper{
+.homepage_wrapper {
     position: relative;
-    .hero_section{
+
+    .hero_section {
         width: 100%;
         height: 680px;
         position: relative;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        img{
+
+        img {
             position: absolute;
             left: 0;
             right: 0;
@@ -21,7 +23,8 @@
             object-fit: cover;
         }
     }
-    .banner_info{
+
+    .banner_info {
         position: relative;
         z-index: 9;
         font-size: 40px;
@@ -31,29 +34,34 @@
         max-width: 430px;
         line-height: 52px;
     }
-    .baner_btn{
+
+    .baner_btn {
         font-size: 20px;
         margin-top: 35px;
         font-style: normal;
         max-width: fit-content;
     }
-    .services_list{
+
+    .services_list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, 1fr);
         padding-top: 25px;
-        
+
     }
-    .serbvice_block{
+
+    .serbvice_block {
         position: relative;
-        a{
+
+        a {
             height: 320px;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            img{
+
+            img {
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -66,7 +74,8 @@
                 filter: blur(0px);
                 bottom: 0;
             }
-            .service_title{
+
+            .service_title {
                 font-size: 32px;
                 max-width: 206px;
                 text-align: center;
@@ -76,7 +85,8 @@
                 color: $white;
                 z-index: 5;
             }
-            &:before{
+
+            &:before {
                 content: "";
                 display: block;
                 position: absolute;
@@ -90,45 +100,54 @@
                 opacity: 1;
                 z-index: 3;
             }
-            &:hover{
+
+            &:hover {
                 opacity: 1;
-                &::before{
+
+                &::before {
                     background: rgba($black , 0.2) !important;
                 }
-                img{
+
+                img {
                     filter: blur(2px);
                 }
             }
         }
+
         &:nth-child(2),
         &:nth-child(4),
         &:nth-child(5),
         &:nth-child(7),
         &:nth-child(10),
-        &:nth-child(12){
-            a::before{
+        &:nth-child(12) {
+            a::before {
                 background: rgba($siteColor , 0.8);
             }
         }
     }
-    .team_list{
+
+    .team_list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 40px;
         padding: 30px 0;
     }
-    .team_container{
+
+    .team_container {
         margin-top: 50px;
     }
-    .team_block{
+
+    .team_block {
         position: relative;
-        a{
+
+        a {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
-        .team_img{
+
+        .team_img {
             background: $secondColor;
             width: 100%;
             border-radius: 50%;
@@ -138,7 +157,8 @@
             min-height: 285px;
         }
     }
-    .team_title{
+
+    .team_title {
         font-size: 24px;
         line-height: 26px;
         color: $black;
@@ -149,60 +169,72 @@
         text-align: center;
         font-family: $bold;
     }
-    .team_section{
+
+    .team_section {
         padding-bottom: 0;
     }
-    .team_slider{
+
+    .team_slider {
         background: $siteColor;
         padding: 110px 0;
     }
-    .team_slide{
+
+    .team_slide {
         display: inline-block;
         padding: 0 17px;
-        .slider_image{
+
+        .slider_image {
             width: 100%;
             position: relative;
-            img{
+
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
         }
     }
-    .person_name{
+
+    .person_name {
         margin-top: 25px;
         color: $white;
         font-size: 20px;
         line-height: 26px;
-        font-family: $medium;   
+        font-family: $medium;
         text-transform: uppercase;
     }
-    .person_possiton{
+
+    .person_possiton {
         font-size: 18px;
         margin-top: 10px;
         font-family: $regular;
         line-height: 24px;
         color: $white;
     }
-    .goals_list{
+
+    .goals_list {
         display: grid;
-        grid-template-columns: 1fr 1fr ;
+        grid-template-columns: 1fr 1fr;
         margin-top: 65px;
         gap: 40px;
-        .goal_block{
+
+        .goal_block {
             display: flex;
             align-items: center;
         }
-        .goal_img{
+
+        .goal_img {
             width: 104px;
             height: 104px;
-            img{
+
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
             }
         }
-        .goal_title{
+
+        .goal_title {
             margin-left: 25px;
             font-size: 18px;
             font-family: $bold;
@@ -210,166 +242,312 @@
             max-width: 128px;
         }
     }
+
+    .certificate_list {
+        padding: 40px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 30px;
+        padding-bottom: 0;
+
+        .certificate_block {
+            max-width: 183px;
+            width: 100%;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+                height: auto;
+            }
+        }
+    }
+
+    .coverBottom_section {
+        position: relative;
+        width: 100%;
+        height: fit-content;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            bottom: 0px;
+            background: linear-gradient(rgba($secondColor, 0.1), rgba($secondColor, 0.2), rgba($secondColor, 0.5));
+        }
+    }
+
+    .location_section {
+        height: 400px;
+    }
+
     @media (max-width: 1440px) {
-        .hero_section{
+        .hero_section {
             height: 500px;
         }
+
         .serbvice_block a {
             height: 270px;
+
             .service_title {
                 font-size: 28px;
                 max-width: 187px;
                 line-height: 40px;
-            }   
-        }        
+            }
+        }
+
         .team_title {
             font-size: 20px;
             line-height: 26px;
             max-width: 170px;
         }
+
+        .goal_info .info_inner {
+            padding: 0 41px;
+        }
+
+        .goals_list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 30px;
+            gap: 25px;
+
+            .goal_title {
+                margin-left: 20px;
+                font-size: 16px;
+                line-height: 22px;
+                max-width: 124px;
+            }
+
+            .goal_img {
+                width: 90px;
+                height: 90px;
+            }
+        }
     }
-    
+
     @media (max-width: 1199px) {
         .hero_section {
             height: 400px;
         }
+
         .serbvice_block a {
             height: 220px;
+
             .service_title {
                 font-size: 24px;
                 max-width: 177px;
                 line-height: 34px;
             }
         }
+
         .team_list {
             gap: 25px;
             padding: 20px 0;
         }
+
         .team_block .team_img {
             min-height: auto;
         }
     }
+
     @media (max-width: 991px) {
         .banner_info {
             font-size: 32px;
             max-width: 390px;
             line-height: 40px;
         }
+
         .services_list {
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(4, 1fr);
-            padding-top: 20px; 
+            padding-top: 20px;
         }
-        .serbvice_block{
-            a::before{
+
+        .serbvice_block {
+            a::before {
                 background: rgba($secondColor, 0.7) !important;
             }
-            &:nth-child(even) a::before{
+
+            &:nth-child(even) a::before {
                 background: rgba($siteColor , 0.8);
             }
         }
+
         .team_list {
             grid-template-columns: 1fr 1fr 1fr;
         }
+
         .team_slider {
             padding: 60px 0;
         }
+
         .person_name {
             margin-top: 15px;
             font-size: 18px;
             line-height: 24px;
-        }        
+        }
+
         .person_possiton {
             font-size: 16px;
             margin-top: 10px;
             line-height: 20px;
         }
     }
+
     @media (max-width: 767px) {
         .hero_section {
             height: 360px;
         }
+
         .serbvice_block a .service_title {
             font-size: 18px;
             max-width: 171px;
             line-height: 25px;
         }
+
         .team_title {
             font-size: 18px;
             line-height: 25px;
             max-width: 155px;
         }
+
         .team_list {
             gap: 20px;
             padding: 10px 0;
         }
     }
+
     @media (max-width: 575px) {
         .hero_section {
             height: 300px;
         }
+
         .banner_info {
             font-size: 24px;
             max-width: 300px;
             line-height: 30px;
         }
+
         .baner_btn {
             font-size: 16px;
             margin-top: 24px;
             height: 45px;
         }
+
         .services_list {
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(6, 1fr);
             padding-top: 10px;
         }
+
         .serbvice_block a {
             height: 200px;
+
             .service_title {
                 font-size: 16px;
                 max-width: 150px;
                 line-height: 20px;
             }
         }
-        .serbvice_block:nth-child(6n+6)  {
+
+        .serbvice_block:nth-child(6n+6) {
             a::before {
                 background: rgba(0, 82, 93, 0.8) !important;
             }
-        } 
-        .serbvice_block:nth-child(4n+4)  {
+        }
+
+        .serbvice_block:nth-child(4n+4) {
             a::before {
                 background: rgba(0, 82, 93, 0.8) !important;
             }
-        } 
+        }
+
         .team_list {
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
+
         .team_title {
             font-size: 14px;
             line-height: 20px;
             max-width: 120px;
         }
+
         .team_block .team_img {
             width: 35vw;
             height: 35vw;
         }
+
         .team_slider {
             padding: 40px 0;
         }
+
         .team_slide {
             display: inline-block;
             padding: 0;
         }
+
         .person_name {
             margin-top: 15px;
             font-size: 16px;
             line-height: 22px;
         }
+
         .person_possiton {
             font-size: 14px;
             margin-top: 8px;
             line-height: 18px;
+        }
+
+        .goals_list {
+            .goal_title {
+                margin-left: 0;
+                font-size: 16px;
+                line-height: 22px;
+                max-width: none;
+                text-align: center;
+                margin-top: 16px;
+            }
+
+            .goal_block {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+        }
+
+        .certificate_list {
+            padding: 15px 0;
+            display: grid;
+            align-items: center;
+            justify-content: space-around;
+            gap: 20px;
+            padding-bottom: 0;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .coverBottom_section {
+            height: 250px;
+
+            .cover_image {
+                height: 100%;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
     }
 

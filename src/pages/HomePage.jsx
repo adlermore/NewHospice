@@ -31,16 +31,32 @@ import goal3 from '../assets/img/goal3.png';
 import goal4 from '../assets/img/goal4.png';
 import goal5 from '../assets/img/goal5.png';
 import goal6 from '../assets/img/goal6.png';
-
+import certificate1 from '../assets/img/certificate1.png';
+import certificate2 from '../assets/img/certificate2.png';
+import certificate3 from '../assets/img/certificate3.png';
+import certificate4 from '../assets/img/certificate4.png';
+import coverbottom from '../assets/img/coverbottom.png';
 import '../assets/scss/HomePage/_homePage.scss';
 import SupportChat from '../components/SupportChat/SupportChat';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import MapContainer from '../components/MapContainer/MapContainer';
 
 const HomePage = () => {
 
+    const currentLocation = [
+        {
+            Id: 1,
+            Country : 'Los Angeles',
+            location: {
+                lat: 34.055462,
+                lng:  -118.258283
+            },
+        }
+    ]
+    
     const settingsSlider = {
         dots: false,
         infinite: true,
@@ -414,6 +430,31 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="certificates_section page_section">
+                <div className="custom_container">
+                    <div className="section_title center_mode">Our certifications</div>
+                    <div className="certificate_list">
+                        <div className="certificate_block">
+                            <img src={certificate1} alt="certificateIMg" />
+                        </div>
+                        <div className="certificate_block">
+                            <img src={certificate2} alt="certificateIMg" />
+                        </div>
+                        <div className="certificate_block">
+                            <img src={certificate3} alt="certificateIMg" />
+                        </div>
+                        <div className="certificate_block">
+                            <img src={certificate4} alt="certificateIMg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="coverBottom_section">
+                <div className="cover_image"><img src={coverbottom} alt='coverImg'/></div>
+            </div>
+            <div className="location_section">
+                <MapContainer array={currentLocation} isAdding={true} error={false} />
             </div>
             <SupportChat />
         </div>
