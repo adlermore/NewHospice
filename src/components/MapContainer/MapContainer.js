@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 const MapContainer = ({ array }) => {

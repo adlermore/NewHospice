@@ -1,5 +1,6 @@
 @import "./variables";
 @import "./mixins";
+
 .page_footer {
     background: $siteColor;
     position: relative;
@@ -7,8 +8,8 @@
     .footer_inner {
         display: flex;
         justify-content: space-between;
-        gap: 30px;
-        padding: 100px 0;
+        gap: 40px;
+        padding: 40px 0;
     }
 
     .footer_logo a {
@@ -23,18 +24,49 @@
         }
     }
 
+    .footer_secial {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        color: $white;
+
+        a {
+            font-size: 40px;
+            color: $white;
+            transition: 0.3s;
+
+            &:hover {
+                opacity: 1;
+                color: $secondColor;
+            }
+        }
+    }
+
     .footer_menu {
         display: grid;
         grid-template-columns: auto auto auto auto;
-        gap: 90px;
+        gap: 45px;
+        flex: 1;
 
         a {
             display: flex;
             margin-bottom: 20px;
             color: $white;
-            font-family: $regular;
+            font-family: $regular !important;
             font-size: 16px;
+            max-width: 250px;
             line-height: 19px;
+            display: flex;
+            align-items: center;
+
+            &:before {
+                display: block;
+                font-size: 22px;
+                color: $secondColor;
+                margin-right: 15px;
+                font-family: "icomoon";
+            }
 
             &.menu_title {
                 font-size: 18px;
@@ -75,13 +107,39 @@
     }
 
     .footer_copytoght {
-        padding-bottom: 30px;
         color: $white;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 18px;
-        line-height: 22px
+        text-align: center;
+        line-height: 22px;
+        height: 48px;
+        margin-top: 24px;
+        background: $secondColor;
+
+        a {
+            color: $white;
+            text-decoration: underline;
+        }
+    }
+
+    .footer_logo {
+        width: 140px;
+        display: flex;
+        justify-content: center;
+
+        a {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: fit-content;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
     }
 
     @media (max-width: 1440px) {
@@ -95,18 +153,19 @@
         overflow: hidden;
 
         .footer_inner {
-            grid-template-columns: 150px 1fr;
+            grid-template-columns: 1fr;
+            padding: 40px 0;
             display: grid;
-            padding: 100px 60px;
+            // padding: 100px 60px;
         }
 
         .footer_menu {
-            gap: 40px;
-            li{
-                &:first-child , &:nth-child(2){
-                    padding-left: 20px;
-                }
-            }
+            grid-template-columns: auto auto auto;
+            padding: 0 20px;
+        }
+
+        .footer_menu {
+            gap: 20px;
         }
 
         .footer_logo a {
@@ -119,99 +178,59 @@
             width: 35px;
             height: 35px;
         }
-
-        .footer_copytoght {
-            background: $white;
-            color: $black;
-            padding: 33px 20px 22px;
-            position: relative;
-
-            &::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: -40px;
-                width: 40px;
-                bottom: 0;
-                background: $white;
-            }
-
-            &::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                right: -40px;
-                width: 40px;
-                bottom: 0;
-                background: $white;
-            }
-        }
-
-        .payment_block {
-            grid-column-start: 1;
-            grid-column-end: 3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 70px;
-        }
     }
-    @media (max-width: 991px) {
-        .footer_inner {
-            grid-template-columns: 130px 1fr;
-            display: grid;
-            padding: 70px 20px;
-        }
-        .payment_block {
-            margin-top: 20px;
-        }
-    }
+
     @media (max-width: 767px) {
-        .footer_inner {
-            grid-template-columns: 130px 1fr;
-            display: grid;
-            padding: 70px 20px;
-        }
         .payment_block {
             margin-top: 20px;
         }
-        .footer_logo{
-            margin-bottom: 25px;
+
+        .footer_logo {
+            margin-bottom: 10px;
         }
+
         .footer_inner {
             grid-template-columns: 1fr;
         }
+
         .footer_menu {
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
-            li:first-child{
+
+            li:first-child {
                 padding-left: 0;
             }
         }
+
         .payment_block {
             grid-column-start: auto;
             grid-column-end: auto;
         }
     }
+
     @media (max-width: 575px) {
-        .footer_inner {
-            padding: 60px 40px;
-        }
         .footer_menu {
             gap: 50px;
             grid-template-columns: 1fr;
         }
+
         .footer_menu li:nth-child(2) {
             padding-left: 0;
         }
+
         .social_list {
             margin-left: 0;
         }
+
         .payment_block {
             margin-top: 20px;
             justify-content: flex-start;
         }
-        .footer_copytoght{
+
+        .footer_copytoght {
             padding: 25px 20px;
+            height: auto;
+            line-height: 30px;
         }
     }
 }
