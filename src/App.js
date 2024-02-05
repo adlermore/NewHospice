@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import Services from './pages/Services';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import './App.scss';
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="services/:id" element={<Services />} />
       </Routes>
       <Footer />
     </>

@@ -133,14 +133,14 @@ const Header = () => {
                                                 <li><a href="/#">About us</a></li>
                                                 <li className="submenu">
                                                     <span className="link-wrapper">
-                                                        <a href="/#"> Service</a>
+                                                        <Link to="services/all" > Service</Link>
                                                         <BiPlus className="inner_link" onClick={subMenuOpen} />
                                                     </span>
                                                     <div className="uk-navbar-dropdown ">
                                                         <ul className="uk-nav uk-navbar-dropdown-nav">
-                                                            <li><Link to="/">Services Level 2</Link></li>
-                                                            <li><Link to="/">Services Level 2</Link></li>
-                                                            <li><Link to="/">Services Level 2</Link></li>
+                                                            <li><Link to="services/service1">Services Level 2</Link></li>
+                                                            <li><Link to="services/service2">Services Level 2</Link></li>
+                                                            <li><Link to="services/service3">Services Level 2</Link></li>
                                                         </ul>
                                                     </div>
                                                 </li>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import footerLogo from '../../assets/img/footerLogo.png';
+import { LuGlobe } from "react-icons/lu";
 
 const Footer = () => {
     return (
@@ -39,7 +40,7 @@ const Footer = () => {
                         <li>
                             <a href="/#" className="menu_title">Contacts</a>
                             <a href="/#" className="menu_link icon-phone">+1 888-965-9595</a>
-                            <a href="/#" className="menu_link icon-earth">info@nhhospicecare.com</a>
+                            <a href="/#" className="menu_link "><LuGlobe /> info@nhhospicecare.com</a>
                             <a href="/#" className="menu_link icon-location">12444 Victory Blvd #408,North Hollywood CA 91606 </a>
                         </li>
                     </ul>

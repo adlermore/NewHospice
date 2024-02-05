@@ -58,8 +58,11 @@
             max-width: 250px;
             line-height: 19px;
             display: flex;
-            align-items: center;
-
+            align-items: flex-start;
+            &:hover{
+                opacity: 1;
+                color: $secondColor;
+            }
             &:before {
                 display: block;
                 font-size: 22px;
@@ -73,6 +76,12 @@
                 line-height: 22px;
                 font-family: $semiBold;
             }
+        }
+        svg{
+            display: block;
+            font-size: 22px;
+            color: $secondColor;
+            margin-right: 15px;
         }
     }
 
@@ -93,6 +102,7 @@
             margin: 0;
             padding: 0;
         }
+     
     }
 
     .payment_block div {
@@ -121,7 +131,12 @@
         a {
             color: $white;
             text-decoration: underline;
+            &:hover{
+                opacity: 1;
+                color: $siteColor;
+            }
         }
+
     }
 
     .footer_logo {
