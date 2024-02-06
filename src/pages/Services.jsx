@@ -5,25 +5,23 @@ import serviveInner1 from '../assets/img/serviveInner1.png';
 import serviveInner2 from '../assets/img/service3.png';
 import serviveInner3 from '../assets/img/service11.png';
 import serviveInner4 from '../assets/img/service10.png';
-// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
 
-    // const history = useHistory();
-
+    let navigate = useNavigate();
+    
     useEffect(() => {
         const path = window.location.href;
         const parts = path.split("/");
         let desiredPart = parts.slice(parts.indexOf("services") + 1).join("/");
         const element = document.getElementById(desiredPart);
-        // console.log(desiredPart);
-        if (element && desiredPart === 'all') {
+        if (desiredPart === 'all') {
             document.body.scrollIntoView({ behavior: 'smooth'});
         }else if(element){
             element.scrollIntoView({ behavior: 'smooth' , block: "center"});
         }
-
-    },[])
+    },[navigate])
 
     return (
         <div className="services_wrapper">
@@ -146,7 +144,6 @@ const Services = () => {
                         More services {'>'}
                     </button>
                 </div>
-
             </div>
             <SupportChat />
         </div>

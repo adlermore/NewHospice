@@ -35,12 +35,11 @@ const Header = () => {
         else if (window.scrollY >= pageheaderRef.current.clientHeight && !scrollDirectionUp) {
             headerRef.current.classList.add('header_fix');
         } 
-
-
-        // console.log(document.body.innerHeight);
-        // console.log(window.scrollY);
-  
-
+        if(window.scrollY >= document.body.offsetHeight  -   window.innerHeight - 10){
+            document.body.classList.add('support_fixed');
+        }else{
+            document.body.classList.remove('support_fixed');
+        }
 
         window.addEventListener('scroll', handleScroll);
         return () => {
@@ -144,6 +143,15 @@ const Header = () => {
                                                     </span>
                                                     <div className="uk-navbar-dropdown ">
                                                         <ul className="uk-nav uk-navbar-dropdown-nav">
+                                                            <li><Link to="services/service1">Services Level 2</Link></li>
+                                                            <li><Link to="services/service2">Services Level 2</Link></li>
+                                                            <li><Link to="services/service3">Services Level 2</Link></li>
+                                                            <li><Link to="services/service1">Services Level 2</Link></li>
+                                                            <li><Link to="services/service2">Services Level 2</Link></li>
+                                                            <li><Link to="services/service3">Services Level 2</Link></li>
+                                                            <li><Link to="services/service1">Services Level 2</Link></li>
+                                                            <li><Link to="services/service2">Services Level 2</Link></li>
+                                                            <li><Link to="services/service3">Services Level 2</Link></li>
                                                             <li><Link to="services/service1">Services Level 2</Link></li>
                                                             <li><Link to="services/service2">Services Level 2</Link></li>
                                                             <li><Link to="services/service3">Services Level 2</Link></li>
