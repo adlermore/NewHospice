@@ -123,7 +123,7 @@ const HomePage = () => {
                 </div>
                 <div className="services_list">
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service1" >
                             <img src={service1} alt='serviceImg' />
                             <span className="service_title">
                                 Skilled nursing care
@@ -131,7 +131,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service2" >
                             <img src={service2} alt='serviceImg' />
                             <span className="service_title">
                                 Scheduled visits
@@ -139,7 +139,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service3" >
                             <img src={service3} alt='serviceImg' />
                             <span className="service_title">
                                 Medication delivery
@@ -147,7 +147,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service4" >
                             <img src={service4} alt='serviceImg' />
                             <span className="service_title">
                                 Medical supplies  & equipment
@@ -155,7 +155,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service5" >
                             <img src={service5} alt='serviceImg' />
                             <span className="service_title">
                                 Pain & symptom  management
@@ -163,7 +163,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service6" >
                             <img src={service6} alt='serviceImg' />
                             <span className="service_title">
                                 Wound  care
@@ -171,7 +171,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service7" >
                             <img src={service7} alt='serviceImg' />
                             <span className="service_title">
                                 Podiatry services
@@ -179,7 +179,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service8" >
                             <img src={service8} alt='serviceImg' />
                             <span className="service_title">
                                 Personal  care aides
@@ -187,7 +187,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service9" >
                             <img src={service9} alt='serviceImg' />
                             <span className="service_title">
                                 Continuous care  & respite care
@@ -195,7 +195,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service10" >
                             <img src={service10} alt='serviceImg' />
                             <span className="service_title">
                                 Counseling services
@@ -203,7 +203,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service11" >
                             <img src={service11} alt='serviceImg' />
                             <span className="service_title">
                                 Emotional &  spiritual support
@@ -211,7 +211,7 @@ const HomePage = () => {
                         </Link>
                     </div>
                     <div className="serbvice_block">
-                        <Link to="/#" >
+                        <Link to="services/service12" >
                             <img src={service12} alt='serviceImg' />
                             <span className="service_title">
                                 Bereavement services
@@ -235,7 +235,7 @@ const HomePage = () => {
                     <div className="custom_container">
                         <div className="team_list">
                             <div className="team_block">
-                                <Link to="/#">
+                                <Link to="team/team1">
                                     <span className='team_img'>
                                         <img src={teamImg1} alt='teamImg' />
                                     </span>
@@ -245,7 +245,7 @@ const HomePage = () => {
                                 </Link>
                             </div>
                             <div className="team_block">
-                                <Link to="/#">
+                                <Link to="team/team2">
                                     <span className='team_img'>
                                         <img src={teamImg2} alt='teamImg' />
                                     </span>
@@ -255,7 +255,7 @@ const HomePage = () => {
                                 </Link>
                             </div>
                             <div className="team_block">
-                                <Link to="/#">
+                                <Link to="team/team3">
                                     <span className='team_img'>
                                         <img src={teamImg3} alt='teamImg' />
                                     </span>
@@ -265,7 +265,7 @@ const HomePage = () => {
                                 </Link>
                             </div>
                             <div className="team_block">
-                                <Link to="/#">
+                                <Link to="team/team4">
                                     <span className='team_img'>
                                         <img src={teamImg4} alt='teamImg' />
                                     </span>
@@ -275,7 +275,7 @@ const HomePage = () => {
                                 </Link>
                             </div>
                             <div className="team_block">
-                                <Link to="/#">
+                                <Link to="team/team5">
                                     <span className='team_img'>
                                         <img src={teamImg5} alt='teamImg' />
                                     </span>
@@ -285,7 +285,7 @@ const HomePage = () => {
                                 </Link>
                             </div>
                             <div className="team_block">
-                                <Link to="/#">
+                                <Link to="team/team6">
                                     <span className='team_img'>
                                         <img src={teamImg6} alt='teamImg' />
                                     </span>
@@ -295,7 +295,7 @@ const HomePage = () => {
                                 </Link>
                             </div>
                             <div className="team_block">
-                                <Link to="/#">
+                                <Link to="team/team7">
                                     <span className='team_img'>
                                         <img src={teamImg7} alt='teamImg' />
                                     </span>
@@ -305,7 +305,7 @@ const HomePage = () => {
                                 </Link>
                             </div>
                             <div className="team_block">
-                                <Link to="/#">
+                                <Link to="team/team8">
                                     <span className='team_img'>
                                         <img src={teamImg8} alt='teamImg' />
                                     </span>
