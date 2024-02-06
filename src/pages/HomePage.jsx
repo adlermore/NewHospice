@@ -326,7 +326,7 @@ const HomePage = () => {
                                         <div className="slider_image">
                                             <img src={person1} alt="teamImg" />
                                         </div>
-                                        <div className="person_name">Olivia  Johnson</div>
+                                        {/* <div className="person_name">Olivia  Johnson</div> */}
                                         <div className="person_possiton">Registered nurse</div>
                                     </div>
                                 </div>
@@ -335,7 +335,7 @@ const HomePage = () => {
                                         <div className="slider_image">
                                             <img src={person2} alt="teamImg" />
                                         </div>
-                                        <div className="person_name">Olivia  Johnson</div>
+                                        {/* <div className="person_name">Olivia  Johnson</div> */}
                                         <div className="person_possiton">Medical director</div>
                                     </div>
                                 </div>
@@ -344,7 +344,7 @@ const HomePage = () => {
                                         <div className="slider_image">
                                             <img src={person3} alt="teamImg" />
                                         </div>
-                                        <div className="person_name">Olivia  Johnson</div>
+                                        {/* <div className="person_name">Olivia  Johnson</div> */}
                                         <div className="person_possiton">Attending  Physiciant</div>
                                     </div>
                                 </div>
@@ -353,7 +353,7 @@ const HomePage = () => {
                                         <div className="slider_image">
                                             <img src={person4} alt="teamImg" />
                                         </div>
-                                        <div className="person_name">Olivia  Johnson</div>
+                                        {/* <div className="person_name">Olivia  Johnson</div> */}
                                         <div className="person_possiton">Nursing Assistant</div>
                                     </div>
                                 </div>

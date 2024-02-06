@@ -174,8 +174,11 @@
         a {
             font-size: 16px;
         }
-
-        &:before {
+        &:hover{
+            opacity: 1;
+            color: $secondColor;
+        }
+        &:before {  
             font-size: 11px;
             margin-top: 7px;
             transition: 0.3s;

@@ -49,9 +49,9 @@ const Footer = () => {
             <div className="footer_secial">
                 <div className="custom_cintainer">
                     <div className="social_list">
-                        <a target='blank' href="/#" className="icon-fb"> </a>
-                        <a target='blank' href="/#" className="icon-insta"> </a>
-                        <a target='blank' href="/#" className="icon-linkedin"> </a>
+                        <a target='blank' href="https://www.facebook.com/newhopehospicecare?mibextid=9R9pXO" className="icon-fb"> </a>
+                        <a target='blank' href="https://www.instagram.com/newhopehospicecare/?igsh=NGVhN2U2NjQ0Yg%3D%3D&utm_source=qr" className="icon-insta"> </a>
+                        <a target='blank' href="https://www.linkedin.com/in/arturkaragyan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="icon-linkedin"> </a>
                     </div>
                 </div>
             </div>

@@ -33,8 +33,14 @@ const Header = () => {
             headerRef.current.classList.remove('header_fix')
         } 
         else if (window.scrollY >= pageheaderRef.current.clientHeight && !scrollDirectionUp) {
-            headerRef.current.classList.add('header_fix')
-        }
+            headerRef.current.classList.add('header_fix');
+        } 
+
+
+        // console.log(document.body.innerHeight);
+        // console.log(window.scrollY);
+  
+
 
         window.addEventListener('scroll', handleScroll);
         return () => {
