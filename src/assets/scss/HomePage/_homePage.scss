@@ -139,7 +139,11 @@
 
     .team_block {
         position: relative;
-
+        &:nth-child(6){
+            .team_img img{
+                transform: scale(1.15);
+            }
+        }
         a {
             display: flex;
             flex-direction: column;
