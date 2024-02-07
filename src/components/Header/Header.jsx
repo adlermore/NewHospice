@@ -158,7 +158,7 @@ const Header = () => {
                                                         </ul>
                                                     </div>
                                                 </li>
-                                                <li><a href="/#">Join our team</a></li>
+                                                <li><Link to="joinUs/">Join our team</Link></li>
                                                 <li><a href="/#">Service Areas</a></li>
                                                 <li><a href="/#">Blog</a></li>
                                                 <li><a href="/#">Contact</a></li>

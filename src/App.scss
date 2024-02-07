@@ -86,6 +86,10 @@ a {
   border-right: none !important;
 }
 
+.form-block {
+  position: relative;
+}
+
 .has-error .error-info {
   opacity: 1;
 }
@@ -106,7 +110,10 @@ a {
   justify-content: center;
   box-shadow: none;
   border: none;
-
+  &:disabled{
+    opacity: 0.5;
+    pointer-events: none;
+  }
   &:hover {
     opacity: 1;
     background: $secondColor;
@@ -145,6 +152,123 @@ a {
   }
 }
 
+.form_section{
+  background-repeat: no-repeat !important;
+  background-position: top center !important;
+  background-size: cover !important;
+  margin-top: 45px;
+  position: relative;
+  z-index: 5;
+  padding: 80px  0 50px;
+  .success_message{
+    top: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $white;
+    height: 56px;
+    height: 50px;
+    background: $success;
+    opacity: 0;
+    transition: 0.5s;
+    &.view{
+      opacity: 1;
+    }
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background: rgba($white, 0.9);
+    z-index: -1;
+  }
+  .form_container{
+    max-width: 802px;
+    width: 100%;
+    margin: 0 auto; 
+  }
+  .form_inner{
+    width: 100%;
+  }
+  .form-block{
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+    input{
+      width: 100%;
+      height: 65px;
+      border-radius: 4px;
+      background: rgba(#3BB8CF , 0.1);
+      padding: 0 20px;
+      border: 1px solid $secondColor;
+      color: #818181;
+      font-size: 16px;
+      outline: none;
+      line-height: 21px;
+      &::file-selector-button {
+      width: 0;
+      border: none;
+      padding: 0;
+      padding-left: 20px;
+      height: 65px;
+      border-radius: 4px;
+      background: transparent;
+      }      
+    }
+  }
+  .block_label{
+    font-size: 16px;
+    line-height: 21px;
+    margin-bottom: 5px;
+    color: #474747;
+  }
+  .bottom_description{
+    margin-top: 20px;
+    font-size: 16px;
+    color: #474747;
+  }
+  .bttom_inline{
+    margin-top: 50px;
+    display: flex;
+  }
+  .site_btn{
+    margin-left: auto;
+    max-width: 200px;
+    width: 100%;
+  }
+  .attach_block{
+    max-width: 345px;
+    width: 100%;
+    position: relative;
+    cursor: pointer !important;
+    input {
+      cursor: pointer !important;
+    }
+  }
+  .max_size{
+    opacity: 0.5;
+    color: #474747;
+    margin-top: 10px;
+  }
+  .icon-attach{
+    position: absolute;
+    top: 50%;
+    font-size: 18px;
+    left: 20px;
+    color: #818181;
+    transform: translate(0% , -50%);
+  }
+}
+
 .second_bg {
   background: rgba($secondColor , 0.10);
 }
@@ -163,7 +287,6 @@ a {
 
     .image_block {
       position: relative;
-      // width: 420px;
       flex: 0 0 45%;
       max-width: 45%;
 
@@ -213,6 +336,13 @@ a {
     font-size: 18px;
     line-height: 35px;
   }
+  .form_section  .form-block input {
+    width: 100%;
+    height: 50px;
+    &::file-selector-button {
+      height: 50px;
+    }
+  }
 }
 
 @media (max-width: 1199px) {
@@ -226,6 +356,33 @@ a {
 }
 
 @media (max-width: 991px) {
+
+  .form_section {
+    .form-block {
+      margin-bottom: 15px;
+    }
+    .block_label {
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 3px;
+    }
+    .bottom_description {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .bttom_inline {
+      margin-top: 35px;
+      display: flex;
+      flex-direction: column;
+    }
+    .site_btn {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  } 
+  .max_size{
+    display: none;
+  }
   .section_title {
     font-size: 28px;
     line-height: 35px;
@@ -272,7 +429,7 @@ a {
     line-height: 32px;
     margin-bottom: 15px;
 
-    
+
   }
 
   .section_description {
