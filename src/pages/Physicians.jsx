@@ -1,33 +1,30 @@
-import React, { useState, useRef } from 'react';
+import React , {useState , useRef} from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
-import '../assets/scss/ContactUs/_contactUs.scss';
-import serviveInner1 from '../assets/img/contactsCover.png';
-import { useForm } from "react-hook-form";
+import '../assets/scss/Physicians/_physicians.scss';
+import serviveInner1 from '../assets/img/joinTeam.png';
+import { useForm, Controller } from "react-hook-form";
 
-const ContactUs = () => {
+const Physicians = () => {
+
     const success = useRef(null);
-    const [dataSend, setDataSend] = useState(false);
-    const { register, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
+    const [dataSend , setDataSend]=useState(false);
+
+    const { register, control, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
         shouldFocusError: false,
     });
 
     const onSubmit = (data) => {
         setDataSend(true);
-        success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        success.current.scrollIntoView({ behavior: 'smooth', block: 'center'});
         setTimeout(() => {
             setDataSend(false);
         }, 4000);
     };
 
     return (
-        <div className="contact_wrapper">
+        <div className="physicians_wrapper">
             <div className="custom_container">
-                <div className="section_title center_mode">Contact us</div>
-                <div className="section_description center_mode">
-                    New Hope Hospice is always happy to help, no matter the time of day!
-                    We're not just available; we're eager to make sure you and your loved ones get the kind
-                    treatment you deserve. Connect with us and let the support flow
-                </div>
+                <div className="section_title center_mode">Physicians Referral</div>
             </div>
             <div className="form_section" style={{ background: `url(${serviveInner1})` }}>
                 <div className={dataSend ? `success_message view` : `success_message`} ref={success}>Success ! ✔</div>
@@ -58,14 +55,38 @@ const ContactUs = () => {
                                 </div>
                                 <div className={errors?.user_description?.type === "required" ? "form-block  has-error" : "form-block"}  >
                                     <div className='block_label'>Description</div>
-                                    <input placeholder="Description*" className="form-control" name="user_description" {...register("user_description", { required: true })} />
+                                    <input placeholder="Description*" className="form-control" name="user_description" {...register("user_description", { required: false })} />
                                     <p className="error-info" >This field is required</p>
                                 </div>
                                 <div className="bottom_description">
-                                Enter your request details. A member of our support team will respond to you as soon as possible.
+                                    Enter your request details. A member of our support team will respond to you as soon as possible.
                                 </div>
                                 <div className="bttom_inline">
+                                    <div className="attach_block">
+                                        <div className={errors?.pdfFile?.type === "required" ? "form-block  has-error" : "form-block"}  >
+                                            <div className='block_icon icon-attach' />
+                                            <Controller
+                                                name="pdfFile"
+                                                control={control}
+                                                rules={{ required: 'Please Upload Your Cv' }}
+                                                render={({ field }) => (
+                                                    <input
+                                                        style={{
+                                                            background: 'transparent'
+                                                        }}
+                                                        type="file"
+                                                        accept=".pdf"
+                                                        onChange={(e) => field.onChange(e.target.files[0])}
+                                                    />
+                                                )}
+                                            />
+                                            <p className="error-info" >This field is required</p>
+                                        </div>
+                                    </div>
                                     <button type='submit' className="site_btn sign-btn" disabled={dataSend}>Send</button>
+                                </div>
+                                <div className="bottom_description max_size">
+                                    Max file size: 25.5 MB
                                 </div>
                             </form>
                         </div>
@@ -78,4 +99,4 @@ const ContactUs = () => {
     )
 }
 
-export default ContactUs;
+export default Physicians;

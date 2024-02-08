@@ -29,7 +29,7 @@ const AboutUs = () => {
             <div className="custom_container">
                 <div className="section_title center_mode">What is hospice</div>
             </div>
-            <div className="cover_image" style={{ backgroundImage: `url(${AboutCover})` }} />
+            <div className="cover_Image" style={{ backgroundImage: `url(${AboutCover})` }} />
             <div className="accordion_container">
                 <Accordion>
                     <Accordion.Item eventKey="0">

@@ -162,9 +162,9 @@ const Header = () => {
                                                     </div>
                                                 </li>
                                                 <li><Link to="joinUs/">Join our team</Link></li>
-                                                <li><a href="/#">Service Areas</a></li>
-                                                <li><a href="/#">Blog</a></li>
-                                                <li><a href="/#">Contact</a></li>
+                                                <li><Link to="serviceAreas/">Service Areas</Link></li>
+                                                <li><Link to="blog/">Blog</Link></li>
+                                                <li><Link to="contactUs/">Contact</Link></li>
                                             </ul>
                                         </nav>
                                     </div>
