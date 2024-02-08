@@ -92,7 +92,7 @@ const JoinUs = () => {
                                     <button type='submit' className="site_btn sign-btn" disabled={dataSend}>Send</button>
                                 </div>
                                 <div className="bottom_description max_size">
-                                    Max file size: 25 MB
+                                    Max file size: 25.5 MB
                                 </div>
                             </form>
                         </div>
