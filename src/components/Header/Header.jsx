@@ -1,9 +1,10 @@
-import React, { useEffect, useState , useRef, memo} from "react";
+import React, { useEffect, useState, useRef, memo } from "react";
 import { Link } from "react-router-dom";
 import imglogo from '../../assets/img/main_logo.png';
 import "uikit/dist/css/uikit.min.css";
 import { Twirl as Hamburger } from 'hamburger-react'
 import { BiPlus } from 'react-icons/bi';
+import { Scrollbar } from 'react-scrollbars-custom';
 
 const Header = () => {
     const body = document.body;
@@ -22,22 +23,22 @@ const Header = () => {
             } else {
                 setScrollDirectionUp(true);
             }
-            if( window.innerWidth > 767){
+            if (window.innerWidth > 767) {
                 setScrollY(currentScrollY);
-            }else{
+            } else {
                 headerRef.current.classList.remove('header_fix')
             }
         };
-        
-        if (window.scrollY <= pageheaderRef.current.clientHeight ) {
+
+        if (window.scrollY <= pageheaderRef.current.clientHeight) {
             headerRef.current.classList.remove('header_fix')
-        } 
+        }
         else if (window.scrollY >= pageheaderRef.current.clientHeight && !scrollDirectionUp) {
             headerRef.current.classList.add('header_fix');
-        } 
-        if(window.scrollY >= document.body.offsetHeight  -   window.innerHeight - 10){
+        }
+        if (window.scrollY >= document.body.offsetHeight - window.innerHeight - 10) {
             document.body.classList.add('support_fixed');
-        }else{
+        } else {
             document.body.classList.remove('support_fixed');
         }
 
@@ -47,7 +48,7 @@ const Header = () => {
         };
     }, [scrollY, scrollDirectionUp]);
 
-    
+
     let menuOpen = () => {
         if (!body.classList.contains('menu-opened')) {
             setOpen(true);
@@ -113,7 +114,7 @@ const Header = () => {
     ShowWindowDimensions();
 
     return (
-        <header   ref={headerRef} className="header_wrapper">
+        <header ref={headerRef} className="header_wrapper">
             <div className="header_top" ref={pageheaderRef}>
                 <div className="custom_container">
                     <div className="top_inline">
@@ -142,20 +143,22 @@ const Header = () => {
                                                         <BiPlus className="inner_link" onClick={subMenuOpen} />
                                                     </span>
                                                     <div className="uk-navbar-dropdown ">
-                                                        <ul className="uk-nav uk-navbar-dropdown-nav">
-                                                            <li><Link to="services/service1">Services Level 2</Link></li>
-                                                            <li><Link to="services/service2">Services Level 2</Link></li>
-                                                            <li><Link to="services/service3">Services Level 2</Link></li>
-                                                            <li><Link to="services/service1">Services Level 2</Link></li>
-                                                            <li><Link to="services/service2">Services Level 2</Link></li>
-                                                            <li><Link to="services/service3">Services Level 2</Link></li>
-                                                            <li><Link to="services/service1">Services Level 2</Link></li>
-                                                            <li><Link to="services/service2">Services Level 2</Link></li>
-                                                            <li><Link to="services/service3">Services Level 2</Link></li>
-                                                            <li><Link to="services/service1">Services Level 2</Link></li>
-                                                            <li><Link to="services/service2">Services Level 2</Link></li>
-                                                            <li><Link to="services/service3">Services Level 2</Link></li>
-                                                        </ul>
+                                                        <Scrollbar style={{ width: 180, height: 250 }}>
+                                                            <ul className="uk-nav uk-navbar-dropdown-nav">
+                                                                <li><Link to="services/service1">Services 1</Link></li>
+                                                                <li><Link to="services/service2">Services 2</Link></li>
+                                                                <li><Link to="services/service3">Services 3</Link></li>
+                                                                <li><Link to="services/service4">Services 4</Link></li>
+                                                                <li><Link to="services/service5">Services 5</Link></li>
+                                                                <li><Link to="services/service6">Services 6</Link></li>
+                                                                <li><Link to="services/service7">Services 7</Link></li>
+                                                                <li><Link to="services/service8">Services 8</Link></li>
+                                                                <li><Link to="services/service9">Services 9</Link></li>
+                                                                <li><Link to="services/service10">Services 10</Link></li>
+                                                                <li><Link to="services/service11">Services 11</Link></li>
+                                                                <li><Link to="services/service12">Services 12</Link></li>
+                                                            </ul>
+                                                        </Scrollbar>
                                                     </div>
                                                 </li>
                                                 <li><Link to="joinUs/">Join our team</Link></li>

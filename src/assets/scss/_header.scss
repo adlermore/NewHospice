@@ -115,6 +115,11 @@
         justify-content: space-between;
         align-items: center;
     }
+    .uk-navbar-dropdown {
+        width: 200px;
+        padding: 10px;
+        border-radius: 0 0 7px 7px;
+    }
 }
 
 .uk-navbar-nav .inner_link {
@@ -195,9 +200,14 @@
 }
 
 .page_header .page-nav .uk-navbar-dropdown .uk-navbar-dropdown-nav {
+    padding-right: 10px;
     >li {
         position: relative;
-
+        padding: 4px 0;
+        border-bottom: 1px solid rgba($secondColor , 0.3);
+        &:last-child{
+            border-bottom: none;
+        }
         >a {
             color: $siteColor;
             font-size: 16px;
@@ -207,12 +217,23 @@
             padding: 0;
             display: flex;
             justify-content: flex-end;
-            padding: 5px 0;
-
+            padding: 5px;
+            border-radius: 4px;
+            transition: 0.3s;
+            &:hover{
+                background: rgba($secondColor , 0.3) !important;
+            }
         }
+       
     }
+    
 }
-
+.ScrollbarsCustom-Track{
+    background: rgba($secondColor , 0.3) !important;
+}
+.ScrollbarsCustom-ThumbY{
+    background: rgba($secondColor , 1) !important;
+}
 .menu-opened {
     overflow: hidden;
 }

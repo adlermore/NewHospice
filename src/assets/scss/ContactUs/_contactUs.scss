@@ -1,0 +1,42 @@
+@import "../variables";
+@import "../mixins";
+
+
+.team_wrapper{
+    padding: 60px 0;
+    .team_block {
+        padding: 60px 0;
+        margin-bottom: 40px;
+        .custom_container{
+            display: flex;
+        }
+    } 
+    .image_block{
+        flex: 0 0 50%;
+        max-width: 50%;
+        background-position: center left;
+        background-repeat: no-repeat;
+        background-size: 80%;
+    }
+    .button_block{
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button{
+            font-size: 25px;
+            line-height: 25px;
+            background: transparent;
+            color: $siteColor;
+            transition: 0.3s;
+            box-shadow: none;
+            outline: none;
+            cursor: pointer;
+            border: none;
+            &:hover{
+                opacity: 1;
+                color: $secondColor;
+            }
+        }
+    }
+}
