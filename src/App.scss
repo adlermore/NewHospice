@@ -273,6 +273,75 @@ a {
   background: rgba($secondColor , 0.10);
 }
 
+.accordion_container{
+  position: relative;
+  max-width: 802px;
+  width: 100%;
+  margin: 50px auto;
+  .accordion-item{
+    margin-bottom: 25px;
+    border: 1px solid $secondColor !important;
+    border-radius: 4px !important;
+    overflow: hidden;
+  }
+  .accordion-button{
+    outline: none !important;
+    background: rgba($secondColor , 0.10);
+    font-family: $medium;
+    &:focus{
+      border: none !important;
+      box-shadow: none;
+    }
+    &:active{
+      border: none !important;
+      box-shadow: none;
+    }
+    &.accordion-button:not(.collapsed)::after {
+      content: "-" !important; 
+    }
+    &:after{
+      content: "+" !important;
+      width: 35px !important;
+      height: 35px !important;
+      border: none !important;
+      background: $secondColor !important;
+      color: $white !important;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50% !important;
+    }
+  }
+} 
+.cover_image{
+  position: relative;
+  background-repeat: no-repeat !important;
+  background-position: top center !important;
+  background-size: cover !important;
+  position: relative;
+  z-index: 5;
+  height: 650px;
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  line-height: 50px;
+  font-style: italic;
+  color: $siteColor;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    bottom: 0px;
+    background: linear-gradient(rgba($secondColor, 0.1), rgba($secondColor, 0.2), rgba($secondColor, 0.5));
+  }
+}
+
+
 .page_section {
   padding: 50px 0;
 }
@@ -316,6 +385,11 @@ a {
 }
 
 @media (max-width: 1440px) {
+
+  .cover_image {
+    height: 450px;
+  }
+
   body {
     padding-top: 197px;
   }
@@ -357,6 +431,11 @@ a {
 
 @media (max-width: 991px) {
 
+  .accordion_container {
+    max-width: 840px;
+    padding: 0 20px;
+    margin: 30px auto;
+  }
   .form_section {
     .form-block {
       margin-bottom: 15px;
@@ -428,8 +507,10 @@ a {
     font-size: 24px;
     line-height: 32px;
     margin-bottom: 15px;
+  }
 
-
+  .cover_image {
+    height: 350px;
   }
 
   .section_description {
@@ -440,6 +521,5 @@ a {
   .page_section {
     padding: 25px 0;
   }
-
 
 }

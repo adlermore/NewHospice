@@ -135,7 +135,7 @@ const Header = () => {
                                     <div className="main_menu">
                                         <nav className="page-nav" data-uk-navbar>
                                             <ul className="uk-navbar-nav">
-                                                <li><a href="/#">About us</a></li>
+                                                <li><Link to="aboutUs/">About us</Link></li>
                                                 <li className="submenu">
                                                     <span className="link-wrapper">
                                                         <Link to="services/all" > Service</Link>

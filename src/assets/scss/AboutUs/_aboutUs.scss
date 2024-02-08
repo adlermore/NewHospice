@@ -1,0 +1,45 @@
+@import "../variables";
+@import "../mixins";
+
+.about_wrapper{
+    position: relative;
+    padding-top: 45px;
+    .cover_image{
+        margin-top: 40px;
+    }
+    .bttom_inline   button{
+        margin-top: 0;
+        margin-left: 32px !important;
+        height: 65px !important;
+    }
+    .form_inner{
+        margin-top: 30px;
+    }
+    .form_inner_title{
+        font-size: 24px;
+        font-family: $semiBold;
+        color: #333;
+    }
+    .bottom_description{
+        margin-top: 15px;
+    }
+    .success_message{
+        max-width: 802px;
+        margin: 0 auto;
+        border-radius: 4px;
+    }
+    @media (max-width: 1440px) {
+        .bttom_inline button {
+            margin-top: 0;
+            margin-left: 30px !important;
+            height: 50px !important;
+        }
+    }
+    @media (max-width: 991px) {
+        .bttom_inline button {
+            margin-top: 20px;
+            margin-left: 0 !important;
+        }
+            
+    }
+}
