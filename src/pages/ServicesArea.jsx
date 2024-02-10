@@ -1,11 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef , useEffect} from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/ServicesArea/_servicesArea.scss';
 import { useForm } from "react-hook-form";
 import MapWithMenu from '../components/Map/MapWithMenu';
+import geojsonDataFile from './mapGEO.json';
+
 
 const ContactUs = () => {
     const success = useRef(null);
+    const [geojsonData, setGeojsonData] = useState(null);
+
     const [dataSend, setDataSend] = useState(false);
     const { register, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
         shouldFocusError: false,
@@ -19,12 +23,18 @@ const ContactUs = () => {
         }, 4000);
     };
 
+    useEffect(() => {
+        setGeojsonData(geojsonDataFile);
+        console.log(geojsonData);
+    }, [geojsonData]);
+    
+
     return (
         <div className="areas_wrapper">
             <div className="custom_container">
                 <div className="section_title center_mode">Contact us</div>
             </div>
-            <MapWithMenu />
+            <MapWithMenu geojsonData={geojsonData} />
             <div className="form_section" style={{ background: `white` }}>
                 <div className={dataSend ? `success_message view` : `success_message`} ref={success}>Success ! ✔</div>
                 <div className="custom_container">

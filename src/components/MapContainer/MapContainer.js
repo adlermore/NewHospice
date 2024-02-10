@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+import { Scrollbar } from 'react-scrollbars-custom';
 // import { Link } from 'react-router-dom';
 
 
 const MapContainer = ({ array }) => {
 
-const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
+  const googleMapsApiKey = 'AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
 
 
   const [selected, setSelected] = useState({});
   const [currentPosition, setCurrentPosition] = useState({});
   const defaultCenter = {
     lat: 34.055462,
-    lng:  -118.258283
+    lng: -118.258283
   }
 
   const onSelect = item => {
@@ -29,13 +30,6 @@ const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
     setCurrentPosition(currentPosition);
   }
 
-  const mapStyles = () => {
-    return {
-      marginTop: "-20px",
-      height: "100%",
-      width: "100%"
-    }
-  }
 
   const mapOptions = {
     styles: [
@@ -202,7 +196,7 @@ const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
-  },[])
+  }, [])
 
   const { isLoaded } = useJsApiLoader({ googleMapsApiKey });
   if (!isLoaded) {
@@ -211,11 +205,12 @@ const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
   }
 
   return (
-    <>
-      <GoogleMap
+    <div className='map_container'>
+      <div className="map_container">
+        <GoogleMap
           // key={array.Id}
           id='example-map'
-          mapContainerStyle={mapStyles()}
+          // mapContainerStyle={mapStyles()}
           draggable={true}
           options={mapOptions}
           zoom={15}
@@ -232,7 +227,7 @@ const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
                   />
                 )
               }) : null
-            }
+          }
           {
             selected.location ?
               (
@@ -260,10 +255,32 @@ const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
                     <p className='rest_description'>Address: {selected.Country}</p>
                   </div>
                 </InfoWindow>
-            ) : null
+              ) : null
           }
         </GoogleMap>
-    </>
+      </div>
+      <div className="regions_cntainer">
+        <div className="regions_list">
+          <Scrollbar style={{ width: 180, height: 250 }}>
+            <div className="region_block">
+              <a href="/#" className="region_link">Oxnard</a>
+              <a href="/#" className="region_link">Port Hueneme</a>
+              <a href="/#" className="region_link">Ventura</a>
+              <a href="/#" className="region_link">Camarillo</a>
+              <a href="/#" className="region_link">Moorpark</a>
+              <a href="/#" className="region_link">Thousand Oaks</a>
+              <a href="/#" className="region_link">Westlake Village</a>
+              <a href="/#" className="region_link">Newbury Park</a>
+              <a href="/#" className="region_link">Simi Valley</a>
+              <a href="/#" className="region_link">Santa Paula</a>
+              <a href="/#" className="region_link">Malibu </a>
+              <a href="/#" className="region_link">Calabasas</a>
+              <a href="/#" className="region_link">Agoura Hills </a>
+            </div>
+          </Scrollbar>
+        </div>
+      </div>
+    </div>
   )
 }
 
