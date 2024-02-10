@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
-import '../assets/scss/ContactUs/_contactUs.scss';
+import '../assets/scss/ServicesArea/_servicesArea.scss';
 import { useForm } from "react-hook-form";
 import MapWithMenu from '../components/Map/MapWithMenu';
 
@@ -20,7 +20,7 @@ const ContactUs = () => {
     };
 
     return (
-        <div className="contact_wrapper">
+        <div className="areas_wrapper">
             <div className="custom_container">
                 <div className="section_title center_mode">Contact us</div>
             </div>

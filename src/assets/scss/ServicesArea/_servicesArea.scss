@@ -1,0 +1,95 @@
+@import "../variables";
+@import "../mixins";
+
+.areas_wrapper{
+    padding: 60px 0;
+    padding-bottom: 0;
+    .team_block {
+        padding: 60px 0;
+        margin-bottom: 40px;
+        .custom_container{
+            display: flex;
+        }
+    } 
+    .image_block{
+        flex: 0 0 50%;
+        max-width: 50%;
+        background-position: center left;
+        background-repeat: no-repeat;
+        background-size: 80%;
+    }
+    .button_block{
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button{
+            font-size: 25px;
+            line-height: 25px;
+            background: transparent;
+            color: $siteColor;
+            transition: 0.3s;
+            box-shadow: none;
+            outline: none;
+            cursor: pointer;
+            border: none;
+            &:hover{
+                opacity: 1;
+                color: $secondColor;
+            }
+        }
+    }
+    .map_container{
+        display: flex;
+        height: 600px;
+        .map_container{
+            flex: 0 0 75%;
+            max-width: 75%;
+            width: 100%;
+        }
+        .regions_cntainer{
+            flex:  0 0 25%;
+            max-width: 25%;
+            width: 100%;
+        }
+    }
+    .regions_list{
+        width: 100% !important;
+        height: 100% !important;
+        padding-right: 5px;
+    }
+    .ScrollbarsCustom {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .region_block{
+        padding: 0 20px;
+    }
+    .region_link{
+        display: block;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $medium;
+        font-size: 18px;
+        padding: 0 20px;
+        transition: 0.3s;
+        &:not(:last-child){
+            border-bottom: 1px solid rgba($siteColor, 0.5);
+        }
+        &:hover{
+            background: rgba($secondColor, 0.8);
+            color: $white;
+        }
+        &.selected{
+            color: $white;
+            background: $secondColor;
+            pointer-events: none;
+        }
+    }
+    #example-map{
+        width: 100%;
+        height: 100%;
+    }
+}
