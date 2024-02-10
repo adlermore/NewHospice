@@ -122,7 +122,7 @@ const Header = () => {
                         <a className="main_logo" href="/#">
                             <img src={imglogo} alt="imgLogo" />
                         </a>
-                        <a href="/#" className="site_btn book_btn">Physicians Referral</a>
+                        <Link to='physicians/' className="site_btn book_btn">Physicians Referral</Link>
                     </div>
                 </div>
             </div>

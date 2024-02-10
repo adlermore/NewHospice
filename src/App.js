@@ -11,6 +11,8 @@ import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import ContactUs from "./pages/ContactUs";
 import Blog from "./pages/Blog";
+import Physicians from "./pages/Physicians";
+import ServicesArea from "./pages/ServicesArea";
 import './App.scss';
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
         <Route path="aboutUs/" element={<AboutUs />} />
         <Route path="contactUs/" element={<ContactUs />} />
         <Route path="blog/" element={<Blog />} />
+        <Route path="physicians/" element={<Physicians />} />
+        <Route path="serviceAreas/" element={<ServicesArea />} />
       </Routes>
       <Footer />
     </>

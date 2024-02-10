@@ -1,10 +1,20 @@
 @import "../variables";
 @import "../mixins";
 
-.join_wrapper{
+.physicians_wrapper{
     position: relative;
     padding-top: 55px;
     .section_title{
         padding-bottom: 30px;
+    }
+    .cover_title{
+        max-width: 540px;
+        font-size: 40px;
+        line-height: 60px;
+        // font-family: $medium;
+        font-style: italic;
+    }
+    .referal_desc{
+        margin-top: 50px;
     }
 }
