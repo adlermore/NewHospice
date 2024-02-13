@@ -8,7 +8,6 @@ import { Scrollbar } from 'react-scrollbars-custom';
 
 const Header = () => {
     const body = document.body;
-
     const [isOpen, setOpen] = useState(false)
     const [scrollY, setScrollY] = useState(0);
     const [scrollDirectionUp, setScrollDirectionUp] = useState(false);
@@ -119,9 +118,9 @@ const Header = () => {
                 <div className="custom_container">
                     <div className="top_inline">
                         <a href="tel:+1 888-965-9595" className="site_btn call_btn">+1 888-965-9595</a>
-                        <a className="main_logo" href="/#">
+                        <Link to="/" className="main_logo" >
                             <img src={imglogo} alt="imgLogo" />
-                        </a>
+                        </Link>
                         <Link to='physicians/' className="site_btn book_btn">Physicians Referral</Link>
                     </div>
                 </div>
@@ -131,7 +130,7 @@ const Header = () => {
                     <div className="header_inner">
                         <div className={!isOpen ? "navbar_container" : "navbar_container menu-open"}>
                             <div className="navbar_inner" id="navbar_inner">
-                                <a href="tel:+1 888-965-9595" className="site_btn call_btn">+1 888-965-9595</a>
+                                <a href="tel:+18889659595" className="site_btn call_btn">+1 888-965-9595</a>
                                 <div className="menu_container">
                                     <div className="main_menu">
                                         <nav className="page-nav" data-uk-navbar>
@@ -169,7 +168,7 @@ const Header = () => {
                                         </nav>
                                     </div>
                                 </div>
-                                <a href="/#" className="site_btn book_btn">Physicians Referral</a>
+                                <Link to='physicians/' className="site_btn book_btn">Physicians Referral</Link>
                             </div>
                         </div>
                         <Hamburger toggled={isOpen} toggle={menuOpen} />

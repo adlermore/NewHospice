@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from "framer-motion";
 import heroImg from '../assets/img/heroImg.png';
 import service1 from '../assets/img/service1.png';
 import service2 from '../assets/img/service2.png';
@@ -49,14 +50,14 @@ const HomePage = () => {
     const currentLocation = [
         {
             Id: 1,
-            Country : 'Los Angeles',
+            Country: 'Los Angeles',
             location: {
                 lat: 34.055462,
-                lng:  -118.258283
+                lng: -118.258283
             },
         }
     ]
-    
+
     const settingsSlider = {
         dots: false,
         infinite: true,
@@ -92,7 +93,11 @@ const HomePage = () => {
     };
 
     return (
-        <div className="homepage_wrapper">
+        <motion.div className="homepage_wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="hero_section">
                 <img src={heroImg} alt='heroImg' />
                 <div className="custom_container">
@@ -451,13 +456,13 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="coverBottom_section">
-                <div className="cover_image"><img src={coverbottom} alt='coverImg'/></div>
+                <div className="cover_image"><img src={coverbottom} alt='coverImg' /></div>
             </div>
             <div className="location_section">
                 <MapContainer array={currentLocation} isAdding={true} error={false} />
             </div>
             <SupportChat />
-        </div>
+        </motion.div>
     )
 }
 

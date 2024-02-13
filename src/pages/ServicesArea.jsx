@@ -1,9 +1,10 @@
-import React, { useState, useRef , useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/ServicesArea/_servicesArea.scss';
 import { useForm } from "react-hook-form";
 import MapWithMenu from '../components/Map/MapWithMenu';
 import geojsonDataFile from './mapGEO.json';
+import { motion } from "framer-motion";
 
 
 const ContactUs = () => {
@@ -27,10 +28,14 @@ const ContactUs = () => {
         setGeojsonData(geojsonDataFile);
         console.log(geojsonData);
     }, [geojsonData]);
-    
+
 
     return (
-        <div className="areas_wrapper">
+        <motion.div className="areas_wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="custom_container">
                 <div className="section_title center_mode">Contact us</div>
             </div>
@@ -68,7 +73,7 @@ const ContactUs = () => {
                                     <p className="error-info" >This field is required</p>
                                 </div>
                                 <div className="bottom_description">
-                                Enter your request details. A member of our support team will respond to you as soon as possible.
+                                    Enter your request details. A member of our support team will respond to you as soon as possible.
                                 </div>
                                 <div className="bttom_inline">
                                     <button type='submit' className="site_btn sign-btn" disabled={dataSend}>Send</button>
@@ -80,7 +85,7 @@ const ContactUs = () => {
 
             </div>
             <SupportChat />
-        </div>
+        </motion.div >
     )
 }
 

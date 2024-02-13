@@ -3,8 +3,10 @@ import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/ContactUs/_contactUs.scss';
 import serviveInner1 from '../assets/img/contactsCover.png';
 import { useForm } from "react-hook-form";
+import { motion } from "framer-motion";
 
 const ContactUs = () => {
+    
     const success = useRef(null);
     const [dataSend, setDataSend] = useState(false);
     const { register, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
@@ -20,7 +22,11 @@ const ContactUs = () => {
     };
 
     return (
-        <div className="contact_wrapper">
+        <motion.div className="contact_wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="custom_container">
                 <div className="section_title center_mode">Contact us</div>
                 <div className="section_description center_mode">
@@ -62,7 +68,7 @@ const ContactUs = () => {
                                     <p className="error-info" >This field is required</p>
                                 </div>
                                 <div className="bottom_description">
-                                Enter your request details. A member of our support team will respond to you as soon as possible.
+                                    Enter your request details. A member of our support team will respond to you as soon as possible.
                                 </div>
                                 <div className="bttom_inline">
                                     <button type='submit' className="site_btn sign-btn" disabled={dataSend}>Send</button>
@@ -74,7 +80,7 @@ const ContactUs = () => {
 
             </div>
             <SupportChat />
-        </div>
+        </motion.div>
     )
 }
 

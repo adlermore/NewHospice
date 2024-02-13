@@ -4,6 +4,7 @@ import '../assets/scss/Physicians/_physicians.scss';
 import serviveInner1 from '../assets/img/joinTeam.png';
 import referralImg from '../assets/img/referal.png';
 import { useForm, Controller } from "react-hook-form";
+import { motion } from "framer-motion";
 
 const Physicians = () => {
 
@@ -23,7 +24,11 @@ const Physicians = () => {
     };
 
     return (
-        <div className="physicians_wrapper">
+        <motion.div className="physicians_wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="custom_container">
                 <div className="section_title center_mode">Physicians Referral</div>
             </div>
@@ -121,7 +126,7 @@ const Physicians = () => {
 
             </div>
             <SupportChat />
-        </div>
+        </motion.div>
     )
 }
 

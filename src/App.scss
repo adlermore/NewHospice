@@ -40,7 +40,7 @@ body {
   position: relative;
   min-height: 50vh;
   color: $black;
-  font-family: $regular;
+  font-family: $regular ,  sans-serif;
   touch-action: manipulation;
 
   &.menu-opened {

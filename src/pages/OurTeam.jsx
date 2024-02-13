@@ -6,6 +6,8 @@ import team2 from '../assets/img/teamImg2.png';
 import team3 from '../assets/img/teamImg3.png';
 import team4 from '../assets/img/teamImg4.png';
 import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
+
 
 const Services = () => {
 
@@ -24,7 +26,11 @@ const Services = () => {
     }, [navigate])
 
     return (
-        <div className="team_wrapper">
+        <motion.div className="team_wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="custom_container">
                 <div className="section_title center_mode">Our Team</div>
             </div>
@@ -128,7 +134,7 @@ const Services = () => {
                 </div>
             </div>
             <SupportChat />
-        </div>
+        </motion.div>
     )
 }
 

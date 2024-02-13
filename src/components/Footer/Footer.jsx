@@ -35,13 +35,13 @@ const Footer = () => {
                             <a href="/#" className="menu_link">Brochure</a>
                             <a href="/#" className="menu_link">Our terms</a>
                             <a href="/#" className="menu_link">Presentation</a>
-                            <a href="/#" className="menu_link">Physicians Referral</a>
+                            <Link to="physicians/" className="menu_link">Physicians Referral</Link>
                         </li>
                         <li>
-                            <a href="/#" className="menu_title">Contacts</a>
-                            <a href="/#" className="menu_link icon-phone">+1 888-965-9595</a>
-                            <a href="/#" className="menu_link "><LuGlobe /> info@nhhospicecare.com</a>
-                            <a href="/#" className="menu_link icon-location">12444 Victory Blvd #408,North Hollywood CA 91606 </a>
+                            <Link to="contactUs/" className="menu_title">Contacts</Link>
+                            <a href="tel:+18889659595" className="menu_link icon-phone">+1 888-965-9595</a>
+                            <a href="mailto:info@nhhospicecare.com" className="menu_link "><LuGlobe /> info@nhhospicecare.com</a>
+                            <a target='blank' href="https://www.google.com/maps/place/12444+Victory+Blvd+%23408,+North+Hollywood,+CA+91606,+%D0%A1%D0%A8%D0%90/@34.186439,-118.404412,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2967caa5b85c5:0x93f08d41dd656aac!8m2!3d34.186439!4d-118.404412!16s%2Fg%2F11v0j_7_xm?entry=ttu" className="menu_link icon-location">12444 Victory Blvd #408,North Hollywood CA 91606 </a>
                         </li>
                     </ul>
                 </div>

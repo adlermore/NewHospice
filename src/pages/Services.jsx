@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/Services/_services.scss';
 import serviveInner1 from '../assets/img/serviveInner1.png';
@@ -6,25 +6,29 @@ import serviveInner2 from '../assets/img/service3.png';
 import serviveInner3 from '../assets/img/service11.png';
 import serviveInner4 from '../assets/img/service10.png';
 import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 const Services = () => {
 
     let navigate = useNavigate();
-    
     useEffect(() => {
         const path = window.location.href;
         const parts = path.split("/");
         let desiredPart = parts.slice(parts.indexOf("services") + 1).join("/");
         const element = document.getElementById(desiredPart);
         if (desiredPart === 'all') {
-            document.body.scrollIntoView({ behavior: 'smooth'});
-        }else if(element){
-            element.scrollIntoView({ behavior: 'smooth' , block: "center"});
+            document.body.scrollIntoView({ behavior: 'smooth' });
+        } else if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: "center" });
         }
-    },[navigate])
+    }, [navigate])
 
     return (
-        <div className="services_wrapper">
+        <motion.div className="services_wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="custom_container">
                 <div className="section_title center_mode">Our Services</div>
             </div>
@@ -146,7 +150,7 @@ const Services = () => {
                 </div>
             </div>
             <SupportChat />
-        </div>
+        </motion.div>
     )
 }
 

@@ -1,26 +1,32 @@
-import React , {useState , useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/JoinUs/_joinUs.scss';
 import serviveInner1 from '../assets/img/joinTeam.png';
 import { useForm, Controller } from "react-hook-form";
+import { motion } from "framer-motion";
+
 
 const JoinUs = () => {
     const success = useRef(null);
-    const [dataSend , setDataSend]=useState(false);
+    const [dataSend, setDataSend] = useState(false);
     const { register, control, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
         shouldFocusError: false,
     });
 
     const onSubmit = (data) => {
         setDataSend(true);
-        success.current.scrollIntoView({ behavior: 'smooth', block: 'center'});
+        success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         setTimeout(() => {
             setDataSend(false);
         }, 4000);
     };
 
     return (
-        <div className="join_wrapper">
+        <motion.div className="join_wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="custom_container">
                 <div className="section_title center_mode">Join our team</div>
                 <div className="section_description center_mode">
@@ -101,7 +107,7 @@ const JoinUs = () => {
 
             </div>
             <SupportChat />
-        </div>
+        </motion.div>
     )
 }
 

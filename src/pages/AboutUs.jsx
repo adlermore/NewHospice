@@ -5,6 +5,7 @@ import AboutCover from '../assets/img/aboutCover.png';
 import { useForm } from "react-hook-form";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
+import { motion } from "framer-motion";
 
 const AboutUs = () => {
 
@@ -25,7 +26,11 @@ const AboutUs = () => {
     };
 
     return (
-        <div className="about_wrapper">
+        <motion.div className="about_wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="custom_container">
                 <div className="section_title center_mode">What is hospice</div>
             </div>
@@ -90,7 +95,7 @@ const AboutUs = () => {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-                
+
             </div>
             <div className="form_section">
                 <div className={dataSend ? `success_message view` : `success_message`} ref={success}>Success ! ✔</div>
@@ -124,7 +129,7 @@ const AboutUs = () => {
                 </div>
             </div>
             <SupportChat />
-        </div>
+        </motion.div>
     )
 }
 
