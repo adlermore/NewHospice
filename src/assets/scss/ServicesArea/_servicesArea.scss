@@ -92,4 +92,38 @@
         width: 100%;
         height: 100%;
     }
+
+    @media (max-width: 1199px) {
+        .region_link {
+            height: 50px;
+            font-size: 16px;
+            padding: 0 15px;
+        }
+        .map_container .regions_cntainer {
+            flex: auto;
+            max-width: 400px;
+            width: 100%;
+        }
+        .map_container .map_container {
+            flex: auto;
+            max-width: none;
+            width: 100%;
+        }
+        .map_container {
+            height: 450px;
+        }
+    }
+
+    @media (max-width: 991px) {
+         .map_container {
+            height: 100%;
+            flex-direction: column-reverse;
+        }
+        .map_container .map_container {
+            height: 450px;
+        }
+        .map_container .regions_cntainer {
+            max-width: none;
+        }
+    }
 }
