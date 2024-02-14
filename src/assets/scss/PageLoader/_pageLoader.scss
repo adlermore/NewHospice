@@ -1,0 +1,15 @@
+@import "../variables";
+@import "../mixins";
+
+.loader_wrapper{
+    position: fixed;
+    background: $siteColor;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

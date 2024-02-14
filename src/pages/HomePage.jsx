@@ -44,6 +44,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MapContainer from '../components/MapContainer/MapContainer';
+import PageLoader from '../components/PageLoader/PageLoader';
 
 const HomePage = () => {
 
@@ -462,6 +463,7 @@ const HomePage = () => {
                 <MapContainer array={currentLocation} isAdding={true} error={false} />
             </div>
             <SupportChat />
+            {/* <PageLoader  /> */}
         </motion.div>
     )
 }
