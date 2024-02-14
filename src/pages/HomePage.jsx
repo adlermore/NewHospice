@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import heroImg from '../assets/img/heroImg.png';
 import service1 from '../assets/img/service1.png';
@@ -48,6 +48,8 @@ import PageLoader from '../components/PageLoader/PageLoader';
 
 const HomePage = () => {
 
+    const [isLoadSuccess , setIsLoadSuccess] = useState(false);
+
     const currentLocation = [
         {
             Id: 1,
@@ -58,6 +60,12 @@ const HomePage = () => {
             },
         }
     ]
+
+    useEffect(()=>{
+        setTimeout(() => {
+            setIsLoadSuccess(true);
+        }, 3000);
+    },[])
 
     const settingsSlider = {
         dots: false,
@@ -92,6 +100,10 @@ const HomePage = () => {
             }
         ]
     };
+
+    if(!isLoadSuccess){
+        return <PageLoader  />
+    }
 
     return (
         <motion.div className="homepage_wrapper"
@@ -463,7 +475,6 @@ const HomePage = () => {
                 <MapContainer array={currentLocation} isAdding={true} error={false} />
             </div>
             <SupportChat />
-            {/* <PageLoader  /> */}
         </motion.div>
     )
 }
