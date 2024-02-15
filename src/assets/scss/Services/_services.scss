@@ -56,10 +56,22 @@
             }
         }
     }
+    .section_description{
+        transition: 0.5s;
+        &.active{
+            height: 100% !important;
+        }
+    }
     .seeMore{
         font-size: 20px;
         line-height: 21px;
         color: #5A5A5A;
+        opacity: 1;
+        transition: 0.5s;
+        .hide{
+            opacity: 0;
+            pointer-events: none;
+        }
     }
     
     @media (max-width: 991px) {
