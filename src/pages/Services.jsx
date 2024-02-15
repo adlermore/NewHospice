@@ -11,6 +11,12 @@ import { motion } from "framer-motion";
 const Services = () => {
 
     let navigate = useNavigate();
+
+    const handleClickSchedul=(e)=>{
+        e.preventDefault();
+        navigate('/contactUs', { replace: true });
+    }
+
     useEffect(() => {
         const path = window.location.href;
         const parts = path.split("/");
@@ -56,7 +62,7 @@ const Services = () => {
                                 </div>
                                 <div className="buttons_line">
                                     <a href="/#" className="seeMore">See more{">"} </a>
-                                    <div className="site_btn">Schedul</div>
+                                    <a href="/#" onClick={(e)=>handleClickSchedul(e)} className="site_btn">Schedul</a>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +89,7 @@ const Services = () => {
                                     most trying times of life, offering consolation and encouragement."
                                 </div>
                                 <div className="buttons_line">
-                                    <div className="site_btn">book</div>
+                                    <a href="/#" onClick={(e)=>handleClickSchedul(e)} className="site_btn">Schedul</a>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +116,7 @@ const Services = () => {
                                     most trying times of life, offering consolation and encouragement."
                                 </div>
                                 <div className="buttons_line">
-                                    <div className="site_btn">book</div>
+                                <a href="/#" onClick={(e)=>handleClickSchedul(e)} className="site_btn">Schedul</a>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +143,7 @@ const Services = () => {
                                     most trying times of life, offering consolation and encouragement."
                                 </div>
                                 <div className="buttons_line">
-                                    <div className="site_btn">book</div>
+                                <a href="/#" onClick={(e)=>handleClickSchedul(e)} className="site_btn">Schedul</a>
                                 </div>
                             </div>
                         </div>

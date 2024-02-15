@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import footerLogo from '../../assets/img/footerLogo.png';
 import { LuGlobe } from "react-icons/lu";
+import brochurePdf from "../../assets/pdf/brochure.pdf"
 
 const Footer = () => {
     return (
@@ -14,7 +15,7 @@ const Footer = () => {
                     </div>
                     <ul className="footer_menu">
                         <li>
-                            <a href="/#" className="menu_title">Services</a>
+                            <span className="menu_title">Services</span>
                             <a href="/#" className="menu_link">Skilled nursing care</a>
                             <a href="/#" className="menu_link">Medication delivery</a>
                             <a href="/#" className="menu_link">Emotional & spiritual support</a>
@@ -23,7 +24,7 @@ const Footer = () => {
                             <a href="/#" className="menu_link">Continuous care & respite care</a>
                         </li>
                         <li>
-                            <a href="/#" className="menu_title">Wound care</a>
+                            <span className="menu_title">Wound care</span>
                             <a href="/#" className="menu_link">Scheduled visits</a>
                             <a href="/#" className="menu_link">Podiatry services</a>
                             <a href="/#" className="menu_link">Personal care aides</a>
@@ -31,14 +32,14 @@ const Footer = () => {
                             <a href="/#" className="menu_link">Bereavement services</a>
                         </li>
                         <li>
-                            <a href="/#" className="menu_title">Information</a>
+                            <span className="menu_title">Information</span>
                             <a href="/#" className="menu_link">Brochure</a>
-                            <a href="/#" className="menu_link">Our terms</a>
-                            <a href="/#" className="menu_link">Presentation</a>
+                            {/* <a href="/#" className="menu_link">Our terms</a> */}
+                            <a target='blank' href={brochurePdf} className="menu_link">Presentation</a>
                             <Link to="physicians/" className="menu_link">Physicians Referral</Link>
                         </li>
                         <li>
-                            <Link to="contactUs/" className="menu_title">Contacts</Link>
+                            <span className="menu_title">Contacts</span>
                             <a href="tel:+18889659595" className="menu_link icon-phone">+1 888-965-9595</a>
                             <a href="mailto:info@nhhospicecare.com" className="menu_link "><LuGlobe /> info@nhhospicecare.com</a>
                             <a target='blank' href="https://www.google.com/maps/place/12444+Victory+Blvd+%23408,+North+Hollywood,+CA+91606,+%D0%A1%D0%A8%D0%90/@34.186439,-118.404412,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2967caa5b85c5:0x93f08d41dd656aac!8m2!3d34.186439!4d-118.404412!16s%2Fg%2F11v0j_7_xm?entry=ttu" className="menu_link icon-location">12444 Victory Blvd #408,North Hollywood CA 91606 </a>
