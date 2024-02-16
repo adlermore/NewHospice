@@ -1,13 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/JoinUs/_joinUs.scss';
 import serviveInner1 from '../assets/img/joinTeam.png';
 import { useForm, Controller } from "react-hook-form";
 import { motion } from "framer-motion";
-
+import request from '../components/Request/request';
+import Placeholder from 'react-bootstrap/Placeholder';
 
 const JoinUs = () => {
     const success = useRef(null);
+    const isMounted = useRef(true);
+    const [joinData, setJoinData] = useState({})
     const [dataSend, setDataSend] = useState(false);
     const { register, control, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
         shouldFocusError: false,
@@ -19,7 +22,35 @@ const JoinUs = () => {
         setTimeout(() => {
             setDataSend(false);
         }, 4000);
+
+        console.log(data);
+
+        request(`https://hospis.dev.itfabers.com/api/new-member`, 'POST', {data})
+            .then((success) => {
+                console.log(success);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     };
+
+
+    useEffect(() => {
+        if (isMounted.current) {
+            request(`https://hospis.dev.itfabers.com/api/page/join-our-team`)
+                .then((joinUsData) => {
+                    setJoinData(joinUsData.data.page_content);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        return () => {
+            isMounted.current = false;
+        };
+
+    }, [joinData])
+
 
     return (
         <motion.div className="join_wrapper"
@@ -28,15 +59,31 @@ const JoinUs = () => {
             exit={{ opacity: 0 }}
         >
             <div className="custom_container">
-                <div className="section_title center_mode">Join our team</div>
-                <div className="section_description center_mode">
-                    Do you have a burning need to greatly enhance the lives of others?
-                    Become a member of New Hope Hospice's team! We are now looking for committed RNs, CNAs,
-                    social workers, and counsellors to join our team in a caring and stimulating atmosphere.
-                    Grow professionally in an atmosphere of
-                    care while giving patients and their families valuable experiences.  Investigate
-                    opportunities right now at and contribute significantly to our goal of making every minute matter!
-                </div>
+                {joinData.Title ?
+                    <>
+                        <div className="section_title center_mode">{joinData.Title}</div>
+                        <div className="section_description center_mode">
+                            {joinData.Description}
+                        </div>
+                    </>
+                    :
+                    <>
+                        <Placeholder className="text-center" as="p" animation="glow">
+                            <Placeholder xs={4} />
+                            <br/>
+                            <br/>
+                            <Placeholder xs={2} />{' '}
+                            <Placeholder xs={4} />{' '}
+                            <Placeholder xs={5} />{' '}
+                            <Placeholder xs={4} />{' '} 
+                            <Placeholder xs={4} />{' '}
+                            <Placeholder xs={3} />{' '}
+                            <Placeholder xs={2} />{' '}
+                            <Placeholder xs={4} />{' '}
+                            <Placeholder xs={5} />{' '}
+                        </Placeholder>
+                    </>
+                }
             </div>
             <div className="form_section" style={{ background: `url(${serviveInner1})` }}>
                 <div className={dataSend ? `success_message view` : `success_message`} ref={success}>Success ! ✔</div>

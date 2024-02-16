@@ -45,10 +45,11 @@ const Services = () => {
         e.preventDefault();
         navigate('/contactUs', { replace: true });
     }
-    const handleDescDropdown=(e , serviceId)=>{
+    const handleDescDropdown = ( e , serviceId ) => {
         e.preventDefault();
-        console.log(serviceId ,  document.getElementById(serviceId));
-        document.getElementById(serviceId).classList.add('active')
+        const descriptionBlock = document.getElementById(serviceId);
+        console.log(e.target.classList.add('hide'));
+        descriptionBlock.classList.add('active');
 
     }
 

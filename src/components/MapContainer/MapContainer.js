@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 
 const MapContainer = ({ array }) => {
-
 const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
 
   const [selected, setSelected] = useState({});
@@ -219,21 +218,21 @@ const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
         >
           {
             array ?
-              array.map(item => {
+              array.map((item, index) => {
                 return (
                   <Marker
-                    key={item.Id}
-                    position={item.location}
+                    key={index}
+                    position={item.Location}
                     onClick={() => onSelect(item)}
                   />
                 )
               }) : null
             }
           {
-            selected.location ?
+            selected.Location ?
               (
                 <InfoWindow
-                  position={selected.location}
+                  position={selected.Location}
                   onCloseClick={() => setSelected({})}
                 >
                   <div className="infowindow restaurant_block">

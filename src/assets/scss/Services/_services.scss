@@ -21,10 +21,14 @@
         background-size: cover;
         vertical-align: top;
     }
-    .inlineImg_section .goal_info .info_inner {
-        padding-left: 60px;
-        max-width: 735px;
-    }
+    .inlineImg_section .goal_info {
+        height: 100%;
+        .info_inner {
+            padding-left: 60px;
+            max-width: 735px;
+            height: 100%;
+        }    
+    } 
     .buttons_line{
         margin-top: 50px;
         display: flex;
@@ -68,7 +72,7 @@
         color: #5A5A5A;
         opacity: 1;
         transition: 0.5s;
-        .hide{
+        &.hide{
             opacity: 0;
             pointer-events: none;
         }
