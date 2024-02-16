@@ -23,9 +23,8 @@ const JoinUs = () => {
             setDataSend(false);
         }, 4000);
 
-        console.log(data);
 
-        request(`https://hospis.dev.itfabers.com/api/new-member`, 'POST', {data})
+        request(`https://hospis.dev.itfabers.com/api/new-member`, 'POST', data)
             .then((success) => {
                 console.log(success);
             })
