@@ -17,21 +17,40 @@ const JoinUs = () => {
         shouldFocusError: false,
     });
 
-    const onSubmit = (data) => {
-        setDataSend(true);
-        success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => {
-            setDataSend(false);
-        }, 8000);
-        console.log(data);
-        request(`https://hospis.dev.itfabers.com/api/new-member`, 'POST', data)
-            .then((success) => {
-                console.log(success);
-            })
-            .catch(error => {
-                console.log(error);
-            })
+    const onSubmit = async (data) => {
+        try {
+            // Create FormData object to handle file uploads
+            const formData = new FormData();
+            formData.append('user_email', data.user_email);
+            formData.append('user_name', data.user_name);
+            formData.append('user_surname', data.user_surname);
+            formData.append('user_position', data.user_position);
+            formData.append('user_description', data.user_description);
+            formData.append('pdfFile', data.pdfFile);
+    
+            // Send POST request using fetch
+            const response = await fetch('https://hospis.dev.itfabers.com/api/new-member', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            if (response.ok) {
+                // Handle success, e.g., show success message
+                console.log('Form submitted successfully');
+                setDataSend(true);
+                success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                    setDataSend(false);
+                }, 8000);
+            } else {
+                // Handle error, e.g., show error message
+                console.error('Error submitting form:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
     };
+    
 
     useEffect(() => {
         if (isMounted.current) {
