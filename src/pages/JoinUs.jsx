@@ -12,6 +12,7 @@ const JoinUs = () => {
     const isMounted = useRef(true);
     const [joinData, setJoinData] = useState({})
     const [dataSend, setDataSend] = useState(false);
+
     const { register, control, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
         shouldFocusError: false,
     });
@@ -21,9 +22,8 @@ const JoinUs = () => {
         success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         setTimeout(() => {
             setDataSend(false);
-        }, 4000);
-
-
+        }, 8000);
+        console.log(data);
         request(`https://hospis.dev.itfabers.com/api/new-member`, 'POST', data)
             .then((success) => {
                 console.log(success);
@@ -32,7 +32,6 @@ const JoinUs = () => {
                 console.log(error);
             })
     };
-
 
     useEffect(() => {
         if (isMounted.current) {
@@ -44,12 +43,12 @@ const JoinUs = () => {
                     console.log(error);
                 })
         }
+
         return () => {
             isMounted.current = false;
         };
 
     }, [joinData])
-
 
     return (
         <motion.div className="join_wrapper"
@@ -89,7 +88,7 @@ const JoinUs = () => {
                 <div className="custom_container">
                     <div className="form_container">
                         <div className="form_inner">
-                            <form onSubmit={handleSubmitForm1(onSubmit)}>
+                            <form onSubmit={handleSubmitForm1(onSubmit)} encType="multipart/form-data">
                                 <div className={errors?.user_email?.type === "required" || errors?.user_email?.type === "pattern" ? "mail_inline form-block has-error" : "mail_inline form-block"}  >
                                     <div className='block_label'>Email*</div>
                                     <input placeholder="Email" className="form-control" name="user_email" {...register("user_email", { required: true, pattern: /^\S+@\S+$/i })} />

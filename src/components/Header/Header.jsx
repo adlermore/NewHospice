@@ -5,6 +5,7 @@ import "uikit/dist/css/uikit.min.css";
 import { Twirl as Hamburger } from 'hamburger-react'
 import { BiPlus } from 'react-icons/bi';
 import { Scrollbar } from 'react-scrollbars-custom';
+import request from "../Request/request";
 
 const Header = () => {
     const body = document.body;
@@ -13,8 +14,20 @@ const Header = () => {
     const [scrollDirectionUp, setScrollDirectionUp] = useState(false);
     const headerRef = useRef(null);
     const pageheaderRef = useRef(null);
-
+    const [servicesData, setServicestDarta] = useState(null);
+    const isMounted = useRef(true);
+    
     useEffect(() => {
+        if (isMounted.current) {
+            request(`https://hospis.dev.itfabers.com/api/services`)
+                .then((services) => {
+                    setServicestDarta(services.data);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             if (currentScrollY > scrollY) {
@@ -43,9 +56,10 @@ const Header = () => {
 
         window.addEventListener('scroll', handleScroll);
         return () => {
+            isMounted.current = false;
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [scrollY, scrollDirectionUp]);
+    }, [scrollY, scrollDirectionUp , servicesData]);
 
 
     let menuOpen = () => {
@@ -144,18 +158,11 @@ const Header = () => {
                                                     <div className="uk-navbar-dropdown ">
                                                         <Scrollbar style={{ width: 180, height: 250 }}>
                                                             <ul className="uk-nav uk-navbar-dropdown-nav">
-                                                                <li><Link to="services/service1">Services 1</Link></li>
-                                                                <li><Link to="services/service2">Services 2</Link></li>
-                                                                <li><Link to="services/service3">Services 3</Link></li>
-                                                                <li><Link to="services/service4">Services 4</Link></li>
-                                                                <li><Link to="services/service5">Services 5</Link></li>
-                                                                <li><Link to="services/service6">Services 6</Link></li>
-                                                                <li><Link to="services/service7">Services 7</Link></li>
-                                                                <li><Link to="services/service8">Services 8</Link></li>
-                                                                <li><Link to="services/service9">Services 9</Link></li>
-                                                                <li><Link to="services/service10">Services 10</Link></li>
-                                                                <li><Link to="services/service11">Services 11</Link></li>
-                                                                <li><Link to="services/service12">Services 12</Link></li>
+                                                                {servicesData && 
+                                                                    servicesData.map((service , index)=>(
+                                                                        <li key={index}><Link to={`services/service${index}`}>{service.title}</Link></li>
+                                                                    ))
+                                                                }
                                                             </ul>
                                                         </Scrollbar>
                                                     </div>

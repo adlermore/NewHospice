@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/AboutUs/_aboutUs.scss';
 import AboutCover from '../assets/img/aboutCover.png';
@@ -6,11 +6,32 @@ import { useForm } from "react-hook-form";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import { motion } from "framer-motion";
+import request from '../components/Request/request';
 
 const AboutUs = () => {
 
     const success = useRef(null);
     const [dataSend, setDataSend] = useState(false);
+    const [aboutData, setAboutDarta] = useState({});
+    const isMounted = useRef(true);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            request(`https://hospis.dev.itfabers.com/api/page/about`)
+                .then((about) => {
+                    setAboutDarta(about.data.page_content);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+
+        return () => {
+            isMounted.current = false;
+        };
+
+    }, [aboutData])
+
 
     const { register, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
         shouldFocusError: false,
@@ -22,7 +43,14 @@ const AboutUs = () => {
         setTimeout(() => {
             setDataSend(false);
             console.log(data);
-        }, 4000);
+        }, 8000);
+        // request(`https://hospis.dev.itfabers.com/api/new-member`, 'POST', data)
+        // .then((success) => {
+        //     console.log(success);
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // })
     };
 
     return (
@@ -37,65 +65,15 @@ const AboutUs = () => {
             <div className="cover_Image" style={{ backgroundImage: `url(${AboutCover})` }} />
             <div className="accordion_container">
                 <Accordion>
-                    <Accordion.Item eventKey="0">
-                        <Accordion.Header>What is Hospice?</Accordion.Header>
-                        <Accordion.Body>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="1">
-                        <Accordion.Header>Who Can Receive Hospice Care?</Accordion.Header>
-                        <Accordion.Body>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="2">
-                        <Accordion.Header>Who Is Involved in The Hospice Process?</Accordion.Header>
-                        <Accordion.Body>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="3">
-                        <Accordion.Header>What is Hospice?</Accordion.Header>
-                        <Accordion.Body>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="4">
-                        <Accordion.Header>Who Can Receive Hospice Care?</Accordion.Header>
-                        <Accordion.Body>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                        </Accordion.Body>
-                    </Accordion.Item>
+                    {aboutData.Info && aboutData.Info.map((acordionData , index) =>(
+                        <Accordion.Item key={index} eventKey={index}>
+                           <Accordion.Header>{acordionData.Title}</Accordion.Header>
+                           <Accordion.Body>
+                               {acordionData.Description}
+                           </Accordion.Body>
+                       </Accordion.Item>
+                    ))}
                 </Accordion>
-
             </div>
             <div className="form_section">
                 <div className={dataSend ? `success_message view` : `success_message`} ref={success}>Success ! ✔</div>
