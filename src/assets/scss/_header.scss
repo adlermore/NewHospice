@@ -230,8 +230,8 @@
 
         >a {
             color: $siteColor;
-            font-size: 16px;
-            line-height: 22px;
+            font-size: 14px;
+            line-height: 18px;
             background: transparent !important;
             text-transform: none !important;
             padding: 0;
@@ -240,7 +240,7 @@
             padding: 5px;
             border-radius: 4px;
             transition: 0.3s;
-
+            padding-right: 0;
             &:hover {
                 background: rgba($secondColor , 0.3) !important;
             }

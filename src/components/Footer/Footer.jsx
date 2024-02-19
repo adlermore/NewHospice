@@ -1,27 +1,64 @@
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import footerLogo from '../../assets/img/footerLogo.png';
 import { LuGlobe } from "react-icons/lu";
 import brochurePdf from "../../assets/pdf/brochure.pdf"
+import request from "../Request/request";
 
 const Footer = () => {
+    const isMounted = useRef(true);
+    const [servicesData, setServicestDarta] = useState(null);
+    const [settings, setSettings] = useState(null);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            request(`https://hospis.dev.itfabers.com/api/services`)
+                .then((services) => {
+                    setServicestDarta(services.data);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+
+            request(`https://hospis.dev.itfabers.com/api/settings`)
+                .then((settings) => {
+                    setSettings(settings.data[0]);
+                    console.log(settings);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+
+        return () => {
+            isMounted.current = false;
+
+        };
+    }, [servicesData, settings]);
+
+
+
     return (
         <footer className="page_footer">
             <div className="custom_container">
                 <div className="footer_inner">
                     <div className="footer_logo">
-                        <Link to="/"><img src={footerLogo} alt="footerLogo" /></Link>
+                        <Link to="/"><img src={settings && settings.logo} alt="footerLogo" /></Link>
                     </div>
                     <ul className="footer_menu">
                         <li>
                             <span className="menu_title">Services</span>
-                            <a href="/#" className="menu_link">Skilled nursing care</a>
-                            <a href="/#" className="menu_link">Medication delivery</a>
+                            {servicesData && servicesData.map((service, index) => (
+                                <Link key={index}  to={`services/service${service.id}`} className="menu_link">{service.title}</Link>
+
+                            ))}
+
+                            {/* <a href="/#" className="menu_link">Medication delivery</a>
                             <a href="/#" className="menu_link">Emotional & spiritual support</a>
                             <a href="/#" className="menu_link">Medical supplies & equipment</a>
                             <a href="/#" className="menu_link">Pain & symptom management </a>
-                            <a href="/#" className="menu_link">Continuous care & respite care</a>
+                            <a href="/#" className="menu_link">Continuous care & respite care</a> */}
                         </li>
                         <li>
                             <span className="menu_title">Wound care</span>
@@ -41,8 +78,8 @@ const Footer = () => {
                         <li>
                             <span className="menu_title">Contacts</span>
                             <a href="tel:+18889659595" className="menu_link icon-phone">+1 888-965-9595</a>
-                            <a href="mailto:info@nhhospicecare.com" className="menu_link "><LuGlobe /> info@nhhospicecare.com</a>
-                            <a target='blank' href="https://www.google.com/maps/place/12444+Victory+Blvd+%23408,+North+Hollywood,+CA+91606,+%D0%A1%D0%A8%D0%90/@34.186439,-118.404412,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2967caa5b85c5:0x93f08d41dd656aac!8m2!3d34.186439!4d-118.404412!16s%2Fg%2F11v0j_7_xm?entry=ttu" className="menu_link icon-location">12444 Victory Blvd #408,North Hollywood CA 91606 </a>
+                            <a href={`mailto:${settings && settings.email}`} className="menu_link "><LuGlobe />{settings && settings.email}</a>
+                            <a target='blank' href="https://www.google.com/maps/place/12444+Victory+Blvd+%23408,+North+Hollywood,+CA+91606,+%D0%A1%D0%A8%D0%90/@34.186439,-118.404412,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2967caa5b85c5:0x93f08d41dd656aac!8m2!3d34.186439!4d-118.404412!16s%2Fg%2F11v0j_7_xm?entry=ttu" className="menu_link icon-location">{settings && settings.location}</a>
                         </li>
                     </ul>
                 </div>

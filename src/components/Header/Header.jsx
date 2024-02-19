@@ -15,6 +15,7 @@ const Header = () => {
     const headerRef = useRef(null);
     const pageheaderRef = useRef(null);
     const [servicesData, setServicestDarta] = useState(null);
+    const [settings, setSettings] = useState(null);
     const isMounted = useRef(true);
     
     useEffect(() => {
@@ -25,7 +26,16 @@ const Header = () => {
                 })
                 .catch(error => {
                     console.log(error);
+            })
+
+            request(`https://hospis.dev.itfabers.com/api/settings`)
+                .then((settings) => {
+                    setSettings(settings.data[0]);
+                    console.log(settings);
                 })
+                .catch(error => {
+                    console.log(error);
+            })   
         }
 
         const handleScroll = () => {
@@ -131,7 +141,7 @@ const Header = () => {
             <div className="header_top" ref={pageheaderRef}>
                 <div className="custom_container">
                     <div className="top_inline">
-                        <a href="tel:+1 888-965-9595" className="site_btn call_btn">+1 888-965-9595</a>
+                        <a href={`tel:+1${settings && settings.phone}`} className="site_btn call_btn">+1{settings && settings.phone}</a>
                         <Link to="/" className="main_logo" >
                             <img src={imglogo} alt="imgLogo" />
                         </Link>
@@ -160,7 +170,7 @@ const Header = () => {
                                                             <ul className="uk-nav uk-navbar-dropdown-nav">
                                                                 {servicesData && 
                                                                     servicesData.map((service , index)=>(
-                                                                        <li key={index}><Link to={`services/service${index}`}>{service.title}</Link></li>
+                                                                        <li key={index}><Link to={`services/service${service.id}`}>{service.title}</Link></li>
                                                                     ))
                                                                 }
                                                             </ul>
