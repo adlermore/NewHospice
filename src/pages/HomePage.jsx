@@ -15,22 +15,10 @@ const HomePage = () => {
     const [isLoadSuccess, setIsLoadSuccess] = useState(false);
     const [homeData, setHomeData] = useState({});
 
-    // const currentLocation = [
-    //     {
-    //         Id: 1,
-    //         Country: 'Los Angeles',
-    //         location: {
-    //             lat: 34.055462,
-    //             lng: -118.258283
-    //         },
-    //     }
-    // ]
-
     useEffect(() => {
         request(`https://hospis.dev.itfabers.com/api/page/home`)
             .then((home) => {
                 setHomeData(home.data.page_content);
-                // console.log(home.data.page_content);
                 setTimeout(() => {
                     setIsLoadSuccess(true);
                 }, 500);
@@ -106,7 +94,7 @@ const HomePage = () => {
                 <div className="services_list">
                     {homeData.Services.OurServices.map((service , index) =>(
                         <div  key={index} className="serbvice_block">
-                            <Link to={`services/service${index}`} >
+                            <Link to={`services/service${service.ID}`} >
                                 <img src={service.Image} alt='serviceImg' />
                                 <span className="service_title">
                                     {service.Name} 

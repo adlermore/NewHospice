@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import footerLogo from '../../assets/img/footerLogo.png';
 import { LuGlobe } from "react-icons/lu";
-import brochurePdf from "../../assets/pdf/brochure.pdf"
+import brochurePdf from "../../assets/pdf/brochure.pdf";
+import presentationPdf from "../../assets/pdf/presentation.pdf";
+
 import request from "../Request/request";
 
 const Footer = () => {
@@ -13,7 +14,7 @@ const Footer = () => {
 
     useEffect(() => {
         if (isMounted.current) {
-            request(`https://hospis.dev.itfabers.com/api/services`)
+            request(`https://hospis.dev.itfabers.com/api/navbar-services`)
                 .then((services) => {
                     setServicestDarta(services.data);
                 })
@@ -24,20 +25,15 @@ const Footer = () => {
             request(`https://hospis.dev.itfabers.com/api/settings`)
                 .then((settings) => {
                     setSettings(settings.data[0]);
-                    console.log(settings);
                 })
                 .catch(error => {
                     console.log(error);
                 })
         }
-
         return () => {
             isMounted.current = false;
-
         };
     }, [servicesData, settings]);
-
-
 
     return (
         <footer className="page_footer">
@@ -47,37 +43,21 @@ const Footer = () => {
                         <Link to="/"><img src={settings && settings.logo} alt="footerLogo" /></Link>
                     </div>
                     <ul className="footer_menu">
-                        <li>
+                        <li className='services_li'>
                             <span className="menu_title">Services</span>
                             {servicesData && servicesData.map((service, index) => (
                                 <Link key={index}  to={`services/service${service.id}`} className="menu_link">{service.title}</Link>
-
                             ))}
-
-                            {/* <a href="/#" className="menu_link">Medication delivery</a>
-                            <a href="/#" className="menu_link">Emotional & spiritual support</a>
-                            <a href="/#" className="menu_link">Medical supplies & equipment</a>
-                            <a href="/#" className="menu_link">Pain & symptom management </a>
-                            <a href="/#" className="menu_link">Continuous care & respite care</a> */}
-                        </li>
-                        <li>
-                            <span className="menu_title">Wound care</span>
-                            <a href="/#" className="menu_link">Scheduled visits</a>
-                            <a href="/#" className="menu_link">Podiatry services</a>
-                            <a href="/#" className="menu_link">Personal care aides</a>
-                            <a href="/#" className="menu_link">Counseling services</a>
-                            <a href="/#" className="menu_link">Bereavement services</a>
                         </li>
                         <li>
                             <span className="menu_title">Information</span>
-                            <a href="/#" className="menu_link">Brochure</a>
-                            {/* <a href="/#" className="menu_link">Our terms</a> */}
-                            <a target='blank' href={brochurePdf} className="menu_link">Presentation</a>
+                            <a target='blank' href={brochurePdf} className="menu_link">Brochure</a>
+                            <a target='blank' href={presentationPdf} className="menu_link">Presentation</a>
                             <Link to="physicians/" className="menu_link">Physicians Referral</Link>
                         </li>
                         <li>
                             <span className="menu_title">Contacts</span>
-                            <a href="tel:+18889659595" className="menu_link icon-phone">+1 888-965-9595</a>
+                            <a href={`tel:+1${settings && settings.phone}`} className="menu_link icon-phone">+1{settings && settings.phone}</a>
                             <a href={`mailto:${settings && settings.email}`} className="menu_link "><LuGlobe />{settings && settings.email}</a>
                             <a target='blank' href="https://www.google.com/maps/place/12444+Victory+Blvd+%23408,+North+Hollywood,+CA+91606,+%D0%A1%D0%A8%D0%90/@34.186439,-118.404412,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2967caa5b85c5:0x93f08d41dd656aac!8m2!3d34.186439!4d-118.404412!16s%2Fg%2F11v0j_7_xm?entry=ttu" className="menu_link icon-location">{settings && settings.location}</a>
                         </li>

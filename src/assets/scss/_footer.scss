@@ -58,7 +58,7 @@
             max-width: 250px;
             line-height: 19px;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             &:hover{
                 opacity: 1;
                 color: $secondColor;
@@ -87,7 +87,11 @@
             margin-right: 15px;
         }
     }
-
+    .services_li{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 40px;
+    }
     .social_list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -177,6 +181,10 @@
             // padding: 100px 60px;
         }
 
+        .services_li {
+            grid-column-gap: 15px;
+        }
+
         .footer_menu {
             grid-template-columns: auto auto auto;
             padding: 0 20px;
@@ -198,11 +206,19 @@
         }
     }
 
+    @media (max-width: 991px) {
+        .footer_menu {
+            grid-template-columns: 2.5fr 1fr;
+        }
+    }
+
     @media (max-width: 767px) {
         .payment_block {
             margin-top: 20px;
         }
-
+         .services_li {
+            grid-template-columns: 1fr;
+        }
         .footer_logo {
             margin-bottom: 10px;
         }

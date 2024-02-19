@@ -20,7 +20,7 @@ const Header = () => {
     
     useEffect(() => {
         if (isMounted.current) {
-            request(`https://hospis.dev.itfabers.com/api/services`)
+            request(`https://hospis.dev.itfabers.com/api/navbar-services`)
                 .then((services) => {
                     setServicestDarta(services.data);
                 })
@@ -31,7 +31,7 @@ const Header = () => {
             request(`https://hospis.dev.itfabers.com/api/settings`)
                 .then((settings) => {
                     setSettings(settings.data[0]);
-                    console.log(settings);
+                    // console.log(settings);
                 })
                 .catch(error => {
                     console.log(error);
@@ -154,7 +154,7 @@ const Header = () => {
                     <div className="header_inner">
                         <div className={!isOpen ? "navbar_container" : "navbar_container menu-open"}>
                             <div className="navbar_inner" id="navbar_inner">
-                                <a href="tel:+18889659595" className="site_btn call_btn">+1 888-965-9595</a>
+                                <a href={`tel:+1${settings && settings.phone}`} className="site_btn call_btn">+1{settings && settings.phone}</a>
                                 <div className="menu_container">
                                     <div className="main_menu">
                                         <nav className="page-nav" data-uk-navbar>
