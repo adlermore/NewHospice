@@ -1,49 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/Services/_services.scss';
-import serviveInner1 from '../assets/img/serviveInner1.png';
-import serviveInner2 from '../assets/img/service3.png';
-import serviveInner3 from '../assets/img/service11.png';
-import serviveInner4 from '../assets/img/service10.png';
 import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import request from "../components/Request/request";
 import PageLoader from '../components/PageLoader/PageLoader';
-
-const ServiceData = [
-    {
-        id: 'service1',
-        name: 'Skilled nursing care',
-        description: `Our hospice's dedication to offering complete assistance for individuals with life-limiting illnesses is based on our provision of expert nursing care. Our committed nursing staff puts our patients' physical, emotional, and spiritual needs first, focusing on their whole well-being. ${<br />}${<br />} Our qualified nurses are excellent at handling difficult medical conditions, giving prescriptions, and working with other healthcare professionals to create individualised care plans. They keep a close eye on any changes in their patients' health and are experts in pain, symptom control, and end-of-life care.`,
-        image: serviveInner1,
-    },
-    {
-        id: 'service2',
-        name: 'Skilled nursing care',
-        description: "Our hospice's dedication to offering complete assistance for individuals with life-limiting illnesses is based on our provision of expert nursing care. Our committed nursing staff puts our patients' physical, emotional, and spiritual needs first, focusing on their whole well-being. <br /><br /> Our qualified nurses are excellent at handling difficult medical conditions, giving prescriptions, and working with other healthcare professionals to create individualised care plans. They keep a close eye on any changes in their patients' health and are experts in pain, symptom control, and end-of-life care.",
-        image: serviveInner2,
-    },
-    {
-        id: 'service3',
-        name: 'Skilled nursing care',
-        description: "Our hospice's dedication to offering complete assistance for individuals with life-limiting illnesses is based on our provision of expert nursing care. Our committed nursing staff puts our patients' physical, emotional, and spiritual needs first, focusing on their whole well-being. <br /><br /> Our qualified nurses are excellent at handling difficult medical conditions, giving prescriptions, and working with other healthcare professionals to create individualised care plans. They keep a close eye on any changes in their patients' health and are experts in pain, symptom control, and end-of-life care.",
-        image: serviveInner3,
-    },
-    {
-        id: 'service4',
-        name: 'Skilled nursing care',
-        description: "Our hosing with othe' health and are experts in pain, symptom control, and end-of-life care.",
-        image: serviveInner4,
-    },
-
-]
+import { Spinner } from 'react-bootstrap';
 
 const Services = () => {
 
     const isMounted = useRef(true);
-    let navigate = useNavigate();
-    const [servicesData, setServicestDarta] = useState(null);
+    const moreBtnRef = useRef(null);
+
+    const navigate = useNavigate();
+
+    const [servicesData, setServicestData] = useState(null);
     const [isLoadSuccess, setIsLoadSuccess] = useState(false);
+    const [servicePage, setServicePage] = useState(null);
+    const [servicesPages , setServicesPages] = useState([]);
 
     const handleClickSchedul = (e) => {
         e.preventDefault();
@@ -58,37 +32,82 @@ const Services = () => {
     }
 
     useEffect(() => {
-
-
         const path = window.location.href;
         const parts = path.split("/");
         let desiredPart = parts.slice(parts.indexOf("services") + 1).join("/");
-
         const currentId = parseInt(desiredPart.match(/\d+/), 10);
+        let element;
+        setServicePage(Math.ceil(currentId / 4));
+        element = document.getElementById(desiredPart);
 
-        console.log(Math.ceil(currentId/4));
-        setIsLoadSuccess(false);
-        if (isMounted.current) {
-            request(`https://hospis.dev.itfabers.com/api/services/${Math.ceil(currentId/4)}`)
-                .then((services) => {
-                    setServicestDarta(services.data.data);
-                    console.log(services);
-                    setTimeout(() => {
-                        setIsLoadSuccess(true);
-                    }, 500);
-                    const element = document.getElementById(desiredPart);
-                    if (desiredPart === 'all') {
-                        document.body.scrollIntoView({ behavior: 'smooth' });
-                    } else if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: "center" });
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+        if (element) {
+            if (desiredPart === 'all') {
+                document.body.scrollIntoView({ behavior: 'smooth' });
+            } else if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: "center" });
+            }
+        } else {
+            setIsLoadSuccess(false);
+            if (isMounted.current) {
+                let servicesLink;
+                if (desiredPart === 'all') {
+                    servicesLink = `https://hospis.dev.itfabers.com/api/services/1`;
+                } else {
+                    servicesLink = `https://hospis.dev.itfabers.com/api/services/${Math.ceil(currentId / 4)}`
+                }
+                request(servicesLink)
+                    .then((services) => {
+                        setServicestData(services.data);
+                        const pagesArr = [];
+                        for(let i=1; i<= (Math.ceil(services.data.total/4) + 1); i++){
+                            if(i!==Math.ceil(currentId / 4)){
+                                pagesArr.push(i);
+                            }
+                        }
+                        setServicesPages(pagesArr)
+                        setTimeout(() => {
+                            element = document.getElementById(desiredPart);
+                            if (desiredPart === 'all') {
+                                document.body.scrollIntoView({ behavior: 'smooth' });
+                                setServicesPages(pagesArr.filter(item => item !== 1))
+
+                            } else if (element) {
+                                element.scrollIntoView({ behavior: 'smooth', block: "center" });
+                            }
+                        }, 600);
+                        setTimeout(() => {
+                            setIsLoadSuccess(true);
+                        }, 500);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
         }
+    }, [navigate, servicePage])
 
-    }, [navigate])
+    const moreDataPush = () => {
+        console.log('minchev functiona ' , servicesPages);
+        moreBtnRef.current.classList.add('loadding');
+        if(servicesPages[0] !== undefined ){
+            request(`https://hospis.dev.itfabers.com/api/services/${servicesPages[0]}`)
+            .then((nextServices) => {
+                console.log(servicesData.data.concat(nextServices.data.data));
+                setServicestData({...servicesData ,
+                    data : servicesData.data.concat(nextServices.data.data)
+                });
+                const removeArray = servicesPages.slice(1);
+                setServicesPages(removeArray);
+                moreBtnRef.current.classList.remove('loadding');
+                if(servicesPages.length <3){
+                    document.getElementById('moreServicesBtn').style.display = 'none'
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        }
+    }
 
     if (!isLoadSuccess) {
         return <PageLoader />
@@ -105,32 +124,33 @@ const Services = () => {
             </div>
             <div className="services_list page_section ">
                 {servicesData &&
-                servicesData.map((service) => (
-                    <div key={service.id} id={`service${service.id}`} className="goals_section service_block inlineImg_section second_bg"  >
-                        <div className="inlineImg_container">
-                            <div className="image_block absoluite_image" style={{ backgroundImage: `url(${service.image.replace(/\s/g, '%20')})` }}></div>
-                            <div className="goal_info page_section">
-                                <div className="info_inner">
-                                    <div className="section_title service_title">
-                                    {service.title}
-                                    </div>
-                                    <div className="section_description" style={{ height: "280px", overflow: "hidden" }} id={service.id} >
-                                        {service.description}
-                                    </div>
-                                    <div className="buttons_line">
-                                        {service.description.length > 300 &&
-                                            <a href="/#" onClick={(e) => handleDescDropdown(e, service.id)} className="seeMore">See more{">"} </a>
-                                        }
-                                        <a href="/#" onClick={(e) => handleClickSchedul(e)} className="site_btn">Schedul</a>
+                    servicesData.data.map((service) => (
+                        <div key={service.id} id={`service${service.id}`} className="goals_section service_block inlineImg_section second_bg"  >
+                            <div className="inlineImg_container">
+                                <div className="image_block absoluite_image" style={{ backgroundImage: `url(${service.image.replace(/\s/g, '%20')})` }}></div>
+                                <div className="goal_info page_section">
+                                    <div className="info_inner">
+                                        <div className="section_title service_title">
+                                            {service.title}
+                                        </div>
+                                        <div className="section_description" style={{ height: "280px", overflow: "hidden" }} id={service.id} >
+                                            {service.description}
+                                        </div>
+                                        <div className="buttons_line">
+                                            {service.description.length > 300 &&
+                                                <a href="/#" onClick={(e) => handleDescDropdown(e, service.id)} className="seeMore">See more{">"} </a>
+                                            }
+                                            <a href="/#" onClick={(e) => handleClickSchedul(e)} className="site_btn">Schedul</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-                <div className="button_block">
-                    <button className="more_services">
+                    ))}
+                <div className="button_block" >
+                    <button className="more_services" ref={moreBtnRef} onClick={() => moreDataPush()} id='moreServicesBtn'>
                         More services {'>'}
+                        <Spinner animation="border" variant='info'/>
                     </button>
                 </div>
             </div>

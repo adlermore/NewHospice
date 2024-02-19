@@ -31,7 +31,6 @@ const Header = () => {
             request(`https://hospis.dev.itfabers.com/api/settings`)
                 .then((settings) => {
                     setSettings(settings.data[0]);
-                    // console.log(settings);
                 })
                 .catch(error => {
                     console.log(error);

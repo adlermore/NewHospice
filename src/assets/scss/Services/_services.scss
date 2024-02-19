@@ -54,6 +54,18 @@
             background: transparent;
             color: $black;
             transition: 0.3s;
+            display: flex;
+            align-items: center;
+            &.loadding {
+                .spinner-border{
+                    opacity: 1;
+                }
+            }
+            .spinner-border{
+                transition: 0.5s;
+                opacity: 0;
+                margin-left: 15px;
+            }
             &:hover{
                 opacity: 1;
                 color: $siteColor;
