@@ -116,7 +116,7 @@ const HomePage = () => {
                         <div className="team_list">
                             {homeData.OurTeam.Members.map((members, index) => (
                                 <div key={index} className="team_block">
-                                    <Link to={`team/team${index}`}>
+                                    <Link to={`team/team${members.ID}`}>
                                         <span className='team_img'>
                                             <img src={members.Image} alt='teamImg' />
                                         </span>

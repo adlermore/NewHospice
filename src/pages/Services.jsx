@@ -87,12 +87,10 @@ const Services = () => {
     }, [navigate, servicePage])
 
     const moreDataPush = () => {
-        console.log('minchev functiona ' , servicesPages);
         moreBtnRef.current.classList.add('loadding');
         if(servicesPages[0] !== undefined ){
             request(`https://hospis.dev.itfabers.com/api/services/${servicesPages[0]}`)
             .then((nextServices) => {
-                console.log(servicesData.data.concat(nextServices.data.data));
                 setServicestData({...servicesData ,
                     data : servicesData.data.concat(nextServices.data.data)
                 });
