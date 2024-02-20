@@ -1,10 +1,6 @@
 import React , { useEffect, useState, useRef } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/OurTeam/_ourTeam.scss';
-import team1 from '../assets/img/teamImg1.png';
-import team2 from '../assets/img/teamImg2.png';
-import team3 from '../assets/img/teamImg3.png';
-import team4 from '../assets/img/teamImg4.png';
 import { useNavigate } from 'react-router-dom';
 import PageLoader from '../components/PageLoader/PageLoader';
 import { motion } from "framer-motion";

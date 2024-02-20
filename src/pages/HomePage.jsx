@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import '../assets/scss/HomePage/_homePage.scss';
 import SupportChat from '../components/SupportChat/SupportChat';
 import { Link } from 'react-router-dom';
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MapContainer from '../components/MapContainer/MapContainer';
@@ -28,39 +28,39 @@ const HomePage = () => {
             })
     }, [])
 
-    const settingsSlider = {
-        dots: false,
-        infinite: true,
-        centerPadding: "35px",
-        speed: 500,
-        autoplay: true,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        arrows: false,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    infinite: false,
-                    slidesToShow: 1,
-                    initialSlide: 1,
-                    slidesToScroll: 1,
-                }
-            }
-        ]
-    };
+    // const settingsSlider = {
+    //     dots: false,
+    //     infinite: true,
+    //     centerPadding: "35px",
+    //     speed: 500,
+    //     autoplay: true,
+    //     slidesToShow: 4,
+    //     slidesToScroll: 1,
+    //     arrows: false,
+    //     responsive: [
+    //         {
+    //             breakpoint: 1024,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 600,
+    //             settings: {
+    //                 slidesToShow: 2,
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 480,
+    //             settings: {
+    //                 infinite: false,
+    //                 slidesToShow: 1,
+    //                 initialSlide: 1,
+    //                 slidesToScroll: 1,
+    //             }
+    //         }
+    //     ]
+    // };
 
     if (!isLoadSuccess) {
         return <PageLoader />
@@ -129,7 +129,7 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="team_slider">
+                {/* <div className="team_slider">
                     <div className="custom_container">
                         <div className="slider_inner">
                             <Slider {...settingsSlider}>
@@ -146,9 +146,9 @@ const HomePage = () => {
                             </Slider>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
-            <div className="goals_section  inlineImg_section second_bg">
+            <div className="goals_section  inlineImg_section">
                 <div className="inlineImg_container">
                     <div className="image_block absoluite_image">
                         <img src={homeData.DifferentInfo.Image} alt='goalImg' />
@@ -190,7 +190,7 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="coverBottom_section">
-                <div className="cover_image"><img src={homeData.FooterImage} alt='coverImg' /></div>
+                <div className="cover_image"><img src={homeData.FooterImage} alt='coverImg' />{homeData.FooterImage}</div>
             </div>
             <div className="location_section">
                 <MapContainer array={[homeData.HomeMap]} isAdding={true} error={false} />

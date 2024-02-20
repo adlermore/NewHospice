@@ -57,7 +57,7 @@ const Footer = () => {
                         </li>
                         <li>
                             <span className="menu_title">Contacts</span>
-                            <a href={`tel:+1${settings && settings.phone}`} className="menu_link icon-phone">+1{settings && settings.phone}</a>
+                            <a href={`tel:+1${settings && settings.phone}`} className="menu_link phone_link icon-phone">+1{settings && settings.phone}</a>
                             <a href={`mailto:${settings && settings.email}`} className="menu_link "><LuGlobe />{settings && settings.email}</a>
                             <a target='blank' href="https://www.google.com/maps/place/12444+Victory+Blvd+%23408,+North+Hollywood,+CA+91606,+%D0%A1%D0%A8%D0%90/@34.186439,-118.404412,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2967caa5b85c5:0x93f08d41dd656aac!8m2!3d34.186439!4d-118.404412!16s%2Fg%2F11v0j_7_xm?entry=ttu" className="menu_link icon-location">{settings && settings.location}</a>
                         </li>
@@ -76,7 +76,7 @@ const Footer = () => {
             <div className="footer_copytoght">
                 <div className="custom_container">
                     <div className="coputoght_inner">
-                        Copyright 2024 / Website by <a target="blank" href="https://lightdesignstudio.am/">Light Design Studio</a>
+                        Copyright 2024 / Website by <a target="blank" href="https://lightdesignstudio.am/">Light Design Studio</a> & <a target="blank" href="https://itfabers.com/">ItFabers</a>
                     </div>
                 </div>
             </div>

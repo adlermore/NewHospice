@@ -1,13 +1,14 @@
 import React, { memo } from "react";
 import '../../assets/scss/SupportChat/_supportChat.scss';
+import { Link } from "react-router-dom";
 
 const SupportChat = () => {
     return (
-        <a href="/#" className="btn-call">
+        <Link to='/contactUs/' className="btn-call">
             <div className="btn-call__ico">
-                Support chat
+                Send Message
             </div>
-        </a>
+        </Link>
     )
 }
 

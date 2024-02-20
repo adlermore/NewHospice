@@ -11,13 +11,12 @@ const Services = () => {
 
     const isMounted = useRef(true);
     const moreBtnRef = useRef(null);
-
     const navigate = useNavigate();
 
     const [servicesData, setServicestData] = useState(null);
     const [isLoadSuccess, setIsLoadSuccess] = useState(false);
     const [servicePage, setServicePage] = useState(null);
-    const [servicesPages , setServicesPages] = useState([]);
+    const [servicesPages, setServicesPages] = useState([]);
 
     const handleClickSchedul = (e) => {
         e.preventDefault();
@@ -26,8 +25,8 @@ const Services = () => {
 
     const handleDescDropdown = (e, serviceId) => {
         e.preventDefault();
+        e.target.classList.add('hide')
         const descriptionBlock = document.getElementById(serviceId);
-        console.log(e.target.classList.add('hide'));
         descriptionBlock.classList.add('active');
     }
 
@@ -59,8 +58,8 @@ const Services = () => {
                     .then((services) => {
                         setServicestData(services.data);
                         const pagesArr = [];
-                        for(let i=1; i<= (Math.ceil(services.data.total/4) + 1); i++){
-                            if(i!==Math.ceil(currentId / 4)){
+                        for (let i = 1; i <= (Math.ceil(services.data.total / 4) + 1); i++) {
+                            if (i !== Math.ceil(currentId / 4)) {
                                 pagesArr.push(i);
                             }
                         }
@@ -88,22 +87,23 @@ const Services = () => {
 
     const moreDataPush = () => {
         moreBtnRef.current.classList.add('loadding');
-        if(servicesPages[0] !== undefined ){
+        if (servicesPages[0] !== undefined) {
             request(`https://hospis.dev.itfabers.com/api/services/${servicesPages[0]}`)
-            .then((nextServices) => {
-                setServicestData({...servicesData ,
-                    data : servicesData.data.concat(nextServices.data.data)
-                });
-                const removeArray = servicesPages.slice(1);
-                setServicesPages(removeArray);
-                moreBtnRef.current.classList.remove('loadding');
-                if(servicesPages.length <3){
-                    document.getElementById('moreServicesBtn').style.display = 'none'
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
+                .then((nextServices) => {
+                    setServicestData({
+                        ...servicesData,
+                        data: servicesData.data.concat(nextServices.data.data)
+                    });
+                    const removeArray = servicesPages.slice(1);
+                    setServicesPages(removeArray);
+                    moreBtnRef.current.classList.remove('loadding');
+                    if (servicesPages.length < 3) {
+                        document.getElementById('moreServicesBtn').style.display = 'none'
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         }
     }
 
@@ -131,14 +131,16 @@ const Services = () => {
                                         <div className="section_title service_title">
                                             {service.title}
                                         </div>
-                                        <div className="section_description" style={{ height: "280px", overflow: "hidden" }} id={service.id} >
-                                            {service.description}
+                                        <div className="description_block" id={service.id} >
+                                            <div className="section_description"  >
+                                                {service.description}
+                                            </div>
                                         </div>
                                         <div className="buttons_line">
-                                            {service.description.length > 300 &&
+                                            {service.description.length > 370 &&
                                                 <a href="/#" onClick={(e) => handleDescDropdown(e, service.id)} className="seeMore">See more{">"} </a>
                                             }
-                                            <a href="/#" onClick={(e) => handleClickSchedul(e)} className="site_btn">Schedul</a>
+                                            <a href="/#" onClick={(e) => handleClickSchedul(e)} className="site_btn">Schedule</a>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +150,7 @@ const Services = () => {
                 <div className="button_block" >
                     <button className="more_services" ref={moreBtnRef} onClick={() => moreDataPush()} id='moreServicesBtn'>
                         More services {'>'}
-                        <Spinner animation="border" variant='info'/>
+                        <Spinner animation="border" variant='info' />
                     </button>
                 </div>
             </div>

@@ -1,25 +1,74 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/ContactUs/_contactUs.scss';
 import serviveInner1 from '../assets/img/contactsCover.png';
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
+import request from '../components/Request/request';
+import Placeholder from 'react-bootstrap/Placeholder';
 
 const ContactUs = () => {
     
     const success = useRef(null);
+    const isMounted = useRef(true);
+    const [contactData, setContactData] = useState({})
     const [dataSend, setDataSend] = useState(false);
     const { register, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
         shouldFocusError: false,
     });
 
-    const onSubmit = (data) => {
-        setDataSend(true);
-        success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => {
-            setDataSend(false);
-        }, 4000);
+    const onSubmit = async (data) => {
+        try {
+            const formData = new FormData();
+            formData.append('user_email', data.user_email);
+            formData.append('user_name', data.user_name);
+            formData.append('user_surname', data.user_surname);
+            formData.append('user_description', data.user_description);
+            // formData.append('pdfFile', data.pdfFile);
+    
+            const response = await fetch('https://hospis.dev.itfabers.com/api/new-contact', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            if (response.ok) {
+                console.log('Form submitted successfully');
+                setDataSend(true);
+                // success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                window.scrollTo(0, document.getElementById('success').offsetTop - 200);
+                setTimeout(() => {
+                    setDataSend(false);
+                }, 8000);
+            } else {
+                console.error('Error submitting form:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
     };
+
+    useEffect(() => {
+        const messageINput = document.getElementById('messageInput');
+        if (messageINput) {
+            messageINput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            messageINput.focus();
+        }
+        if (isMounted.current) {
+            request(`https://hospis.dev.itfabers.com/api/page/contact-us`)
+                .then((joinUsData) => {
+                    setContactData(joinUsData.data.page_content);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+
+        return () => {
+            isMounted.current = false;
+        };
+
+    }, [contactData])
+
 
     return (
         <motion.div className="contact_wrapper"
@@ -28,15 +77,34 @@ const ContactUs = () => {
             exit={{ opacity: 0 }}
         >
             <div className="custom_container">
-                <div className="section_title center_mode">Contact us</div>
-                <div className="section_description center_mode">
-                    New Hope Hospice is always happy to help, no matter the time of day!
-                    We're not just available; we're eager to make sure you and your loved ones get the kind
-                    treatment you deserve. Connect with us and let the support flow
-                </div>
+            {contactData.Title ?
+                    <>
+                        <div className="section_title center_mode">{contactData.Title}</div>
+                        <div className="section_description center_mode">
+                            {contactData.Description}
+                        </div>
+                    </>
+                    :
+                    <>
+                        <Placeholder className="text-center" as="p" animation="glow">
+                            <Placeholder xs={4} />
+                            <br/>
+                            <br/>
+                            <Placeholder xs={2} />{' '}
+                            <Placeholder xs={4} />{' '}
+                            <Placeholder xs={5} />{' '}
+                            <Placeholder xs={4} />{' '} 
+                            <Placeholder xs={4} />{' '}
+                            <Placeholder xs={3} />{' '}
+                            <Placeholder xs={2} />{' '}
+                            <Placeholder xs={4} />{' '}
+                            <Placeholder xs={5} />{' '}
+                        </Placeholder>
+                    </>
+                }
             </div>
-            <div className="form_section" style={{ background: `url(${serviveInner1})` }}>
-                <div className={dataSend ? `success_message view` : `success_message`} ref={success}>Success ! ✔</div>
+            <div className="form_section" style={{ background: `url(${serviveInner1})` }}  ref={success}>
+                <div className={dataSend ? `success_message view` : `success_message`}  id="success">Success ! ✔</div>
                 <div className="custom_container">
                     <div className="form_container">
                         <div className="form_inner">
@@ -57,14 +125,9 @@ const ContactUs = () => {
                                     <input placeholder="Surname*" className="form-control" name="user_surname" {...register("user_surname", { required: true })} />
                                     <p className="error-info" >This field is required</p>
                                 </div>
-                                <div className={errors?.user_position?.type === "required" ? "form-block  has-error" : "form-block"}  >
-                                    <div className='block_label'>Position</div>
-                                    <input placeholder="Position*" className="form-control" name="user_position" {...register("user_position", { required: true })} />
-                                    <p className="error-info" >This field is required</p>
-                                </div>
-                                <div className={errors?.user_description?.type === "required" ? "form-block  has-error" : "form-block"}  >
+                                <div className={errors?.user_description?.type === "required" ? "form-block  has-error" : "form-block"} >
                                     <div className='block_label'>Description</div>
-                                    <input placeholder="Description*" className="form-control" name="user_description" {...register("user_description", { required: true })} />
+                                    <input placeholder="Description*" className="form-control"  id="messageInput" name="user_description" {...register("user_description", { required: true })} />
                                     <p className="error-info" >This field is required</p>
                                 </div>
                                 <div className="bottom_description">
