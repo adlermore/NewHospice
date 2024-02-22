@@ -6,10 +6,11 @@ const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
 
   const [selected, setSelected] = useState({});
   const [currentPosition, setCurrentPosition] = useState({});
-  const defaultCenter = {
-    lat: 34.055462,
-    lng:  -118.258283
-  }
+  
+  // const defaultCenter = {
+  //   lat: 34.055462,
+  //   lng:  -118.258283
+  // }
 
   const onSelect = item => {
     setSelected(item);
@@ -198,7 +199,7 @@ const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
-  },[])
+  },[currentPosition])
 
   const { isLoaded } = useJsApiLoader({ googleMapsApiKey });
   if (!isLoaded) {
@@ -214,7 +215,7 @@ const  googleMapsApiKey='AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
           draggable={true}
           options={mapOptions}
           zoom={15}
-          center={currentPosition.lat ? currentPosition : defaultCenter}
+          center={array[0].Location}
         >
           {
             array ?

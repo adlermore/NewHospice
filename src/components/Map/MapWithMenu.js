@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleMap, useJsApiLoader, Polygon } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Circle } from '@react-google-maps/api';
 import { Scrollbar } from 'react-scrollbars-custom';
 
 const MapWithMenu = ({ geojsonData }) => {
@@ -9,22 +9,35 @@ const MapWithMenu = ({ geojsonData }) => {
   const mapRef = useRef(null);
   const [polygons, setPolygons] = useState([]);
   const [cordinatCenter, setCordinatCenter] = useState({ lat: 34.0522, lng: -118.2437 });
+  const [locationZoom , setlocationZoom] = useState(13);
 
   const handleRegionClick = (regionName, coordinates) => {
-    const newPolygon = {
+    const newCircle = {
       id: regionName,
-      coordinates: coordinates,
+      center: coordinates[0],
+      radius: 5000,
       options: {
         fillOpacity: 0.7,
-        fillColor : '#3bb8cf',
+        fillColor: '#3bb8cf',
         strokeColor: '#00525D',
         strokeOpacity: 0.7,
         strokeWeight: 2,
       },
     };
-    setPolygons([newPolygon]);
-    setCordinatCenter(coordinates[0])
-    // console.log(coordinates[0]);
+    setPolygons([newCircle]);
+    setCordinatCenter(coordinates[0]);
+
+    // Set the map zoom and center based on the clicked circle
+    const bounds = new window.google.maps.LatLngBounds(coordinates[0]);
+    // coordinates.forEach(({ lat, lng }) =>
+    //   bounds.extend(new window.google.maps.LatLng(lat, lng))
+    // );
+    mapRef.current.fitBounds(bounds);
+    setTimeout(() => {
+      setlocationZoom(12);
+    }, 500);
+    // setlocationZoom(12);
+    mapRef.current.setZoom(12); // Set the desired zoom level (adjust as needed)
   };
 
   const handleMapClick = () => {
@@ -223,20 +236,21 @@ const MapWithMenu = ({ geojsonData }) => {
       <div className="map_container">
         <GoogleMap
           mapContainerStyle={{ height: '100%', width: '100%' }}
-          zoom={12}
+          zoom={locationZoom}
           options={mapOptions}
           center={cordinatCenter}
           onClick={handleMapClick}
+          ref={mapRef}
         >
-          {polygons.map((polygon) => (
-            <Polygon
-              key={polygon.id}
-              path={polygon.coordinates}
-              options={polygon.options}
-              onClick={() => handleRegionClick(polygon.id, polygon.coordinates)}
+          {polygons.map((circle) => (
+            <Circle
+              key={circle.id}
+              center={circle.center}
+              radius={circle.radius}
+              options={circle.options}
+              onClick={() => handleRegionClick(circle.id, [circle.center])}
             />
           ))}
-
         </GoogleMap>
       </div>
       <div className="regions_cntainer">
