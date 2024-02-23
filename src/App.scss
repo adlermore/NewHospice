@@ -366,7 +366,6 @@ a {
   }
 }
 
-
 .page_section {
   padding: 50px 0;
 }
@@ -408,6 +407,38 @@ a {
     }
   }
 }
+
+
+.form_sellect{
+  position: relative;
+  margin-bottom: 20px;
+}
+.css-13cymwt-control,
+.css-t3ipsp-control {
+    height: 65px;
+    // border: 2px solid #1F9BF2;
+    border: 1px solid #3BB8CF !important; 
+    border-radius: 10px;
+    padding: 0 15px;
+    font-size: 17px;
+    transition: 0.3s;
+    background: rgba($secondColor , 0.10) !important;
+    line-height: 20px;
+    color: #B3B3B3;
+    >div {
+        height: 100% !important;
+        display: flex;
+        align-items: center;
+        flex-wrap: unset !important;
+    }
+    .css-qbdosj-Input input {
+      border: none  !important;
+    }    
+}
+.sellect_section {
+  position: relative;
+}
+
 
 @media (max-width: 1440px) {
 

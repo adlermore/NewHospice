@@ -144,7 +144,7 @@ const Header = () => {
                         <Link to="/" className="main_logo" >
                             <img src={imglogo} alt="imgLogo" />
                         </Link>
-                        <Link to='physicians/' className="site_btn book_btn">Physicians Referral</Link>
+                        <Link to='physicians/' className="site_btn book_btn">Physician Referral</Link>
                     </div>
                 </div>
             </div>
@@ -158,10 +158,9 @@ const Header = () => {
                                     <div className="main_menu">
                                         <nav className="page-nav" data-uk-navbar>
                                             <ul className="uk-navbar-nav">
-                                                <li><Link to="aboutUs/">About us</Link></li>
                                                 <li className="submenu">
                                                     <span className="link-wrapper">
-                                                        <Link to="services/all" > Service</Link>
+                                                        <Link to="services/all" >Services</Link>
                                                         <BiPlus className="inner_link" onClick={subMenuOpen} />
                                                     </span>
                                                     <div className="uk-navbar-dropdown ">
@@ -176,15 +175,16 @@ const Header = () => {
                                                         </Scrollbar>
                                                     </div>
                                                 </li>
-                                                <li><Link to="joinUs/">Join our team</Link></li>
                                                 <li><Link to="serviceAreas/">Service Areas</Link></li>
+                                                <li><Link to="joinUs/">Join Our Team</Link></li>
                                                 <li><Link to="blog/">Blog</Link></li>
-                                                <li><Link to="contactUs/">Contact</Link></li>
+                                                <li><Link to="aboutUs/">FAQs</Link></li>
+                                                <li><Link to="contactUs/">Contact Us</Link></li>
                                             </ul>
                                         </nav>
                                     </div>
                                 </div>
-                                <Link to='physicians/' className="site_btn book_btn">Physicians Referral</Link>
+                                <Link to='physicians/' className="site_btn book_btn">Physician Referral</Link>
                             </div>
                         </div>
                         <Hamburger toggled={isOpen} toggle={menuOpen} />

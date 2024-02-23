@@ -6,8 +6,17 @@ import { useForm, Controller } from "react-hook-form";
 import { motion } from "framer-motion";
 import request from '../components/Request/request';
 import Placeholder from 'react-bootstrap/Placeholder';
+import Select from 'react-select';
+
+const options = [
+    { value: 'armenia', label: 'Armenia' },
+    { value: 'russia', label: 'Russia' },
+    { value: 'us', label: 'USA' },
+];
+
 
 const JoinUs = () => {
+
     const success = useRef(null);
     const isMounted = useRef(true);
     const [joinData, setJoinData] = useState({})
@@ -22,9 +31,9 @@ const JoinUs = () => {
             const formData = new FormData();
             formData.append('user_email', data.user_email);
             formData.append('user_name', data.user_name);
-            formData.append('user_surname', data.user_surname);
-            formData.append('user_position', data.user_position);
-            formData.append('user_description', data.user_description);
+            // formData.append('user_surname', data.user_surname);
+            // formData.append('user_position', data.user_position);
+            // formData.append('user_description', data.user_description);
             formData.append('pdfFile', data.pdfFile);
     
             const response = await fetch('https://hospis.dev.itfabers.com/api/new-member', {
@@ -103,34 +112,57 @@ const JoinUs = () => {
                     <div className="form_container">
                         <div className="form_inner">
                             <form onSubmit={handleSubmitForm1(onSubmit)} encType="multipart/form-data">
+                                
+                                <div className={errors?.user_name?.type === "required" ? "form-block  has-error" : "form-block"}  >
+                                    <div className='block_label'>Full Name</div>
+                                    <input placeholder="Full Name*" className="form-control" name="user_name" {...register("user_name", { required: true })} />
+                                    <p className="error-info" >This field is required</p>
+                                </div>
+
+                                <div className={errors?.Country?.type === "required" ? "form_block sellect_section has-error" : "form_block"}  >
+                                <div className='block_label'>Position*</div>
+                                <Controller
+                                    name="Country"
+                                    control={control}
+                                    rules={{ required: 'Please select a Country' }}
+                                    render={({ field }) => (
+                                        <Select
+                                            className="form_sellect"
+                                            options={options}
+                                            placeholder="Select a Country"
+                                            {...field}
+                                        />
+                                    )}
+                                />
+                                <p className="error-info" >This field is required</p>
+                            </div>
                                 <div className={errors?.user_email?.type === "required" || errors?.user_email?.type === "pattern" ? "mail_inline form-block has-error" : "mail_inline form-block"}  >
                                     <div className='block_label'>Email*</div>
                                     <input placeholder="Email" className="form-control" name="user_email" {...register("user_email", { required: true, pattern: /^\S+@\S+$/i })} />
                                     {errors?.user_email?.type === "pattern" ? <p className="error-info email-info" >invalid Email</p> :
                                         <p className="error-info" >This field is required</p>}
                                 </div>
-                                <div className={errors?.user_name?.type === "required" ? "form-block  has-error" : "form-block"}  >
-                                    <div className='block_label'>Name</div>
-                                    <input placeholder="Name*" className="form-control" name="user_name" {...register("user_name", { required: true })} />
-                                    <p className="error-info" >This field is required</p>
-                                </div>
-                                <div className={errors?.user_surname?.type === "required" ? "form-block  has-error" : "form-block"}  >
+                           
+
+                                {/* <div className={errors?.user_surname?.type === "required" ? "form-block  has-error" : "form-block"}  >
                                     <div className='block_label'>Surname</div>
                                     <input placeholder="Surname*" className="form-control" name="user_surname" {...register("user_surname", { required: true })} />
                                     <p className="error-info" >This field is required</p>
-                                </div>
-                                <div className={errors?.user_position?.type === "required" ? "form-block  has-error" : "form-block"}  >
+                                </div> */}
+                                {/* <div className={errors?.user_position?.type === "required" ? "form-block  has-error" : "form-block"}  >
                                     <div className='block_label'>Position</div>
                                     <input placeholder="Position*" className="form-control" name="user_position" {...register("user_position", { required: true })} />
                                     <p className="error-info" >This field is required</p>
-                                </div>
-                                <div className={errors?.user_description?.type === "required" ? "form-block  has-error" : "form-block"}  >
+                                </div> */}
+                                {/* <div className={errors?.user_description?.type === "required" ? "form-block  has-error" : "form-block"}  >
                                     <div className='block_label'>Description</div>
                                     <input placeholder="Description*" className="form-control" name="user_description" {...register("user_description", { required: false })} />
                                     <p className="error-info" >This field is required</p>
-                                </div>
+                                </div> */}
+
+
                                 <div className="bottom_description">
-                                    Enter your request details. A member of our support team will respond to you as soon as possible.
+                                    Please upload your resume below. A member of our Human Resources department will reach out to you shortly
                                 </div>
                                 <div className="bttom_inline">
                                     <div className="attach_block">

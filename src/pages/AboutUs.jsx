@@ -60,7 +60,7 @@ const AboutUs = () => {
             exit={{ opacity: 0 }}
         >
             <div className="custom_container">
-                <div className="section_title center_mode">What is hospice</div>
+                <div className="section_title center_mode">Frequently Asked Questions</div>
             </div>
             <div className="cover_Image" style={{ backgroundImage: `url(${AboutCover})` }} />
             <div className="accordion_container">
@@ -80,22 +80,22 @@ const AboutUs = () => {
                 <div className="custom_container">
                     <div className="form_container">
                         <div className="form_inner_title">
-                            If you have any question
+                        Contact Us
                         </div>
                         <div className="bottom_description">
-                            You can ask anything you want to know about hospice
+                            You can ask anything you want…
                         </div>
                         <div className="form_inner">
                             <form onSubmit={handleSubmitForm1(onSubmit)}>
                                 <div className={errors?.question?.type === "required" ? "form-block  has-error" : "form-block"}  >
 
-                                    <input placeholder="Enter here*" className="form-control" name="question" {...register("question", { required: true })} />
+                                    <input placeholder="Enter question, concern, or inquiry here*" className="form-control" name="question" {...register("question", { required: true })} />
                                     <p className="error-info" >This field is required</p>
                                 </div>
                                 <div className="bttom_inline">
                                     <div className={errors?.user_email?.type === "required" || errors?.user_email?.type === "pattern" ? "mail_inline form-block has-error" : "mail_inline form-block"}  >
 
-                                        <input placeholder="Write your Email for getting back to you " className="form-control" name="user_email" {...register("user_email", { required: true, pattern: /^\S+@\S+$/i })} />
+                                        <input placeholder="Provide the best email for a response*" className="form-control" name="user_email" {...register("user_email", { required: true, pattern: /^\S+@\S+$/i })} />
                                         {errors?.user_email?.type === "pattern" ? <p className="error-info email-info" >invalid Email</p> :
                                             <p className="error-info" >This field is required</p>}
                                     </div>
