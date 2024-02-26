@@ -1,24 +1,20 @@
-import React , { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/OurTeam/_ourTeam.scss';
 import { useNavigate } from 'react-router-dom';
 import PageLoader from '../components/PageLoader/PageLoader';
 import { motion } from "framer-motion";
 import request from "../components/Request/request";
-import { Spinner } from 'react-bootstrap';
+// import { Spinner } from 'react-bootstrap';
 
 
 const OurTeam = () => {
 
     const isMounted = useRef(true);
-    const moreBtnRef = useRef(null);
-
     const navigate = useNavigate();
-    
     const [servicesData, setServicestData] = useState(null);
     const [isLoadSuccess, setIsLoadSuccess] = useState(false);
     const [servicePage, setServicePage] = useState(null);
-    const [servicesPages , setServicesPages] = useState([]);
 
     useEffect(() => {
         const path = window.location.href;
@@ -39,20 +35,10 @@ const OurTeam = () => {
             setIsLoadSuccess(false);
             if (isMounted.current) {
                 let servicesLink;
-                servicesLink = `https://hospis.dev.itfabers.com/api/team/${Math.ceil(currentId / 4)}`
-            
-                console.log(Math.ceil(currentId / 4));
-                console.log(currentId);
+                servicesLink = `https://hospis.dev.itfabers.com/api/team/1`
                 request(servicesLink)
                     .then((services) => {
                         setServicestData(services.data);
-                        const pagesArr = [];
-                        for(let i=1; i<= (Math.ceil(services.data.total/4) + 1); i++){
-                            if(i!==Math.ceil(currentId / 4)){
-                                pagesArr.push(i);
-                            }
-                        }
-                        setServicesPages(pagesArr)
                         setTimeout(() => {
                             element = document.getElementById(desiredPart);
                             if (element) {
@@ -70,30 +56,6 @@ const OurTeam = () => {
         }
     }, [navigate, servicePage])
 
-
-    const moreDataPush = () => {
-        console.log('minchev functiona ' , servicesPages);
-        moreBtnRef.current.classList.add('loadding');
-        if(servicesPages[0] !== undefined ){
-            request(`https://hospis.dev.itfabers.com/api/team/${servicesPages[0]}`)
-            .then((nextServices) => {
-                console.log(servicesData.data.concat(nextServices.data.data));
-                setServicestData({...servicesData ,
-                    data : servicesData.data.concat(nextServices.data.data)
-                });
-                const removeArray = servicesPages.slice(1);
-                setServicesPages(removeArray);
-                moreBtnRef.current.classList.remove('loadding');
-                if(servicesPages.length <3){
-                    document.getElementById('moreServicesBtn').style.display = 'none'
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
-        }
-    }
-
     if (!isLoadSuccess) {
         return <PageLoader />
     }
@@ -108,29 +70,22 @@ const OurTeam = () => {
                 <div className="section_title center_mode">Our Team</div>
             </div>
             <div className="team_list page_section ">
-            {servicesData &&
+                {servicesData &&
                     servicesData.data.map((team) => (
-                    <div key={team.id} className="team_block second_bg" id={`team${team.id}`}>
-                        <div className="custom_container">
-                            <div className="image_block" style={{ backgroundImage: `url(${team.image})` }}></div>
-                            <div className="team_info">
-                                <div className="section_title service_title">
-                                    {team.title}
-                                </div>
-                                <div className="section_description">
-                                    {team.description}
+                        <div key={team.id} className="team_block second_bg" id={`team${team.id}`}>
+                            <div className="custom_container">
+                                <div className="image_block" style={{ backgroundImage: `url(${team.image})` }}></div>
+                                <div className="team_info">
+                                    <div className="section_title service_title">
+                                        {team.position}
+                                    </div>
+                                    <div className="section_description">
+                                        {team.description}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-            ))}
-               
-                <div className="button_block">
-                    <button className="more_services" ref={moreBtnRef} onClick={() => moreDataPush()} id='moreServicesBtn'>
-                        More services {'>'}
-                        <Spinner animation="border" variant='info'/>
-                    </button>
-                </div>
+                    ))}
             </div>
             <SupportChat />
         </motion.div>
