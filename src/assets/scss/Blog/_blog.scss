@@ -4,6 +4,7 @@
 .blog_wrapper{
     position: relative;
     padding-top: 55px;
+    padding-bottom: 45px;
     .blog_list{
         margin: 55px 0;
     }
@@ -12,7 +13,12 @@
         gap: 80px;
         justify-content: space-between;
         margin-bottom: 45px;
-
+    }
+    .pagination_section{
+        padding-top: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .image_block{
         max-width: 400px;
@@ -22,11 +28,25 @@
             height: auto;
         }
     }
+
+    .active>.page-link, .page-link.active {
+        z-index: 3;
+        color: white!important;
+        background-color: rgb(9, 128, 152) !important;
+        border-color: rgb(9, 128, 152) !important;
+    }
+    .blog_info{
+        flex: 1;
+    }
     .blog_title{
         font-size: 24px;
         line-height: 21px;
         color: $black;
         font-family: $semiBold;
+        &:hover{
+            opacity: 1 !important;
+            color: #098098;
+        }
     }
     .blog_description{
         margin-top: 30px;

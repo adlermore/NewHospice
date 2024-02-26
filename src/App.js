@@ -16,6 +16,7 @@ import { AnimatePresence } from "framer-motion";
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import './App.scss';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import BlogInner from "./pages/BlogInner";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="aboutUs/" element={<AboutUs />} />
           <Route path="contactUs/" element={<ContactUs />} />
           <Route path="blog/" element={<Blog />} />
+          <Route path="blogInner/:id" element={<BlogInner />} />
           <Route path="physicians/" element={<Physicians />} />
           <Route path="serviceAreas/" element={<ServicesArea />} />
         </Routes>
