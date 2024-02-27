@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import PageLoader from '../components/PageLoader/PageLoader';
 import { motion } from "framer-motion";
 import request from "../components/Request/request";
-// import { Spinner } from 'react-bootstrap';
 
 
 const OurTeam = () => {
@@ -24,7 +23,6 @@ const OurTeam = () => {
         let element;
         setServicePage(Math.ceil(currentId / 4));
         element = document.getElementById(desiredPart);
-
         if (element) {
             if (desiredPart === 'all') {
                 document.body.scrollIntoView({ behavior: 'smooth' });

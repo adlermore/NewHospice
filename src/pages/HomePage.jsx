@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import '../assets/scss/HomePage/_homePage.scss';
 import SupportChat from '../components/SupportChat/SupportChat';
 import { Link } from 'react-router-dom';
-// import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MapContainer from '../components/MapContainer/MapContainer';
@@ -27,40 +26,6 @@ const HomePage = () => {
                 console.log(error);
             })
     }, [])
-
-    // const settingsSlider = {
-    //     dots: false,
-    //     infinite: true,
-    //     centerPadding: "35px",
-    //     speed: 500,
-    //     autoplay: true,
-    //     slidesToShow: 4,
-    //     slidesToScroll: 1,
-    //     arrows: false,
-    //     responsive: [
-    //         {
-    //             breakpoint: 1024,
-    //             settings: {
-    //                 slidesToShow: 3,
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 600,
-    //             settings: {
-    //                 slidesToShow: 2,
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 480,
-    //             settings: {
-    //                 infinite: false,
-    //                 slidesToShow: 1,
-    //                 initialSlide: 1,
-    //                 slidesToScroll: 1,
-    //             }
-    //         }
-    //     ]
-    // };
 
     if (!isLoadSuccess) {
         return <PageLoader />
@@ -129,24 +94,6 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-                {/* <div className="team_slider">
-                    <div className="custom_container">
-                        <div className="slider_inner">
-                            <Slider {...settingsSlider}>
-                            {homeData.OurTeam.OtherMembers.map((members, index) => (
-                                <div key={index} className='team_slide'>
-                                 <div className="slide_content">
-                                     <div className="slider_image">
-                                         <img src={members.Image} alt="teamImg" />
-                                     </div>
-                                     <div className="person_possiton">{members.Position}</div>
-                                 </div>
-                             </div>
-                            ))}
-                            </Slider>
-                        </div>
-                    </div>
-                </div> */}
             </div>
             <div className="goals_section  inlineImg_section">
                 <div className="inlineImg_container">

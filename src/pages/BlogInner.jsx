@@ -8,7 +8,6 @@ import blogInnerImg from '../assets/img/bloginnerimg.png';
 import shareVector from '../assets/img/Vectorshare.png'
 import { FacebookShareButton  ,LinkedinShareButton } from 'react-share';
 
-
 const BlogInner = () => {
 
     const [blogInnerData, setBlogInnerData] = useState({});
@@ -27,10 +26,10 @@ const BlogInner = () => {
             })
     },[])
 
-    console.log(blogInnerData);
     if (!isLoadSuccess) {
         return <PageLoader />
     }
+    console.log(blogInnerData);
 
     return (
         <motion.div className="blog_inner"
@@ -76,11 +75,8 @@ const BlogInner = () => {
                         {/* <a target='blank' href="https://www.instagram.com/newhopehospicecare/?igsh=NGVhN2U2NjQ0Yg%3D%3D&utm_source=qr" className="icon-insta"> </a> */}
                         <LinkedinShareButton url='http://localhost:3000/blogInner/1' >
                         <a target='blank' href='/#' className="icon-linkedin"> </a>
-
                         </LinkedinShareButton>
-                     
                     </div>
-                    
                     </div>
                 </div>
             </div>

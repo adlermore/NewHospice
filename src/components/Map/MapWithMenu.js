@@ -11,11 +11,11 @@ const MapWithMenu = ({ geojsonData }) => {
   const [cordinatCenter, setCordinatCenter] = useState({ lat: 34.0522, lng: -118.2437 });
   const [locationZoom , setlocationZoom] = useState(13);
 
-  const handleRegionClick = (regionName, coordinates) => {
+  const handleRegionClick = (regionName, coordinates , regionRadius) => {
     const newCircle = {
       id: regionName,
-      center: coordinates[0],
-      radius: 5000,
+      center: coordinates,
+      radius: regionRadius,
       options: {
         fillOpacity: 0.7,
         fillColor: '#3bb8cf',
@@ -25,19 +25,19 @@ const MapWithMenu = ({ geojsonData }) => {
       },
     };
     setPolygons([newCircle]);
-    setCordinatCenter(coordinates[0]);
-
+    setCordinatCenter(coordinates);
+    console.log(coordinates);
     // Set the map zoom and center based on the clicked circle
-    const bounds = new window.google.maps.LatLngBounds(coordinates[0]);
+    // const bounds = new window.google.maps.LatLngBounds(coordinates);
     // coordinates.forEach(({ lat, lng }) =>
     //   bounds.extend(new window.google.maps.LatLng(lat, lng))
     // );
-    mapRef.current.fitBounds(bounds);
+    // mapRef.current.fitBounds(bounds);
     setTimeout(() => {
-      setlocationZoom(12);
-    }, 500);
-    // setlocationZoom(12);
-    mapRef.current.setZoom(12); // Set the desired zoom level (adjust as needed)
+      setlocationZoom(regionRadius/2000);
+    }, 100);
+    // setlocationZoom(regionRadius/1000);
+    // mapRef.current.setZoom(regionRadius/500); 
   };
 
   const handleMapClick = () => {
@@ -230,7 +230,7 @@ const MapWithMenu = ({ geojsonData }) => {
     return null;
   }
 
-
+console.log(geojsonData);
   return (
     <div className="map_container">
       <div className="map_container">
@@ -257,9 +257,11 @@ const MapWithMenu = ({ geojsonData }) => {
         <div className="regions_list">
           <Scrollbar style={{ width: 'auto', height: 'auto' }}>
             <div className="region_block">
-              {geojsonData.features.map((feature) => {
-                const regionName = feature.properties.name;
-                const regionCoordinates = feature.geometry.coordinates[0][0].map(([lng, lat]) => ({ lat, lng }));
+              {geojsonData.locationCircle.map((feature) => {
+                const regionName = feature.regionName;
+                const regionRadius = feature.radius;
+                // const regionCoordinates = feature.coordinates[0][0].map(([lng, lat]) => ({ lat, lng }));
+                const regionCoordinates = feature.location;
                 return (
                   <a
                     key={regionName}
@@ -267,7 +269,7 @@ const MapWithMenu = ({ geojsonData }) => {
                     className={`region_link ${selectedRegion && selectedRegion.id === regionName ? 'selected' : ''}`}
                     onClick={(e) => {
                       e.preventDefault();
-                      handleRegionClick(regionName, regionCoordinates);
+                      handleRegionClick(regionName, regionCoordinates, regionRadius );
                     }}
                   >
                     {regionName}

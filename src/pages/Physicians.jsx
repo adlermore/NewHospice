@@ -1,28 +1,80 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SupportChat from '../components/SupportChat/SupportChat';
 import '../assets/scss/Physicians/_physicians.scss';
 import serviveInner1 from '../assets/img/joinTeam.png';
-import referralImg from '../assets/img/referal.png';
 import { useForm, Controller } from "react-hook-form";
 import { motion } from "framer-motion";
+import request from '../components/Request/request';
+import PageLoader from '../components/PageLoader/PageLoader';
 
 const Physicians = () => {
 
     const success = useRef(null);
     const [dataSend, setDataSend] = useState(false);
+    const isMounted = useRef(true);
+    const [referalData, setReferalData] = useState({})
+    const [isLoadSuccess, setLoadSuccess] = useState(false);
 
     const { register, control, handleSubmit: handleSubmitForm1, formState: { errors } } = useForm({
         shouldFocusError: false,
     });
 
-    const onSubmit = (data) => {
-        setDataSend(true);
-        success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => {
-            setDataSend(false);
-        }, 4000);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            request(`https://hospis.dev.itfabers.com/api/page/referral`)
+                .then((referalData) => {
+                    setReferalData(referalData.data.page_content);
+                    setTimeout(() => {
+                        setLoadSuccess(true)
+                    }, 500);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        console.log(referalData);
+
+        return () => {
+            isMounted.current = false;
+        };
+    }, [referalData])
+
+
+
+    const onSubmit = async (data) => {
+        try {
+            const formData = new FormData();
+            formData.append('user_email', data.user_email);
+            formData.append('user_name', data.user_name);
+            formData.append('user_surname', data.user_surname);
+            formData.append('user_position', data.user_position);
+            formData.append('user_description', data.user_description);
+            formData.append('pdfFile', data.pdfFile);
+
+            const response = await fetch('https://hospis.dev.itfabers.com/api/new-referral', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                setDataSend(true);
+                success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                    setDataSend(false);
+                }, 8000);
+            } else {
+                console.error('Error submitting form:', response.statusText);
+            }
+
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
     };
 
+    if (!isLoadSuccess) {
+        return <PageLoader />
+    }
     return (
         <motion.div className="physicians_wrapper"
             initial={{ opacity: 0 }}
@@ -32,29 +84,16 @@ const Physicians = () => {
             <div className="custom_container">
                 <div className="section_title center_mode">Physicians Referral</div>
             </div>
-            <div className="cover_Image" style={{ backgroundImage: `url(${referralImg})` }}>
+            <div className="cover_Image" style={{ backgroundImage: `url(${referalData.Banner.BackgroundImage})` }}>
                 <div className="custom_container">
                     <div className="cover_title">
-                        Improving Patients’ Quality
-                        of Life With Our Hospice
-                        Care Team
+                    {referalData.Banner.Title}
                     </div>
                 </div>
             </div>
             <div className="custom_container">
                 <div className="section_description referal_desc center_mode">
-                    At New Hope Hospice Care, we are renowned for our exceptional and empathetic approach to end-of-life care,
-                    earning us widespread recommendations from physicians, nursing homes, and hospitals
-                    alike. Our ACHC accreditation underscores our commitment to delivering superior
-                    hospice services, with a focus on significantly enhancing the quality of life for
-                    our patients.
-                    <br />
-                    <br />
-                    We invite healthcare professionals across Southern California to consider New
-                    Hope Hospice Care for patients who would benefit from our holistic and
-                    patient-centered approach. For referrals, please utilize the form provided
-                    below. Trust in us to extend the same level of care and compassion to your
-                    patients that you have always provided.
+                  {referalData.Description}
                 </div>
             </div>
             <div className="form_section" style={{ background: `url(${serviveInner1})` }}>
