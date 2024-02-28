@@ -3,7 +3,7 @@
         {
             "id" : 0,
             "regionName" : "Kern County",
-            "radius" :  5000,
+            "radius" :  15000,
             "location": {
                 "lat": 35.377568,
                 "lng": -119.021375
@@ -12,7 +12,7 @@
         {
             "id" : 1,
             "regionName" : "Kings County",
-            "radius" :  3000,
+            "radius" :  25000,
             "location": {
                 "lat": 36.079996,
                 "lng": -119.818643
@@ -21,16 +21,16 @@
         {
             "id": 2,
             "regionName": "Los Angeles County",
-            "radius": 20000,
+            "radius": 25000,
             "location": {
-                "lat": 34.269816,
-                "lng": -118.186455
+                "lat": 34.055145,
+                "lng": -118.241936
             }
         },
         {
             "id": 3,
             "regionName": "Orange County",
-            "radius": 5000,
+            "radius": 20000,
             "location": {
                 "lat": 33.708463,
                 "lng": -117.748505
@@ -39,46 +39,46 @@
         {
             "id": 4,
             "regionName": "Riverside County",
-            "radius": 6500,
+            "radius": 15500,
             "location": {
-                "lat": 33.719604,
-                "lng": -115.968086
+                "lat": 33.976072,
+                "lng": -117.372589
             }
         },
         {
             "id": 5,
             "regionName": "San Bernardino County",
-            "radius": 4700,
+            "radius": 10000,
             "location": {
-                "lat": 34.900924,
-                "lng": -116.274106
+                "lat": 34.114589,
+                "lng": -117.292717
             }
         },
         {
             "id": 6,
             "regionName": "Santa Barbara County",
-            "radius": 5000,
+            "radius": 6000,
             "location": {
-                "lat": 34.759871,
-                "lng": -120.054619
+                "lat": 34.422320,
+                "lng": -119.700754
             }
         },
         {
             "id": 7,
             "regionName": "Tulare County",
-            "radius": 8000,
+            "radius": 10000,
             "location": {
-                "lat": 36.261492,
-                "lng": -118.864966
+                "lat": 36.311364,
+                "lng": -119.313657
             }
         },
         {
             "id": 8,
             "regionName": "Ventura County",
-            "radius": 5000,
+            "radius": 8000,
             "location": {
-                "lat": 34.468752,
-                "lng": -119.072820
+                "lat": 34.279746,
+                "lng": -119.293742
             }
         }
     ]

@@ -9,7 +9,6 @@ const MapWithMenu = ({ geojsonData }) => {
   const mapRef = useRef(null);
   const [polygons, setPolygons] = useState([]);
   const [cordinatCenter, setCordinatCenter] = useState({ lat: 34.0522, lng: -118.2437 });
-  const [locationZoom , setlocationZoom] = useState(13);
 
   const handleRegionClick = (regionName, coordinates , regionRadius) => {
     const newCircle = {
@@ -26,18 +25,6 @@ const MapWithMenu = ({ geojsonData }) => {
     };
     setPolygons([newCircle]);
     setCordinatCenter(coordinates);
-    console.log(coordinates);
-    // Set the map zoom and center based on the clicked circle
-    // const bounds = new window.google.maps.LatLngBounds(coordinates);
-    // coordinates.forEach(({ lat, lng }) =>
-    //   bounds.extend(new window.google.maps.LatLng(lat, lng))
-    // );
-    // mapRef.current.fitBounds(bounds);
-    setTimeout(() => {
-      setlocationZoom(regionRadius/2000);
-    }, 100);
-    // setlocationZoom(regionRadius/1000);
-    // mapRef.current.setZoom(regionRadius/500); 
   };
 
   const handleMapClick = () => {
@@ -236,7 +223,7 @@ console.log(geojsonData);
       <div className="map_container">
         <GoogleMap
           mapContainerStyle={{ height: '100%', width: '100%' }}
-          zoom={locationZoom}
+          zoom={11}
           options={mapOptions}
           center={cordinatCenter}
           onClick={handleMapClick}
@@ -260,7 +247,6 @@ console.log(geojsonData);
               {geojsonData.locationCircle.map((feature) => {
                 const regionName = feature.regionName;
                 const regionRadius = feature.radius;
-                // const regionCoordinates = feature.coordinates[0][0].map(([lng, lat]) => ({ lat, lng }));
                 const regionCoordinates = feature.location;
                 return (
                   <a
