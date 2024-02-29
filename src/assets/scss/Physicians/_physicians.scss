@@ -17,4 +17,17 @@
     .referal_desc{
         margin-top: 50px;
     }
+    
+    @media (max-width: 1440px) {
+        .cover_title {
+            font-size: 32px;
+            line-height: 50px;
+        }        
+    }
+    @media (max-width: 575px) {
+        .cover_title {
+            font-size: 24px;
+            line-height: 42px;
+        }        
+    }
 }

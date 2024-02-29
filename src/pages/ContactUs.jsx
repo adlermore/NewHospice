@@ -38,7 +38,7 @@ const ContactUs = () => {
                 window.scrollTo(0, document.getElementById('success').offsetTop - 200);
                 setTimeout(() => {
                     setDataSend(false);
-                }, 8000);
+                }, 12000);
             } else {
                 console.error('Error submitting form:', response.statusText);
             }

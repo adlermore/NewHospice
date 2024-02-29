@@ -8,6 +8,7 @@ const MapWithMenu = ({ geojsonData }) => {
   const googleMapsApiKey = 'AIzaSyB1gaI096ADqTOstjRjOWt2Xx21zH29v5Y';
   const mapRef = useRef(null);
   const [polygons, setPolygons] = useState([]);
+  const [mapzoom, setmapzoom] = useState(11);
   const [cordinatCenter, setCordinatCenter] = useState({ lat: 34.0522, lng: -118.2437 });
 
   const handleRegionClick = (regionName, coordinates , regionRadius) => {
@@ -16,15 +17,19 @@ const MapWithMenu = ({ geojsonData }) => {
       center: coordinates,
       radius: regionRadius,
       options: {
-        fillOpacity: 0.7,
+        fillOpacity: 0.4,
         fillColor: '#3bb8cf',
         strokeColor: '#00525D',
-        strokeOpacity: 0.7,
+        strokeOpacity: 0.5,
         strokeWeight: 2,
       },
     };
     setPolygons([newCircle]);
     setCordinatCenter(coordinates);
+
+    setTimeout(() => {
+      setmapzoom(mapzoom+0.001);
+    }, 200);
   };
 
   const handleMapClick = () => {
@@ -223,7 +228,7 @@ console.log(geojsonData);
       <div className="map_container">
         <GoogleMap
           mapContainerStyle={{ height: '100%', width: '100%' }}
-          zoom={11}
+          zoom={mapzoom}
           options={mapOptions}
           center={cordinatCenter}
           onClick={handleMapClick}
@@ -235,7 +240,7 @@ console.log(geojsonData);
               center={circle.center}
               radius={circle.radius}
               options={circle.options}
-              onClick={() => handleRegionClick(circle.id, [circle.center])}
+              // onClick={() => handleRegionClick(circle.id, [circle.center])}
             />
           ))}
         </GoogleMap>

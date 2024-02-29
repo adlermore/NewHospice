@@ -62,7 +62,7 @@ const Physicians = () => {
                 success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 setTimeout(() => {
                     setDataSend(false);
-                }, 8000);
+                }, 12000);
             } else {
                 console.error('Error submitting form:', response.statusText);
             }

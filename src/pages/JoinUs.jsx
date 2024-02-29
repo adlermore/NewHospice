@@ -61,7 +61,7 @@ const JoinUs = () => {
                 success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 setTimeout(() => {
                     setDataSend(false);
-                }, 8000);
+                }, 12000);
             } else {
                 console.error('Error submitting form:', response.statusText);
             }
@@ -174,7 +174,7 @@ const JoinUs = () => {
                                         <p className="error-info" >This field is required</p>}
                                 </div>
                                 <div className="bottom_description">
-                                    Please upload your resume below. A member of our Human Resources department will reach out to you shortly
+                                    Please upload your resume below. A member of our Human Resources department will reach out to you shortly.
                                 </div>
                                 <div className="bttom_inline">
                                     <div className="attach_block">

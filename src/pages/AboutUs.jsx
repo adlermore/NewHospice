@@ -43,14 +43,14 @@ const AboutUs = () => {
         setTimeout(() => {
             setDataSend(false);
             console.log(data);
-        }, 8000);
-        // request(`https://hospis.dev.itfabers.com/api/new-member`, 'POST', data)
-        // .then((success) => {
-        //     console.log(success);
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // })
+        }, 12000);
+        request(`https://hospis.dev.itfabers.com/api/subscribe`, 'POST', data)
+        .then((success) => {
+            console.log(success);
+        })
+        .catch(error => {
+            console.log(error);
+        })
     };
 
     return (
@@ -81,9 +81,6 @@ const AboutUs = () => {
                     <div className="form_container">
                         <div className="form_inner_title">
                         Contact Us
-                        </div>
-                        <div className="bottom_description">
-                            You can ask anything you want…
                         </div>
                         <div className="form_inner">
                             <form onSubmit={handleSubmitForm1(onSubmit)}>

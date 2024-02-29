@@ -139,11 +139,13 @@
 
     .team_block {
         position: relative;
-        &:nth-child(6){
-            .team_img img{
+
+        &:nth-child(6) {
+            .team_img img {
                 transform: scale(1.15);
             }
         }
+
         a {
             display: flex;
             flex-direction: column;
@@ -273,6 +275,7 @@
         width: 100%;
         height: fit-content;
         overflow: hidden;
+
         img {
             width: 100%;
             height: auto;
@@ -379,12 +382,20 @@
         }
 
         .serbvice_block {
-            a::before {
-                background: rgba($secondColor, 0.7) !important;
+
+            &:nth-child(2),
+            &:nth-child(4),
+            &:nth-child(5),
+            &:nth-child(7),
+            &:nth-child(10),
+            &:nth-child(12) {
+                a::before {
+                    background: rgba($secondColor, 0.7);
+                }
             }
 
             &:nth-child(even) a::before {
-                background: rgba($siteColor , 0.8);
+                background: rgba($siteColor , 0.8) !important;
             }
         }
 
@@ -465,15 +476,28 @@
             }
         }
 
-        .serbvice_block:nth-child(6n+6) {
-            a::before {
-                background: rgba(0, 82, 93, 0.8) !important;
-            }
-        }
+        .serbvice_block {
 
-        .serbvice_block:nth-child(4n+4) {
-            a::before {
-                background: rgba(0, 82, 93, 0.8) !important;
+            &:nth-child(2),
+            &:nth-child(3),
+            &:nth-child(5),
+            &:nth-child(7),
+            &:nth-child(9),
+            &:nth-child(11) {
+                a::before {
+                    background: rgba($siteColor , 0.8) !important;
+                }
+            }
+
+            &:nth-child(1),
+            &:nth-child(4),
+            &:nth-child(5),
+            &:nth-child(8),
+            &:nth-child(9),
+            &:nth-child(12) {
+                a::before {
+                    background: rgba($secondColor , 0.8) !important;
+                }
             }
         }
 
