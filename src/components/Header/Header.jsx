@@ -6,6 +6,7 @@ import { Twirl as Hamburger } from 'hamburger-react'
 import { BiPlus } from 'react-icons/bi';
 import { Scrollbar } from 'react-scrollbars-custom';
 import request from "../Request/request";
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const body = document.body;
@@ -18,6 +19,14 @@ const Header = () => {
     const [settings, setSettings] = useState(null);
     const isMounted = useRef(true);
     
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(isOpen){
+            setOpen(false);
+            body.classList.remove('menu-opened')
+        }
+    },[navigate])
+
     useEffect(() => {
         if (isMounted.current) {
             request(`https://hospis.dev.itfabers.com/api/navbar-services`)

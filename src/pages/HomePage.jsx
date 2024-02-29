@@ -137,7 +137,7 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="coverBottom_section">
-                <div className="cover_image"><img src={homeData.FooterImage} alt='coverImg' /></div>
+                <div className="cover_image"><img src={homeData.FooterImage.replace(/\s/g, '')} alt='coverImg' /></div>
             </div>
             <div className="location_section">
                 <MapContainer array={[homeData.HomeMap]} isAdding={true} error={false} />
