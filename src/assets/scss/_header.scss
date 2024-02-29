@@ -627,7 +627,12 @@
     .navbar_inner {
         @include animDelay(0.15s);
     }
-
+    .ScrollbarsCustom-Scroller{
+        padding-right: 0 !important;
+    }
+    .ScrollbarsCustom-Wrapper{
+        width: 100%;
+    }
     .menu-open.navbar_container {
         @include animDelay(0.05s);
     }

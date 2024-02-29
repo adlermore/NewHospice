@@ -22,6 +22,7 @@ const Header = () => {
     const navigate = useNavigate();
     useEffect(()=>{
         if(isOpen){
+            console.log('true');
             setOpen(false);
             body.classList.remove('menu-opened')
         }
@@ -135,7 +136,8 @@ const Header = () => {
     }
 
     const prevMenuButton = (e) => {
-        e.currentTarget.parentElement.parentElement.classList.remove('submenu-open')
+        console.log('true');
+        e.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.classList.remove('submenu-open')
     }
 
     if (window.innerWidth <= 991) {
