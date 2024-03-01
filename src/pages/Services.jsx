@@ -17,6 +17,7 @@ const Services = () => {
     const [isLoadSuccess, setIsLoadSuccess] = useState(false);
     const [servicePage, setServicePage] = useState(null);
     const [servicesPages, setServicesPages] = useState([]);
+    const [descriptionPoint, setdescriptionPoint] = useState(370);
 
     const handleClickSchedul = (e) => {
         e.preventDefault();
@@ -38,6 +39,10 @@ const Services = () => {
         let element;
         setServicePage(Math.ceil(currentId / 4));
         element = document.getElementById(desiredPart);
+
+        if(window.innerWidth <=1440){
+            setdescriptionPoint(480)
+        }
 
         if (element) {
             if (desiredPart === 'all') {
@@ -125,7 +130,7 @@ const Services = () => {
                     servicesData.data.map((service) => (
                         <div key={service.id} id={`service${service.id}`} className="goals_section service_block inlineImg_section second_bg"  >
                             <div className="inlineImg_container">
-                                <div className="image_block absoluite_image" style={{ backgroundImage: `url(${service.image.replace(/\s/g, '%20')})` }}></div>
+                                <div className="image_block absoluite_image" style={{ backgroundImage: `url(${service.image.replace(/\s/g, '')})` }}></div>
                                 <div className="goal_info page_section">
                                     <div className="info_inner">
                                         <div className="section_title service_title">
@@ -137,7 +142,7 @@ const Services = () => {
                                             </div>
                                         </div>
                                         <div className="buttons_line">
-                                            {service.description.length > 370 &&
+                                            {service.description.length > descriptionPoint &&
                                                 <a href="/#" onClick={(e) => handleDescDropdown(e, service.id)} className="seeMore">See more{">"} </a>
                                             }
                                             <a href="/#" onClick={(e) => handleClickSchedul(e)} className="site_btn">Schedule</a>

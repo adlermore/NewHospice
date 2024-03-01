@@ -4,19 +4,25 @@ import '../assets/scss/BlogInner/_blogInner.scss';
 import { motion } from "framer-motion";
 import request from '../components/Request/request';
 import PageLoader from '../components/PageLoader/PageLoader';
-import blogInnerImg from '../assets/img/bloginnerimg.png';
+// import blogInnerImg from '../assets/img/bloginnerimg.png';
 import shareVector from '../assets/img/Vectorshare.png'
 import { FacebookShareButton  ,LinkedinShareButton } from 'react-share';
 
 const BlogInner = () => {
 
     const [blogInnerData, setBlogInnerData] = useState({});
+    const [blogDate, setBlogDate] = useState(null);
     const [isLoadSuccess, setLoadSuccess] = useState(false);
 
     useEffect(() => {
-        request(`https://hospis.dev.itfabers.com/api/blog/1`)
+
+        const path = window.location.href;
+        const parts = path.split("/");
+        let BlogSlug = parts.slice(parts.indexOf("blogInner") + 1).join("/");        
+        request(`https://hospis.dev.itfabers.com/api/post/${BlogSlug}`)
             .then((blogData) => {
                 setBlogInnerData(blogData.data);
+                setBlogDate(new Date(blogData.data.created_at))
                 setTimeout(() => {
                     setLoadSuccess(true)
                 }, 500);
@@ -29,7 +35,6 @@ const BlogInner = () => {
     if (!isLoadSuccess) {
         return <PageLoader />
     }
-    console.log(blogInnerData);
 
     return (
         <motion.div className="blog_inner"
@@ -38,35 +43,21 @@ const BlogInner = () => {
             exit={{ opacity: 0 }}
         >
             <div className="custom_container">
-                <div className="section_title center_mode">Health and Wellness for Families</div>
-                <div className="blog_date">02.19.2024</div>
+                <div className="section_title center_mode">{blogInnerData.title}</div>
+                <div className="blog_date">{`${blogDate.toLocaleDateString()}`}</div>
             </div>
             <div className="blogInner_image">
-                <img src={blogInnerImg} alt="" />
+                <img src={blogInnerData.image} alt="BlogInnerImg" />
             </div>
             <div className="custom_container">
                 <div className="blog_inner">
                     <div className="blog_description section_description">
-                        In today's fast-paced world, maintaining the health and 
-                        wellness of our families is more important than ever. 
-                        With so many demands pulling us in different directions, 
-                        it's easy to let self-care fall by the wayside. However, 
-                        prioritizing the well-being of our loved ones can have a 
-                        profound impact on their overall quality of life.
-                        <br />
-                        <br />
-                        <br />
-                        In today's fast-paced world, maintaining the health and 
-                        wellness of our families is more important than ever. 
-                        With so many demands pulling us in different directions, 
-                        it's easy to let self-care fall by the wayside. However, 
-                        prioritizing the well-being of our loved ones can have a 
-                        profound impact on their overall quality of life.
+                     {blogInnerData.description}
                     </div>
                 </div>
                 <div className="article_line">
                     <div className="article_block">
-                        Article created by <span className='author_article'>Artur Karagyan </span> 
+                        Article created by <a href='https://www.linkedin.com/in/arturkaragyan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'target='blank' className='author_article'> Artur Karagyan </a> 
                     </div>
                     <div className="share_line">
                         Share to <img src={shareVector} alt="vector" />

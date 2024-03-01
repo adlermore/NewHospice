@@ -67,7 +67,7 @@ const Blog = () => {
                                     <img src={blog.image} alt="blogImg" />
                                 </div>
                                 <div className="blog_info">
-                                    <Link to={`/blogInner/${blog.id}`} className="blog_title">
+                                    <Link to={`/blogInner/${blog.slug}`} className="blog_title">
                                         {blog.title}
                                     </Link>
                                     <div className="blog_description">

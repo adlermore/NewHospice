@@ -13,7 +13,7 @@
     } 
     .form_section {
         margin-top: 0;
-        padding-top: 0;
+        // padding-top: 0;
     }
     .image_block{
         flex: 0 0 50%;
@@ -46,6 +46,8 @@
     .map_container{
         display: flex;
         height: 600px;
+        margin-bottom: 40px;
+        margin-top: 30px;
         .map_container{
             flex: 0 0 75%;
             max-width: 75%;
@@ -127,6 +129,7 @@
             height: 450px;
         }
         .map_container .regions_cntainer {
+            height: 250px;
             max-width: none;
         }
     }

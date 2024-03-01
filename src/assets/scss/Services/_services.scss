@@ -125,6 +125,10 @@
     }
 
     @media (max-width: 991px) {
+
+        .description_block{
+            padding-right: 15px;
+        }
         padding: 40px 0;
 
         .service_title {
@@ -144,6 +148,21 @@
             line-height: 24px;
             max-width: 170px;
             padding: 0 15px;
+        }
+    }
+    @media (max-width: 575px) {
+        .description_block {
+            min-height: 230px;
+        }
+        .seeMore {
+            font-size: 16px;
+            line-height: 21px;
+        }
+        .buttons_line .site_btn {
+            max-width: 160px;
+        }
+        .button_block button {
+            font-size: 21px;
         }
     }
 }

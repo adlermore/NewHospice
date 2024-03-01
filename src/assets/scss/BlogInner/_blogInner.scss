@@ -11,9 +11,12 @@
         width: 100%;
         position: relative;
         margin-top: 40px;
+        max-height: 650px;
+        overflow: hidden;
         img{
             width: 100%;
-            height: auto;
+            height: 100%;
+            vertical-align: top;
         }
     }
     .blog_inner{
