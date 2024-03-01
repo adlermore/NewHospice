@@ -90,10 +90,10 @@ const AboutUs = () => {
                                     <p className="error-info" >This field is required</p>
                                 </div>
                                 <div className="bttom_inline">
-                                    <div className={errors?.user_email?.type === "required" || errors?.user_email?.type === "pattern" ? "mail_inline form-block has-error" : "mail_inline form-block"}  >
+                                    <div className={errors?.email?.type === "required" || errors?.email?.type === "pattern" ? "mail_inline form-block has-error" : "mail_inline form-block"}  >
 
-                                        <input placeholder="Provide the best email for a response*" className="form-control" name="user_email" {...register("user_email", { required: true, pattern: /^\S+@\S+$/i })} />
-                                        {errors?.user_email?.type === "pattern" ? <p className="error-info email-info" >invalid Email</p> :
+                                        <input placeholder="Provide the best email for a response*" className="form-control" name="email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                                        {errors?.email?.type === "pattern" ? <p className="error-info email-info" >invalid Email</p> :
                                             <p className="error-info" >This field is required</p>}
                                     </div>
                                     <button type='submit' className="bttom_inline site_btn bttom_inline" disabled={dataSend}>Send</button>

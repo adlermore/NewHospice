@@ -43,12 +43,13 @@ const JoinUs = () => {
     });
 
     const onSubmit = async (data) => {
+        setDataSend(true);
         try {
             const formData = new FormData();
             formData.append('user_email', data.user_email);
             formData.append('user_name', data.user_name);
-            formData.append('Position', data.Position);
-            formData.append('Service Area', data.ServiceArea);
+            formData.append('position', data.position);
+            formData.append('service_area', data.service_area);
             formData.append('pdfFile', data.pdfFile);
 
             const response = await fetch('https://hospis.dev.itfabers.com/api/new-member', {
@@ -57,7 +58,6 @@ const JoinUs = () => {
             });
 
             if (response.ok) {
-                setDataSend(true);
                 success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 setTimeout(() => {
                     setDataSend(false);
@@ -133,27 +133,29 @@ const JoinUs = () => {
                                     <p className="error-info" >This field is required</p>
                                 </div>
 
-                                <div className={errors?.Position?.type === "required" ? "form_block sellect_section has-error" : "form_block"}  >
-                                    <div className='block_label'>Position*</div>
+                                <div className={errors?.position?.type === "required" ? "form_block sellect_section has-error" : "form_block"}  >
+                                    <div className='block_label'>position*</div>
                                     <Controller
-                                        name="Position"
+                                        name="position"
                                         control={control}
-                                        rules={{ required: 'Please select a Position' }}
+                                        rules={{ required: 'Please select a position' }}
                                         render={({ field }) => (
                                             <Select
                                                 className="form_sellect"
                                                 options={optionsPositions}
-                                                placeholder="Select a Position"
-                                                {...field}
+                                                placeholder="Select a position"
+                                                // {...field}
+                                                // onChange={(e) => field.onChange(console.log(e.value))}
+                                                onChange={(e) => field.onChange(e.value)}
                                             />
                                         )}
                                     />
                                     <p className="error-info" >This field is required</p>
                                 </div>
-                                <div className={errors?.ServiceArea?.type === "required" ? "form_block sellect_section has-error" : "form_block"}  >
+                                <div className={errors?.service_area?.type === "required" ? "form_block sellect_section has-error" : "form_block"}  >
                                         <div className='block_label'>ServiceArea*</div>
                                         <Controller
-                                            name="ServiceArea"
+                                            name="service_area"
                                             control={control}
                                             rules={{ required: 'Please select a Service Area' }}
                                             render={({ field }) => (
@@ -161,7 +163,8 @@ const JoinUs = () => {
                                                     className="form_sellect"
                                                     options={ServiceAreaOption}
                                                     placeholder="Select a Service Area"
-                                                    {...field}
+                                                    // {...field}
+                                                    onChange={(e) => field.onChange(e.value)}
                                                 />
                                             )}
                                         />

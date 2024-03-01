@@ -12,6 +12,7 @@ const MapWithMenu = ({ geojsonData }) => {
   const [cordinatCenter, setCordinatCenter] = useState({ lat: 34.0522, lng: -118.2437 });
 
   const handleRegionClick = (regionName, coordinates , regionRadius) => {
+ 
     const newCircle = {
       id: regionName,
       center: coordinates,
@@ -28,7 +29,11 @@ const MapWithMenu = ({ geojsonData }) => {
     setCordinatCenter(coordinates);
 
     setTimeout(() => {
-      setmapzoom(mapzoom+0.001);
+      if(window.innerWidth < 570){
+        setmapzoom(+0.001);
+      }else{
+        setmapzoom(mapzoom+0.001);
+      }
     }, 200);
   };
 

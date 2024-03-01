@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import MapWithMenu from '../components/Map/MapWithMenu';
 import geojsonDataFile from './mapGEO.json';
 import { motion } from "framer-motion";
+import request from '../components/Request/request';
 
 
 const ContactUs = () => {
@@ -21,7 +22,15 @@ const ContactUs = () => {
         success.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         setTimeout(() => {
             setDataSend(false);
-        }, 4000);
+            console.log(data);
+        }, 12000);
+        request(`https://hospis.dev.itfabers.com/api/new-request`, 'POST', data)
+        .then((success) => {
+            console.log(success);
+        })
+        .catch(error => {
+            console.log(error);
+        })
     };
 
     useEffect(() => {
@@ -52,20 +61,20 @@ const ContactUs = () => {
                     <div className="form_container">
                         <div className="form_inner">
                             <form onSubmit={handleSubmitForm1(onSubmit)}>
-                             <div className={errors?.user_name?.type === "required" ? "form-block  has-error" : "form-block"}  >
+                             <div className={errors?.name?.type === "required" ? "form-block  has-error" : "form-block"}  >
                                     <div className='block_label'>Name</div>
-                                    <input placeholder="Name*" className="form-control" name="user_name" {...register("user_name", { required: true })} />
+                                    <input placeholder="Name*" className="form-control" name="name" {...register("name", { required: true })} />
                                     <p className="error-info" >This field is required</p>
                                 </div>
-                                <div className={errors?.user_email?.type === "required" || errors?.user_email?.type === "pattern" ? "mail_inline form-block has-error" : "mail_inline form-block"}  >
+                                <div className={errors?.email?.type === "required" || errors?.email?.type === "pattern" ? "mail_inline form-block has-error" : "mail_inline form-block"}  >
                                     <div className='block_label'>Email*</div>
-                                    <input placeholder="Email" className="form-control" name="user_email" {...register("user_email", { required: true, pattern: /^\S+@\S+$/i })} />
-                                    {errors?.user_email?.type === "pattern" ? <p className="error-info email-info" >invalid Email</p> :
+                                    <input placeholder="Email" className="form-control" name="email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                                    {errors?.email?.type === "pattern" ? <p className="error-info email-info" >invalid Email</p> :
                                         <p className="error-info" >This field is required</p>}
                                 </div>
-                                <div className={errors?.user_description?.type === "required" ? "form-block  has-error" : "form-block"}  >
+                                <div className={errors?.description?.type === "required" ? "form-block  has-error" : "form-block"}  >
                                     <div className='block_label'>How may we assist you?</div>
-                                    <input placeholder="How may we assist you?*" className="form-control" name="user_description" {...register("user_description", { required: true })} />
+                                    <input placeholder="How may we assist you?*" className="form-control" name="description" {...register("description", { required: true })} />
                                     <p className="error-info" >This field is required</p>
                                 </div>
                                 <div className="bttom_inline">
