@@ -71,7 +71,7 @@
             }
             &.phone_link{
                 white-space: nowrap;
-                font-size: 23px;
+                font-size: 21px;
                 font-family: $medium !important;
                 letter-spacing: 1px;
             }
@@ -95,6 +95,17 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 40px;
+        position: relative;
+        padding-top: 41px;
+        .menu_title{
+            position: absolute;
+            top: 0;
+        }
+        a{
+            line-height: 27px;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
     }
     .social_list {
         display: grid;
@@ -115,7 +126,6 @@
         }
      
     }
-
     .payment_block div {
         display: flex;
         align-items: center;

@@ -42,9 +42,9 @@ const Footer = () => {
                     <div className="footer_logo">
                         <Link to="/"><img src={settings && settings.logo} alt="footerLogo" /></Link>
                     </div>
-                    <ul className="footer_menu">
+                    <ul className="footer_menu service_li">
                         <li className='services_li'>
-                            <span className="menu_title">Services</span>
+                            <span className="menu_title ">Services</span>
                             {servicesData && servicesData.map((service, index) => (
                                 <Link key={index}  to={`services/service${service.id}`} className="menu_link">{service.title}</Link>
                             ))}
