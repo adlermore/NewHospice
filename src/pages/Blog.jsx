@@ -96,7 +96,7 @@ const Blog = () => {
                                     handlePageChange(e, page + 1)
                                 }}
 
-                                disabled={page === Math.floor(10) ? true : false}
+                                disabled={page === pageinationData.total ? true : false}
                             />
                         </Pagination>
                     </div>

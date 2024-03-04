@@ -30,7 +30,7 @@ const MapWithMenu = ({ geojsonData }) => {
 
     setTimeout(() => {
       if(window.innerWidth < 570){
-        setmapzoom(+0.001);
+        setmapzoom(10+0.001);
       }else{
         setmapzoom(mapzoom+0.001);
       }

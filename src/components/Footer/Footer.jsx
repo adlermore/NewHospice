@@ -42,7 +42,7 @@ const Footer = () => {
                     <div className="footer_logo">
                         <Link to="/"><img src={settings && settings.logo} alt="footerLogo" /></Link>
                     </div>
-                    <ul className="footer_menu service_li">
+                    <ul className="footer_menu ">
                         <li className='services_li'>
                             <span className="menu_title ">Services</span>
                             {servicesData && servicesData.map((service, index) => (
