@@ -27,6 +27,7 @@ const MapWithMenu = ({ geojsonData }) => {
     };
     setPolygons([newCircle]);
     setCordinatCenter(coordinates);
+    setSelectedRegion(regionName);
 
     setTimeout(() => {
       if(window.innerWidth < 570){
@@ -48,16 +49,6 @@ const MapWithMenu = ({ geojsonData }) => {
       mapRef.current = new window.google.maps.Map(document.createElement('div'));
     }
   }, [isLoaded]);
-
-  useEffect(() => {
-    if (isLoaded && mapRef.current && selectedRegion) {
-      const bounds = new window.google.maps.LatLngBounds();
-      selectedRegion.coordinates.forEach(({ lat, lng }) =>
-        bounds.extend(new window.google.maps.LatLng(lat, lng))
-      );
-      mapRef.current.fitBounds(bounds);
-    }
-  }, [isLoaded, selectedRegion]);
 
   const mapOptions = {
     styles: [
@@ -245,7 +236,6 @@ console.log(geojsonData);
               center={circle.center}
               radius={circle.radius}
               options={circle.options}
-              // onClick={() => handleRegionClick(circle.id, [circle.center])}
             />
           ))}
         </GoogleMap>
@@ -262,7 +252,7 @@ console.log(geojsonData);
                   <a
                     key={regionName}
                     href="/#"
-                    className={`region_link ${selectedRegion && selectedRegion.id === regionName ? 'selected' : ''}`}
+                    className={`region_link ${selectedRegion && selectedRegion === regionName ? 'selected' : ''}`}
                     onClick={(e) => {
                       e.preventDefault();
                       handleRegionClick(regionName, regionCoordinates, regionRadius );

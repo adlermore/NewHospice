@@ -43,11 +43,14 @@
             }
         }
     }
+    .bottom_30{
+        margin-bottom: 30px;
+    }
     .map_container{
         display: flex;
         height: 600px;
         margin-bottom: 40px;
-        margin-top: 30px;
+        // margin-top: 30px;
         .map_container{
             flex: 0 0 75%;
             max-width: 75%;

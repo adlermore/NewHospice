@@ -45,7 +45,7 @@ const ContactUs = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <div className="custom_container">
+            <div className="custom_container bottom_30">
                 <div className="section_title center_mode">Service Areas</div>
             </div>
             <MapWithMenu geojsonData={geojsonData} />
